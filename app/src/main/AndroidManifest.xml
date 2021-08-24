@@ -9,11 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
+        <activity android:name=".PlaceQuickdelActivity"></activity>
         <activity
-            android:name=".PlaceQuickdel"
-            android:label="@string/title_activity_place_quickdel"
-            android:theme="@style/Theme.Quickdel.NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
