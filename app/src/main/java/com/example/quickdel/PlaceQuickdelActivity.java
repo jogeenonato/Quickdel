@@ -2,10 +2,10 @@ package com.example.quickdel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 
 
 public class PlaceQuickdelActivity extends AppCompatActivity {
@@ -14,18 +14,20 @@ public class PlaceQuickdelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_quickdel);
+        setTitle("Place Quickdel Order");
     }
 
     public void handleProductList (View v){
-        TextView prod = findViewById(R.id.productList);
-        TextView amt = findViewById(R.id.merchantName);
-        TextView mrc = findViewById(R.id.estimatedAmount);
-        TextView merchadd = findViewById(R.id.merchantAddress);
-        String prodinput = prod.getText().toString();
-        String amtinput = amt.getText().toString();
-        String mrcinput = mrc.getText().toString();
-        String merchaddinput = merchadd.getText().toString();
-
-
+        //launch OrderConfirmation activity
+        Intent i = new Intent(this, OrderConfirmation.class);
+        String prodinput = ((EditText)findViewById(R.id.productList)).getText().toString();
+        i.putExtra ("ORDER", prodinput);
+        String mrcinput = ((EditText)findViewById(R.id.merchantName)).getText().toString();
+        i.putExtra ("MERCH", mrcinput);
+        String amtinput = ((EditText)findViewById(R.id.estimatedAmount)).getText().toString();
+        i.putExtra ("COST", amtinput);
+        String merchaddinput = ((EditText)findViewById(R.id.merchantAddress)).getText().toString();
+        i.putExtra ("ADDRESS", merchaddinput);
+        startActivity(i);
     }
 }
