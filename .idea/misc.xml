@@ -3,15 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_registration.xml" value="0.2046875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/content_place_quickdel.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/layout.xml" value="0.2046875" />
+        <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_conditions.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel.xml" value="0.21296296296296297" />
+        <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_support.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>

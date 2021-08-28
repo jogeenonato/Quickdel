@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quickdel">
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -22,12 +23,54 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".test"
+            android:exported="true" />
+        <activity
+            android:name=".Support"
+            android:exported="true"
+            android:label="Suppport" />
+        <activity
+            android:name=".Payment"
+            android:exported="true"
+            android:label="Payment Method" />
+        <activity
+            android:name=".Preferences"
+            android:exported="true"
+            android:label="Preferences" />
+        <activity
+            android:name=".Conditions"
+            android:exported="true"
+            android:label="Terms and Conditions" />
+        <activity
+            android:name=".Faq"
+            android:exported="true"
+            android:label="Frequently Asked Questions" />
+        <activity
+            android:name=".Details"
+            android:exported="true"
+            android:label="My Details" />
+        <activity
+            android:name=".Earnings"
+            android:exported="true"
+            android:label="Earnings" />
+        <activity
+            android:name=".Settings"
+            android:exported="true"
+            android:label="Settings" />
+        <activity
+            android:name=".RunnerMain"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>
