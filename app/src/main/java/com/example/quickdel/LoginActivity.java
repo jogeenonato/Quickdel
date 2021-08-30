@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter your Email or Password!", Toast.LENGTH_LONG).show();
         } else if ("jericho_yabut03@yahoo.com".equals(input) && "quickdel31".equals(input1)) {
             Toast.makeText(this, "Successfully login!", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, PlaceQuickdelActivity.class);
+            Intent i = new Intent(this, UsersHome.class);
             startActivity(i);
         } else {
             Toast.makeText(this, "Incorrect Email or Password!", Toast.LENGTH_LONG).show();
