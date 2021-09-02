@@ -2,9 +2,11 @@ package com.example.quickdel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 
@@ -15,6 +17,18 @@ public class PlaceQuickdelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_quickdel);
         setTitle("Place Quickdel Order");
+
+        setupCancelOrderbutton();
+    }
+
+    private void setupCancelOrderbutton() {
+        Button btn = (Button) findViewById(R.id.cancelorder);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void handleProductList (View v){
@@ -30,4 +44,6 @@ public class PlaceQuickdelActivity extends AppCompatActivity {
         i.putExtra ("ADDRESS", merchaddinput);
         startActivity(i);
     }
+
+
 }

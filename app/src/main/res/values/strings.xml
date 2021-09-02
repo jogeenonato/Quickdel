@@ -9,9 +9,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="prompt_password">Password</string>
+    <string name="product_quantity">Product and Quantity</string>
+    <string name="merchant_name">Merchant Name</string>
+    <string name="estimated_amount">Estimated Amount</string>
+    <string name="merchant_address">Merchant Address</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_name">Full name</string>
-    <string name="prompt_password2">Confirm Password</string>
-    <string name="prompt_phone">Phone Number</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_password2">Password2</string>
+    <string name="prompt_phone">Phone</string>
+    <string name="order">order</string>
+    <string name="confirm">Confirm</string>
+    <string name="edit">Edit</string>
 </resources>

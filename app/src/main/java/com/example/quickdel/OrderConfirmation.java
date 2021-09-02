@@ -1,9 +1,11 @@
 package com.example.quickdel;
 
 import androidx.appcompat.app.AppCompatActivity;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class OrderConfirmation extends AppCompatActivity {
@@ -23,4 +25,5 @@ public class OrderConfirmation extends AppCompatActivity {
         String merchaddinput = i.getStringExtra("ADDRESS");
         ((TextView)findViewById(R.id.textView8)).setText(merchaddinput);
     }
+
 }
