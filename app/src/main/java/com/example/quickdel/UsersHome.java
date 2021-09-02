@@ -30,4 +30,6 @@ public class UsersHome extends AppCompatActivity {
         Intent intent = new Intent(this, PlaceQuickdelActivity.class);
         startActivity(intent);
     }
+
+
 }

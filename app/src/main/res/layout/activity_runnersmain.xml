@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/cancelorder"
         app:layout_constraintVertical_bias="0.629" />
 
     <Switch
@@ -65,7 +65,7 @@
         tools:text="Inbox" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cancelorder"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -88,7 +88,7 @@
         android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/cancelorder" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -125,7 +125,7 @@
         android:layout_marginEnd="12dp"
         android:text="Earnings"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/cancelorder" />
 
     <TextView
         android:id="@+id/textView5"

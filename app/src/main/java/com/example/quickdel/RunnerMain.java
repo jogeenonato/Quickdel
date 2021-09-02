@@ -30,7 +30,7 @@ public class RunnerMain extends AppCompatActivity {
         });
 
 
-        button = (Button) findViewById(R.id.button3);
+        button = (Button) findViewById(R.id.cancelorder);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
