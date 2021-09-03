@@ -3,6 +3,7 @@ package com.example.quickdel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -10,14 +11,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 
 public class LoginActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
     public void disable(View v) {
 
         EditText t = findViewById(R.id.txtEmail);
@@ -61,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
     ConstraintLayout cl = findViewById(R.id.CL1);
     cl.setVisibility(View.VISIBLE);
     }
+
+
 
     public void GotoRegistration(View v) {
         Intent i = new Intent(this, RegistrationActivity.class);
