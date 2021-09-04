@@ -115,15 +115,15 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
         android:layout_marginBottom="68dp"
         android:onClick="handleProductList"
         android:text="@string/order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/merchantAddress"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <Button
         android:id="@+id/cancelorder"
