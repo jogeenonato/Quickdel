@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, PlaceQuickdelActivity.class);
         startActivity(i);
     }
-    public void disable(View v){ v.setEnabled(false);
+    public void disable(View v){
+        v.setEnabled(false);
     }
 }
