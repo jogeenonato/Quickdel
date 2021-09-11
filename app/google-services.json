@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "876692591044",
+    "firebase_url": "https://quickdel-3d7ee-default-rtdb.firebaseio.com",
     "project_id": "quickdel-3d7ee",
     "storage_bucket": "quickdel-3d7ee.appspot.com"
   },
@@ -10,6 +11,43 @@
         "mobilesdk_app_id": "1:876692591044:android:2cebf6c77fc8143793d491",
         "android_client_info": {
           "package_name": "com.example.quickdel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876692591044-7lvt2i429lljb7b1aap1u4u5gnfcd573.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickdel",
+            "certificate_hash": "f5ece68d9fad306b7f5aa24fb31381bf95511747"
+          }
+        },
+        {
+          "client_id": "876692591044-pqoeil8sdgkutqm5n2ebov36rfj113os.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5Dl6IRV_S908iz8VHnMED-pQ0SbOEAl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876692591044-pqoeil8sdgkutqm5n2ebov36rfj113os.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876692591044:android:86af5226ee07bf4893d491",
+        "android_client_info": {
+          "package_name": "com.example.uber"
         }
       },
       "oauth_client": [

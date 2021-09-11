@@ -41,50 +41,154 @@ public class RegistrationActivity2 extends AppCompatActivity {
         regBtn = findViewById(R.id.btnSignUp);
         regToLoginBtn = findViewById(R.id.btnSignIn);
 
+        /*
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users");
-
-                String name = regName.getEditText().getText().toString();
-                String username = regUsername.getEditText().getText().toString();
-                String email = regEmail.getEditText().getText().toString();
-                String phoneNo = regPhoneNo.getEditText().getText().toString();
-                String password = regPassword.getEditText().getText().toString();
-
-                UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
-
-                reference.child(phoneNo).setValue(helperClass);
-                Toast.makeText(RegistrationActivity2.this , "Successfully Registered!", Toast.LENGTH_LONG).show();
             }
-
-
-
         });
-
-
+        */
 
     }
 
+    private Boolean validateName() {
+        String val = regName.getEditText().getText().toString();
+
+        if (val.isEmpty()) {
+            regName.setError("Field cannot be empty");
+            return false;
+        } else {
+            regName.setError(null);
+            regName.setErrorEnabled(false);
+            return true;
+        }
+
+    }
+
+    private Boolean validateUsername() {
+        String val = regUsername.getEditText().getText().toString();
+        String noWhiteSpace = "\\A\\w{4,20}\\z";
+
+        if (val.isEmpty()) {
+            regUsername.setError("Field cannot be empty");
+            return false;
+        } else if (val.length() >= 15) {
+            regUsername.setError("Username too long");
+            return false;
+        } else if (!val.matches(noWhiteSpace)) {
+            regUsername.setError("White Spaces are not allowed");
+            return false;
+        } else {
+            regUsername.setError(null);
+            regUsername.setErrorEnabled(false);
+            return true;
+        }
+
+    }
+
+    private Boolean validateEmail() {
+        String val = regEmail.getEditText().getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if (val.isEmpty()) {
+            regEmail.setError("Field cannot be empty");
+            return false;
+        } else if (!val.matches(emailPattern)) {
+            regEmail.setError("Invalid email address");
+            return false;
+        } else {
+            regEmail.setError(null);
+            regEmail.setErrorEnabled(false);
+            return true;
+        }
+
+    }
+
+    private Boolean validatePhoneNo() {
+        String val = regName.getEditText().getText().toString();
+
+        if (val.isEmpty()) {
+            regPhoneNo.setError("Field cannot be empty");
+            return false;
+        } else {
+            regPhoneNo.setError(null);
+            regPhoneNo.setErrorEnabled(false);
+            return true;
+        }
+
+    }
+
+    private Boolean validatePassword() {
+        String val = regPassword.getEditText().getText().toString();
+        String passwordVal = "^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{4,}" +               //at least 4 characters
+                "$";
+
+        if (val.isEmpty()) {
+            regPassword.setError("Field cannot be empty");
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            regPassword.setError("Password is too weak");
+            return false;
+        } else {
+            regPassword.setError(null);
+            regPassword.setErrorEnabled(false);
+            return true;
+        }
+
+    }
+
+    //This function will execute when user click on Register Button
+    public void registerUser(View view) {
+
+        if (!validateName() | !validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUsername()) {
+            return;
+        }
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
+        String name = regName.getEditText().getText().toString();
+        String username = regUsername.getEditText().getText().toString();
+        String email = regEmail.getEditText().getText().toString();
+        String phoneNo = regPhoneNo.getEditText().getText().toString();
+        String password = regPassword.getEditText().getText().toString();
+
+        Intent intent = new Intent(getApplicationContext(), VerifyPhoneNoActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("username", username);
+        intent.putExtra("email", email);
+        intent.putExtra("phoneNo", phoneNo);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        //UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
+       //reference.child(username).setValue(helperClass);
+
+        //Toast.makeText(RegistrationActivity2.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
+        //Intent intent = new Intent(getApplicationContext(), LoginActivity2.class);
+        //startActivity(intent);
+    }
 
 
     public void GotoLogin(View v) {
-        Intent intent  = new Intent(getApplicationContext(), LoginActivity2.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity2.class);
         Pair[] pairs = new Pair[7];
-        pairs[0] = new Pair<View, String>(findViewById(R.id.username),"logo_username");
-        pairs[1] = new Pair<View, String>(findViewById(R.id.password),"logo_password");
-        pairs[2] = new Pair<View, String>(findViewById(R.id.slogan_name),"logo_desc");
-        pairs[3] = new Pair<View, String>(findViewById(R.id.logo_Image),"logo_image");
-        pairs[4] = new Pair<View, String>(findViewById(R.id.logoImage),"logo_text");
-        pairs[5] = new Pair<View, String>(findViewById(R.id.btnSignUp),"logo_signin");
-        pairs[6] = new Pair<View, String>(findViewById(R.id.btnSignIn),"logo_signup");
+        pairs[0] = new Pair<View, String>(findViewById(R.id.username), "logo_username");
+        pairs[1] = new Pair<View, String>(findViewById(R.id.password), "logo_password");
+        pairs[2] = new Pair<View, String>(findViewById(R.id.slogan_name), "logo_desc");
+        pairs[3] = new Pair<View, String>(findViewById(R.id.logo_Image), "logo_image");
+        pairs[4] = new Pair<View, String>(findViewById(R.id.logoImage), "logo_text");
+        pairs[5] = new Pair<View, String>(findViewById(R.id.btnSignUp), "logo_signin");
+        pairs[6] = new Pair<View, String>(findViewById(R.id.btnSignIn), "logo_signup");
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegistrationActivity2.this, pairs);
             startActivity(intent, options.toBundle());
-        }
-        else {
+        } else {
             startActivity(intent);
         }
     }

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity2"
-    android:orientation="vertical"
-    android:background="#fff"
-    android:padding="20dp">
+    tools:context=".RegistrationActivity2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:padding="20dp">
 
     <ImageView
         android:id="@+id/logo_Image"
@@ -51,7 +55,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:inputType="textCapWords"
+                android:drawableLeft="@drawable/fullname_2"
+                android:drawableStart="@drawable/fullname_2"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +73,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:drawableLeft="@drawable/fullname_icon"
+                android:drawableStart="@drawable/fullname_icon"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,7 +90,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/email"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +107,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:drawableLeft="@drawable/phone_number"
+                android:drawableStart="@drawable/phone_number"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,9 +126,14 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/password"
+                android:drawableStart="@drawable/password"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
     </LinearLayout>
@@ -122,10 +143,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000"
+        android:onClick="registerUser"
         android:text="Sign Up"
         android:textColor="#fff"
-        app:backgroundTint="@color/black"
-        android:transitionName="logo_signin"/>
+        android:transitionName="logo_signin"
+        app:backgroundTint="@color/black" />
 
     <Button
         android:id="@+id/btnSignIn"
@@ -137,4 +159,5 @@
         android:textColor="@color/black"
         android:transitionName="logo_signup" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

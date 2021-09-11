@@ -20,7 +20,7 @@
         android:id="@+id/logoImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello There, Welcome Back"
+        android:text="Hello There, Welcome Back!"
         android:textSize="40sp"
         android:fontFamily="@font/cherry_cream_soda"
         android:textColor="#000"
@@ -56,7 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                />
+                android:drawableLeft="@drawable/fullname_icon"
+                android:drawableStart="@drawable/fullname_icon"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +76,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                />
+                android:drawableLeft="@drawable/password"
+                android:drawableStart="@drawable/password"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +99,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#000"
-            android:onClick="loginHandler"
+            android:onClick="loginUser"
             android:text="Sign In"
             android:textColor="#fff"
             android:transitionName="logo_signin"

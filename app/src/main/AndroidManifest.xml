@@ -15,6 +15,12 @@
             android:name=".PlaceQuickdelActivity2"
             android:exported="true" />
         <activity
+            android:name=".VerifyPhoneNoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".CustomerSettingsActivity"
             android:exported="true"
             android:label="@string/title_activity_customer_settings" />
