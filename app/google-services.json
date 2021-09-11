@@ -23,34 +23,13 @@
           }
         },
         {
-          "client_id": "876692591044-pqoeil8sdgkutqm5n2ebov36rfj113os.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC5Dl6IRV_S908iz8VHnMED-pQ0SbOEAl0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "876692591044-pqoeil8sdgkutqm5n2ebov36rfj113os.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:876692591044:android:86af5226ee07bf4893d491",
-        "android_client_info": {
-          "package_name": "com.example.uber"
-        }
-      },
-      "oauth_client": [
+          "client_id": "876692591044-v7v21ikqcghbkfvra3n9horv7c5l7nht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickdel",
+            "certificate_hash": "065c4828b0639d90ea36264e52f8ecfa4b174a90"
+          }
+        },
         {
           "client_id": "876692591044-pqoeil8sdgkutqm5n2ebov36rfj113os.apps.googleusercontent.com",
           "client_type": 3

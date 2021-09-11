@@ -30,11 +30,11 @@ public class RunnerMain extends AppCompatActivity {
         });
 
 
-        button = (Button) findViewById(R.id.cancelorder);
+        button = (Button) findViewById(R.id.switch1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openEarnings();
+                openOnline();
             }
         });
 
@@ -47,8 +47,8 @@ public class RunnerMain extends AppCompatActivity {
     }
 
 
-    public void openEarnings() {
-        Intent intent = new Intent(this, com.example.quickdel.Earnings.class);
+    public void openOnline() {
+        Intent intent = new Intent(this, com.example.quickdel.Online.class);
         startActivity(intent);
     }
 

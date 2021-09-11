@@ -12,12 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="151dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="152dp"
         android:text="Ready to Run?"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -37,20 +37,21 @@
         app:layout_constraintTop_toBottomOf="@+id/cancelorder"
         app:layout_constraintVertical_bias="0.629" />
 
-    <Switch
+    <Button
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="153dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="152dp"
         android:minHeight="48dp"
         android:text="Offline"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="Go Online" />
 
     <Button
         android:id="@+id/button2"

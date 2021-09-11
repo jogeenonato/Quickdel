@@ -38,5 +38,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="LogOut">Log Out</string>
+    <string name="title_activity_online">Online</string>
+    <string name="title_activity_current_location">CurrentLocation</string>
 
 </resources>
