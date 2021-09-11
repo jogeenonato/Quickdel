@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".PlaceQuickdelActivity2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Set Location"
+                android:layout_marginTop="80dp"
+                android:padding="10dp"
+                android:textColor="@color/teal_700">
+            </TextView>
+
+            <EditText
+                android:id="@+id/pickup"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@android:drawable/editbox_background"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/antic"
+                android:hint="Enter Pickup Point"
+                android:padding="10dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/destination"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:drawable/editbox_background"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/antic"
+                android:hint="Enter Destination"
+                android:padding="10dp">
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="Choose the Vehicle Type"
+                android:textColor="@color/teal_700"></TextView>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal">
+
+                <RadioButton
+                    android:id="@+id/v_bike"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bike" />
+
+
+                <RadioButton
+                    android:id="@+id/v_sedan"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sedan" />
+
+                <RadioButton
+                    android:id="@+id/v_ute"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ute" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Choose the Package Size"
+                android:textColor="@color/teal_700">
+
+            </TextView>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal">
+
+                <RadioButton
+                    android:id="@+id/s_small"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Small" />
+
+                <RadioButton
+                    android:id="@+id/s_medium"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Medium" />
+
+                <RadioButton
+                    android:id="@+id/s_large"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Large" />
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Choose the Package Weight"
+                android:textColor="@color/teal_700">
+
+            </TextView>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal">
+
+                <RadioButton
+                    android:id="@+id/weigh1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Less than 1KG" />
+
+                <RadioButton
+                    android:id="@+id/weight2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Between 1.1 KG to 5 KG" />
+
+                <RadioButton
+                    android:id="@+id/weight3"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Between 5.1 KG to 10 KG" />
+
+                <RadioButton
+                    android:id="@+id/weight4"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="More than 10 KG" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/proceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:padding="16dp"
+                android:text="Proceed"></Button>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
