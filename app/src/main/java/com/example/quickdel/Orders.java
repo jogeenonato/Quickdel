@@ -9,6 +9,25 @@ public class Orders {
     private Double WeightPrice;
     private Double Total;
 
+    public String getPickupPoint() {
+        return PickupPoint;
+    }
+
+    public void setPickupPoint(String pickupPoint) {
+        PickupPoint = pickupPoint;
+    }
+
+    public String getDestinationPoint() {
+        return DestinationPoint;
+    }
+
+    public void setDestinationPoint(String destinationPoint) {
+        DestinationPoint = destinationPoint;
+    }
+
+    private String PickupPoint;
+    private String DestinationPoint;
+
     public Double getTotal() {
         return Total;
     }
