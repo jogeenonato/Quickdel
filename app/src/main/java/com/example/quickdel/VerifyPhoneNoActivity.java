@@ -145,9 +145,11 @@ public class VerifyPhoneNoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            rootNode = FirebaseDatabase.getInstance();
-                            reference = rootNode.getReference("users");
                             Intent intent = getIntent();
+                            String usertype = intent.getStringExtra("usertype");
+                            rootNode = FirebaseDatabase.getInstance();
+                            reference = rootNode.getReference(usertype);
+
                             String name = intent.getStringExtra("name");
                             String username = intent.getStringExtra("username");
                             String email = intent.getStringExtra("email");

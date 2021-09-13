@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +28,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class LoginActivity2 extends AppCompatActivity {
 
     Button callSignUp, login_btn;
     ImageView image;
     TextView logoText, sloganText;
     TextInputLayout username, password;
+    RadioButton loginrbUsers, loginrbRunners;
+    String usertypereference;
+    Class classtype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class LoginActivity2 extends AppCompatActivity {
 
         username = findViewById(R.id.username1);
         password = findViewById(R.id.password1);
+        loginrbUsers = findViewById(R.id.rbUsers);
+        loginrbRunners = findViewById(R.id.rbRunners);
     }
 
     /*
@@ -109,7 +117,15 @@ public class LoginActivity2 extends AppCompatActivity {
          */
         final String userEnteredUsername = username.getEditText().getText().toString().trim();
         final String userEnteredPassword = password.getEditText().getText().toString().trim();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+
+        if (loginrbUsers.isChecked()){
+            usertypereference = "users";
+            classtype = UsersHome.class;
+        }  else {
+            usertypereference = "runners";
+            classtype = RunnerMain.class;
+        }
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(usertypereference);
         Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,21 +133,25 @@ public class LoginActivity2 extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     username.setError(null);
                     username.setErrorEnabled(false);
-                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
-                    if (passwordFromDB.equals(userEnteredPassword)) {
+                    String val = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    //String passwordFromDB = BCrypt.verifyer().verify(userEnteredPassword.toCharArray(), val);
+                    BCrypt.Result result = BCrypt.verifyer().verify(userEnteredPassword.toCharArray(), val);
+                    if (result.verified) {
                         username.setError(null);
                         username.setErrorEnabled(false);
                         String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
                         String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
-                        Intent intent = new Intent(getApplicationContext(), UsersHome.class);
+                        Intent intent = new Intent(getApplicationContext(), classtype);
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("phoneNo", phoneNoFromDB);
-                        intent.putExtra("password", passwordFromDB);
+                        intent.putExtra("password", userEnteredPassword);
                         startActivity(intent);
+
+
                     } else {
                         /*
                         progressBar.setVisibility(View.GONE);

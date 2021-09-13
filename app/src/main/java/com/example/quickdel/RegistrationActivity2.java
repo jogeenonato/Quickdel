@@ -9,6 +9,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -17,11 +18,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class RegistrationActivity2 extends AppCompatActivity {
 
     TextInputLayout regName, regUsername, regEmail, regPhoneNo, regPassword;
     Button regBtn, regToLoginBtn;
-
+    RadioButton regrbUsers, regrbRunners;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -40,6 +43,8 @@ public class RegistrationActivity2 extends AppCompatActivity {
         regPassword = findViewById(R.id.password);
         regBtn = findViewById(R.id.btnSignUp);
         regToLoginBtn = findViewById(R.id.btnSignIn);
+        regrbUsers = findViewById(R.id.rbUsers);
+        regrbRunners = findViewById(R.id.rbRunners);
 
         /*
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +142,8 @@ public class RegistrationActivity2 extends AppCompatActivity {
             regPassword.setError("Password is too weak");
             return false;
         } else {
+            //String bcryptHashing = BCrypt.withDefaults().hashToString(12, val.toCharArray());
+            //BCrypt.Result result =BCrypt.verifyer().verify(val.toCharArray(), bcryptHashing);
             regPassword.setError(null);
             regPassword.setErrorEnabled(false);
             return true;
@@ -150,13 +157,18 @@ public class RegistrationActivity2 extends AppCompatActivity {
         if (!validateName() | !validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUsername()) {
             return;
         }
+        String val = regPassword.getEditText().getText().toString();
+        String password = BCrypt.withDefaults().hashToString(12, val.toCharArray());
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("users");
         String name = regName.getEditText().getText().toString();
         String username = regUsername.getEditText().getText().toString();
         String email = regEmail.getEditText().getText().toString();
         String phoneNo = regPhoneNo.getEditText().getText().toString();
-        String password = regPassword.getEditText().getText().toString();
+        //String password = bcryptHashing;
+        //String password = regPassword.getEditText().getText().toString();
+
+
 
         Intent intent = new Intent(getApplicationContext(), VerifyPhoneNoActivity.class);
         intent.putExtra("name", name);
@@ -164,6 +176,13 @@ public class RegistrationActivity2 extends AppCompatActivity {
         intent.putExtra("email", email);
         intent.putExtra("phoneNo", phoneNo);
         intent.putExtra("password", password);
+
+        if (regrbUsers.isChecked()){
+            intent.putExtra("usertype", "users");
+        }  else {
+            intent.putExtra("usertype", "runners");
+        }
+
         startActivity(intent);
         //UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
        //reference.child(username).setValue(helperClass);

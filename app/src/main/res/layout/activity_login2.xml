@@ -43,6 +43,42 @@
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/borders"
+            android:elevation="24dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:drawableStart="@drawable/usertype"
+                android:drawableLeft="@drawable/usertype"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="User Type:"
+                android:textSize="16dp" />
+
+            <RadioButton
+                android:id="@+id/rbUsers"
+                style="@android:style/Widget.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="Customer"
+                android:textSize="16dp" />
+
+            <RadioButton
+                android:id="@+id/rbRunners"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Runner"
+                android:textSize="16dp" />
+        </RadioGroup>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/username1"
