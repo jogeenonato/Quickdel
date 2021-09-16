@@ -9,6 +9,36 @@ public class Orders {
     private Double WeightPrice;
     private Double Total;
 
+    public String getRecipient() {
+        return Recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        Recipient = recipient;
+    }
+
+    private String Recipient;
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    private String Description;
+
+    public String getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(String userID) {
+        UserID = userID;
+    }
+
+    private String UserID;
+
     public String getPickupPoint() {
         return PickupPoint;
     }

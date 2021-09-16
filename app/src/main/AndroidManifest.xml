@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
+        <activity
+            android:name=".OrderConfirmation2"
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -48,7 +51,7 @@
             android:label="@string/title_activity_customer_settings" />
         <activity
             android:name=".LoadingScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -109,8 +112,7 @@
             android:label="Settings" />
         <activity
             android:name=".RunnerMain"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".UsersHome"
             android:exported="true" />

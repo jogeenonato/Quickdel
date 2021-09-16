@@ -22,6 +22,8 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,16 +43,18 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     int i = 0;
-    EditText etPickup, etDestination;
+    EditText etPickup, etDestination, etDesc, recipient;
     TextView tvDistance;
     String sType;
     double lat1 = 0, long1 = 0, lat2 = 0, long2 = 0;
     int flag = 0;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_quickdel2);
+        setTitle("Place Quickdel Order");
 
         btn = findViewById(R.id.proceed);
         orders = new Orders()  ;
@@ -67,6 +71,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         etPickup = findViewById(R.id.pickup);
         etDestination = findViewById(R.id.destination);
         tvDistance = findViewById(R.id.text_distance);
+        etDesc  = findViewById(R.id.et_description);
+        recipient = findViewById(R.id.et_recipient);
 
 
 
@@ -88,6 +94,25 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
             }
         });
+
+
+
+        //Get current user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            //String name = user.getDisplayName();
+            //String email = user.getEmail();
+
+            // Check if user's email is verified
+            //boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            uid = user.getUid();
+        }
+        
 
         //Alternative to onResultActivity
 
@@ -204,10 +229,12 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         //Set text on TextView
         tvDistance.setText("0.0 Kilometers");
 
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                handleOrder();
+
                 String v1 = bike.getText().toString();
                 String v2 = sedan.getText().toString();
                 String v3 = ute.getText().toString();
@@ -220,6 +247,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String w4 = weight4.getText().toString();
                 String pp = etPickup.getText().toString();
                 String dp = etDestination.getText().toString();
+                String dc = etDesc.getText().toString();
+                String rn = recipient.getText().toString();
 
                 if (bike.isChecked()){
                     orders.setVehicle(v1);
@@ -267,10 +296,20 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                     reference.child(String.valueOf(i+1)).setValue(orders);
                 }
 
+
+                orders.setDescription(dc);
+                reference.child(String.valueOf(i+1)).setValue(orders);
+
+                orders.setUserID(uid);
+                reference.child(String.valueOf(i+1)).setValue(orders);
+
                 orders.setPickupPoint(pp);
                 reference.child(String.valueOf(i+1)).setValue(orders);
 
                 orders.setDestinationPoint(dp);
+                reference.child(String.valueOf(i+1)).setValue(orders);
+
+                orders.setRecipient(rn);
                 reference.child(String.valueOf(i+1)).setValue(orders);
 
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice());
@@ -280,9 +319,120 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             }
         });
 
+        setupBackButton();
+    }
 
+    private void handleOrder() {
+        //launch OrderConfirmation activity
+        Intent i = new Intent(this, OrderConfirmation2.class);
+
+        Double bikePrice = 10.00;
+        Double sedanPrice = 12.00;
+        Double utePrice = 14.00;
+        Double smallPrice = 0.50;
+        Double mediumPrice = 0.60;
+        Double largePrice = 0.80;
+        Double weight1Price = 2.00;
+        Double weight2Price = 3.00;
+        Double weight3Price = 4.00;
+        Double weight4Price = 5.00;
+        Double Total = 0.00;
+
+
+        String pp = etPickup.getText().toString();
+        i.putExtra("PICKUP", pp);
+
+        String dp = etDestination.getText().toString();
+        i.putExtra("DESTINATION", dp);
+
+
+        String recipientName = recipient.getText().toString();
+        i.putExtra("RECIPIENT", recipientName);
+
+        if (bike.isChecked()){
+            String vehicle = ((RadioButton)findViewById(R.id.v_bike)).getText().toString();
+            i.putExtra ("VEHICLE", vehicle);
+            String vehiclePrice = bikePrice.toString();
+            i.putExtra("VPRICE", vehiclePrice);
+            Total += bikePrice;
+        } else if (sedan.isChecked()){
+            String vehicle = ((RadioButton)findViewById(R.id.v_sedan)).getText().toString();
+            i.putExtra ("VEHICLE", vehicle);
+            String vehiclePrice = sedanPrice.toString();
+            i.putExtra("VPRICE", vehiclePrice);
+            Total += sedanPrice;
+        } else {
+            String vehicle = ((RadioButton)findViewById(R.id.v_ute)).getText().toString();
+            i.putExtra ("VEHICLE", vehicle);
+            String vehiclePrice = utePrice.toString();
+            i.putExtra("VPRICE", vehiclePrice);
+            Total += utePrice;
         }
 
+        if (small.isChecked()){
+            String size = ((RadioButton)findViewById(R.id.s_small)).getText().toString();
+            i.putExtra ("SIZE", size);
+            String sizePrice = smallPrice.toString();
+            i.putExtra("SPRICE", sizePrice);
+            Total += smallPrice;
+        } else if (medium.isChecked()){
+            String size = ((RadioButton)findViewById(R.id.s_medium)).getText().toString();
+            i.putExtra ("SIZE", size);
+            String sizePrice = mediumPrice.toString();
+            i.putExtra("SPRICE", sizePrice);
+            Total += mediumPrice;
+        } else {
+            String size = ((RadioButton)findViewById(R.id.s_large)).getText().toString();
+            i.putExtra ("SIZE", size);
+            String sizePrice = largePrice.toString();
+            i.putExtra("SPRICE", sizePrice);
+            Total += largePrice;
+        }
+
+        if (weight1.isChecked()){
+            String weight = ((RadioButton)findViewById(R.id.weigh1)).getText().toString();
+            i.putExtra ("WEIGHT", weight);
+            String weightPrice = weight1Price.toString();
+            i.putExtra("WPRICE", weightPrice);
+            Total += weight1Price;
+        } else if (weight2.isChecked()){
+            String weight = ((RadioButton)findViewById(R.id.weight2)).getText().toString();
+            i.putExtra ("WEIGHT", weight);
+            String weightPrice = weight2Price.toString();
+            i.putExtra("WPRICE", weightPrice);
+            Total += weight2Price;
+        } else if (weight3.isChecked()) {
+            String weight = ((RadioButton)findViewById(R.id.weight3)).getText().toString();
+            i.putExtra ("WEIGHT", weight);
+            String weightPrice = weight3Price.toString();
+            i.putExtra("WPRICE", weightPrice);
+            Total += weight3Price;
+        } else {
+            String weight = ((RadioButton)findViewById(R.id.weight4)).getText().toString();
+            i.putExtra ("WEIGHT", weight);
+            String weightPrice = weight4Price.toString();
+            i.putExtra("WPRICE", weightPrice);
+            Total += weight4Price;
+        }
+
+        String dc = etDesc.getText().toString();
+        i.putExtra("DESC", dc);
+
+        String total = Total.toString();
+        i.putExtra("TOTAL", total);
+
+        startActivity(i);
+    }
+
+    private void setupBackButton() {
+        TextView bck = findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
 
 }
 
