@@ -162,10 +162,16 @@ public class OrderConfirmation2 extends AppCompatActivity {
 
 
         Intent i = getIntent();
+//        String ordrno = i.getStringExtra("ORDER");
+//        ((TextView)findViewById(R.id.tv_orderNo)).setText(ordrno);
         String pp = i.getStringExtra("PICKUP");
         ((TextView)findViewById(R.id.tv_pickup)).setText(pp);
         String dp = i.getStringExtra("DESTINATION");
         ((TextView)findViewById(R.id.tv_destination)).setText(dp);
+        String ds = i.getStringExtra("DISTANCE");
+        ((TextView)findViewById(R.id.tv_distance)).setText(ds);
+        String distancePrice = i.getStringExtra("DPRICE");
+        ((TextView)findViewById(R.id.tv_distancePrice)).setText(distancePrice);
         String recipientName = i.getStringExtra("RECIPIENT");
         ((TextView)findViewById(R.id.tv_recipient)).setText(recipientName);
         String vehicle = i.getStringExtra("VEHICLE");

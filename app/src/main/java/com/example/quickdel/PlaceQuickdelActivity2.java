@@ -46,7 +46,10 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     EditText etPickup, etDestination, etDesc, recipient;
     TextView tvDistance;
     String sType;
-    double lat1 = 0, long1 = 0, lat2 = 0, long2 = 0;
+    double lat1 = 0;
+    double long1 = 0;
+    double lat2 = 0;
+    double long2 = 0;
     int flag = 0;
     String uid;
 
@@ -135,6 +138,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 //                                String[] split = sSource.split(",");
 //                                lat1 = Double.parseDouble(split[0]);
 //                                long1 = Double.parseDouble(split[1]);
+                                    lat1 = place.getLatLng().latitude;
+                                    long1 = place.getLatLng().longitude;
+
                             }else {
                                 //when type is destination
                                 flag++;
@@ -148,6 +154,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 //                                String[] split = sDestination.split(",");
 //                                lat2 = Double.parseDouble(split[0]);
 //                                long2 = Double.parseDouble(split[1]);
+                                lat2 = place.getLatLng().latitude;
+                                long2 = place.getLatLng().longitude;
                             }
 
                     if (flag >= 2) {
@@ -177,7 +185,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                         //distance in km
                         distance = distance * 1.609344;
                         //set distance on textview
-                        tvDistance.setText(String.format(Locale.US, "%2f Kilometers", distance));
+                        tvDistance.setText(String.format(Locale.UK, "%.2f", distance));
                     }
 
                     private double radtodeg(double distance) {
@@ -227,7 +235,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         });
 
         //Set text on TextView
-        tvDistance.setText("0.0 Kilometers");
+        tvDistance.setText("0.0");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +257,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String dp = etDestination.getText().toString();
                 String dc = etDesc.getText().toString();
                 String rn = recipient.getText().toString();
+                String ds = tvDistance.getText().toString();
+
 
                 if (bike.isChecked()){
                     orders.setVehicle(v1);
@@ -297,6 +307,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 }
 
 
+                orders.setDistance(ds);
+                reference.child(String.valueOf(i+1)).setValue(orders);
+
                 orders.setDescription(dc);
                 reference.child(String.valueOf(i+1)).setValue(orders);
 
@@ -314,6 +327,21 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice());
                 reference.child(String.valueOf(i+1)).setValue(orders);
+
+
+
+                double dsP = Double.parseDouble(ds);
+
+                if (dsP <= 10){
+                    orders.setDistancePrice(5.00);
+                    reference.child(String.valueOf(i+1)).setValue(orders);
+                } else if (dsP <= 10 && dsP >= 25){
+                    orders.setDistancePrice(7.00);
+                    reference.child(String.valueOf(i+1)).setValue(orders);
+                } else {
+                    orders.setDistancePrice(10.00);
+                    reference.child(String.valueOf(i+1)).setValue(orders);
+                }
 
 
             }
@@ -336,15 +364,20 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         Double weight2Price = 3.00;
         Double weight3Price = 4.00;
         Double weight4Price = 5.00;
+        Double dPrice1 = 5.00;
+        Double dPrice2 = 7.00;
+        Double dPrice3 = 10.00;
         Double Total = 0.00;
 
+
+        String ds = tvDistance.getText().toString();
+        i.putExtra("DISTANCE", ds);
 
         String pp = etPickup.getText().toString();
         i.putExtra("PICKUP", pp);
 
         String dp = etDestination.getText().toString();
         i.putExtra("DESTINATION", dp);
-
 
         String recipientName = recipient.getText().toString();
         i.putExtra("RECIPIENT", recipientName);
@@ -414,6 +447,25 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             i.putExtra("WPRICE", weightPrice);
             Total += weight4Price;
         }
+
+        double dsP = Double.parseDouble(ds);
+
+
+        if (dsP <= 10){
+            String distancePrice = dPrice1.toString();
+            i.putExtra("DPRICE", distancePrice);
+            Total += dPrice1;
+        } else if (dsP <= 10 && dsP >= 25){
+            String distancePrice = dPrice2.toString();
+            i.putExtra("DPRICE", distancePrice);
+            Total += dPrice2;
+        } else {
+            String distancePrice = dPrice3.toString();
+            i.putExtra("DPRICE", distancePrice);
+            Total += dPrice3;
+        }
+
+
 
         String dc = etDesc.getText().toString();
         i.putExtra("DESC", dc);

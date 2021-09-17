@@ -8,6 +8,37 @@ public class Orders {
     private Double VehiclePrice;
     private Double WeightPrice;
     private Double Total;
+    private String orderNumber;
+    private String distance;
+    private Double distancePrice;
+
+    public Double getDistancePrice() {
+        return distancePrice;
+    }
+
+    public void setDistancePrice(Double distancePrice) {
+        this.distancePrice = distancePrice;
+    }
+
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
 
     public String getRecipient() {
         return Recipient;
