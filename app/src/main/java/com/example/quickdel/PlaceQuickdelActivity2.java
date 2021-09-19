@@ -1,5 +1,7 @@
 package com.example.quickdel;
 
+import static java.lang.String.valueOf;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,18 +36,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-
 public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
     Button btn;
     Orders orders;
+    RandomAlphaNumeric orderNumbers;
     RadioButton bike, sedan, ute, small, medium, large, weight1, weight2, weight3, weight4;
     FirebaseDatabase database;
     DatabaseReference reference;
     int i = 0;
     EditText etPickup, etDestination, etDesc, recipient;
     TextView tvDistance;
-    String sType;
+    String sType, orderNumber;
     double lat1 = 0;
     double long1 = 0;
     double lat2 = 0;
@@ -61,6 +63,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
         btn = findViewById(R.id.proceed);
         orders = new Orders()  ;
+        RandomAlphaNumeric orderNumbers = new RandomAlphaNumeric();
         bike = findViewById(R.id.v_bike);
         sedan = findViewById(R.id.v_sedan);
         ute = findViewById(R.id.v_ute);
@@ -131,7 +134,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                                 //set address on Edittext
                                 etPickup.setText(place.getAddress());
                                 //get latitude and longitude
-                                String sSource = String.valueOf(place.getLatLng());
+                                String sSource = valueOf(place.getLatLng());
 //                                sSource = sSource.replaceAll("lat/lng", "");
 //                                sSource = sSource.replace("(", "");
 //                                sSource = sSource.replace(")", "");
@@ -147,7 +150,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                                 //set address on edittext
                                 etDestination.setText(place.getAddress());
                                 //Get latitude and longitude
-                                String sDestination = String.valueOf(place.getLatLng());
+                                String sDestination = valueOf(place.getLatLng());
 //                                sDestination = sDestination.replaceAll("lat/lng", "");
 //                                sDestination = sDestination.replace("(", "");
 //                                sDestination = sDestination.replace(")", "");
@@ -237,6 +240,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         //Set text on TextView
         tvDistance.setText("0.0");
 
+        orderNumber = (orderNumbers.generateOrderNo(5));
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -259,96 +264,98 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String rn = recipient.getText().toString();
                 String ds = tvDistance.getText().toString();
 
+                double dsP = Double.parseDouble(ds);
+
+                if (dsP <= 10){
+                    orders.setDistancePrice(5.00);
+                    reference.child(valueOf(i+1)).setValue(orders);
+                } else if (dsP <= 10 && dsP >= 25){
+                    orders.setDistancePrice(7.00);
+                    reference.child(valueOf(i+1)).setValue(orders);
+                } else {
+                    orders.setDistancePrice(10.00);
+                    reference.child(valueOf(i+1)).setValue(orders);
+                }
 
                 if (bike.isChecked()){
                     orders.setVehicle(v1);
                     orders.setVehiclePrice(10.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else if (sedan.isChecked()){
                     orders.setVehicle(v2);
                     orders.setVehiclePrice(12.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else {
                     orders.setVehicle(v3);
                     orders.setVehiclePrice(14.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 }
 
                 if (small.isChecked()){
                     orders.setSize(s1);
                     orders.setSizePrice(0.50);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else if (medium.isChecked()){
                     orders.setSize(s2);
                     orders.setSizePrice(0.60);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else {
                     orders.setSize(s3);
                     orders.setSizePrice(0.80);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 }
 
                 if (weight1.isChecked()){
                     orders.setWeight(w1);
                     orders.setWeightPrice(2.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else if (weight2.isChecked()){
                     orders.setWeight(w2);
                     orders.setWeightPrice(3.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 } else if (weight3.isChecked()) {
                     orders.setWeight(w3);
                     orders.setWeightPrice(4.00);
-                    reference.child(String.valueOf(i + 1)).setValue(orders);
+                    reference.child(valueOf(i + 1)).setValue(orders);
                 } else {
                     orders.setWeight(w4);
                     orders.setWeightPrice(5.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
+                    reference.child(valueOf(i+1)).setValue(orders);
                 }
 
 
                 orders.setDistance(ds);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
                 orders.setDescription(dc);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
                 orders.setUserID(uid);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
                 orders.setPickupPoint(pp);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
                 orders.setDestinationPoint(dp);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
                 orders.setRecipient(rn);
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                reference.child(valueOf(i+1)).setValue(orders);
 
-                orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice());
-                reference.child(String.valueOf(i+1)).setValue(orders);
+                orders.setOrderNumber(orderNumber);
+                reference.child(valueOf(i+1)).setValue(orders);
 
 
-
-                double dsP = Double.parseDouble(ds);
-
-                if (dsP <= 10){
-                    orders.setDistancePrice(5.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
-                } else if (dsP <= 10 && dsP >= 25){
-                    orders.setDistancePrice(7.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
-                } else {
-                    orders.setDistancePrice(10.00);
-                    reference.child(String.valueOf(i+1)).setValue(orders);
-                }
-
+                orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
+                reference.child(valueOf(i+1)).setValue(orders);
 
             }
         });
 
         setupBackButton();
     }
+
+
 
     private void handleOrder() {
         //launch OrderConfirmation activity
@@ -369,6 +376,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         Double dPrice3 = 10.00;
         Double Total = 0.00;
 
+
+        String orderno = orderNumber;
+        i.putExtra("ORDER", orderno);
 
         String ds = tvDistance.getText().toString();
         i.putExtra("DISTANCE", ds);

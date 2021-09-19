@@ -162,8 +162,8 @@ public class OrderConfirmation2 extends AppCompatActivity {
 
 
         Intent i = getIntent();
-//        String ordrno = i.getStringExtra("ORDER");
-//        ((TextView)findViewById(R.id.tv_orderNo)).setText(ordrno);
+        String orderno = i.getStringExtra("ORDER");
+        ((TextView)findViewById(R.id.tv_orderNo)).setText(orderno);
         String pp = i.getStringExtra("PICKUP");
         ((TextView)findViewById(R.id.tv_pickup)).setText(pp);
         String dp = i.getStringExtra("DESTINATION");
