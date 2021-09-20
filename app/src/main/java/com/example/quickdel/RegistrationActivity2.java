@@ -1,10 +1,12 @@
 package com.example.quickdel;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,8 +15,12 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -26,7 +32,8 @@ public class RegistrationActivity2 extends AppCompatActivity {
     Button regBtn, regToLoginBtn;
     RadioButton regrbUsers, regrbRunners;
     FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    //DatabaseReference reference;
+    String usertypereference;
 
 
     @Override
@@ -45,6 +52,7 @@ public class RegistrationActivity2 extends AppCompatActivity {
         regToLoginBtn = findViewById(R.id.btnSignIn);
         regrbUsers = findViewById(R.id.rbUsers);
         regrbRunners = findViewById(R.id.rbRunners);
+        //checkerstatus = "true";
 
         /*
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +82,7 @@ public class RegistrationActivity2 extends AppCompatActivity {
         String val = regUsername.getEditText().getText().toString();
         String noWhiteSpace = "\\A\\w{4,20}\\z";
 
+
         if (val.isEmpty()) {
             regUsername.setError("Field cannot be empty");
             return false;
@@ -88,6 +97,9 @@ public class RegistrationActivity2 extends AppCompatActivity {
             regUsername.setErrorEnabled(false);
             return true;
         }
+
+
+       // return true;
 
     }
 
@@ -156,40 +168,74 @@ public class RegistrationActivity2 extends AppCompatActivity {
 
         if (!validateName() | !validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUsername()) {
             return;
-        }
-        String val = regPassword.getEditText().getText().toString();
-        String password = BCrypt.withDefaults().hashToString(12, val.toCharArray());
-        rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("users");
-        String name = regName.getEditText().getText().toString();
-        String username = regUsername.getEditText().getText().toString();
-        String email = regEmail.getEditText().getText().toString();
-        String phoneNo = regPhoneNo.getEditText().getText().toString();
-        //String password = bcryptHashing;
-        //String password = regPassword.getEditText().getText().toString();
-
-
-
-        Intent intent = new Intent(getApplicationContext(), VerifyPhoneNoActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("username", username);
-        intent.putExtra("email", email);
-        intent.putExtra("phoneNo", phoneNo);
-        intent.putExtra("password", password);
-
-        if (regrbUsers.isChecked()){
-            intent.putExtra("usertype", "users");
-        }  else {
-            intent.putExtra("usertype", "runners");
+        }else {
+            isUser();
         }
 
-        startActivity(intent);
-        //UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
-       //reference.child(username).setValue(helperClass);
 
-        //Toast.makeText(RegistrationActivity2.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
-        //Intent intent = new Intent(getApplicationContext(), LoginActivity2.class);
-        //startActivity(intent);
+    }
+
+    public void isUser() {
+        final String userEnteredUsername = regUsername.getEditText().getText().toString().trim();
+        if (regrbUsers.isChecked()) {
+            usertypereference = "users";
+        } else {
+            usertypereference = "runners";
+        }
+        final DatabaseReference[] reference = {FirebaseDatabase.getInstance().getReference(usertypereference)};
+        Query checkUser = reference[0].orderByChild("username").equalTo(userEnteredUsername);
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    regUsername.setError("Username already exist!");
+                    regUsername.requestFocus();
+                    return;
+                } else {
+                    regUsername.setError(null);
+                    regUsername.setErrorEnabled(false);
+                    String val = regPassword.getEditText().getText().toString();
+                    String password = BCrypt.withDefaults().hashToString(12, val.toCharArray());
+                    rootNode = FirebaseDatabase.getInstance();
+                    reference[0] = rootNode.getReference("users");
+                    String name = regName.getEditText().getText().toString();
+                    String username = regUsername.getEditText().getText().toString();
+                    String email = regEmail.getEditText().getText().toString();
+                    String phoneNo = regPhoneNo.getEditText().getText().toString();
+                    //String password = bcryptHashing;
+                    //String password = regPassword.getEditText().getText().toString();
+
+
+                    Intent intent = new Intent(getApplicationContext(), VerifyPhoneNoActivity.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("username", username);
+                    intent.putExtra("email", email);
+                    intent.putExtra("phoneNo", phoneNo);
+                    intent.putExtra("password", password);
+
+                    if (regrbUsers.isChecked()) {
+                        intent.putExtra("usertype", "users");
+                    } else {
+                        intent.putExtra("usertype", "runners");
+                    }
+
+                    startActivity(intent);
+                    //UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
+                    //reference.child(username).setValue(helperClass);
+
+                    //Toast.makeText(RegistrationActivity2.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
+                    //Intent intent = new Intent(getApplicationContext(), LoginActivity2.class);
+                    //startActivity(intent);
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

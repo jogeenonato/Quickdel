@@ -1,7 +1,10 @@
 package com.example.quickdel;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -114,7 +117,7 @@ public class LoginActivity2 extends AppCompatActivity {
 
         if (loginrbUsers.isChecked()){
             usertypereference = "users";
-            classtype = UsersHome.class;
+            classtype = UsersHome2.class;
         }  else {
             usertypereference = "runners";
             classtype = RunnerMain.class;
@@ -137,13 +140,28 @@ public class LoginActivity2 extends AppCompatActivity {
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
                         String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+
+                        //SharedPreferences
+                        SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putString("name", nameFromDB);
+                        editor.putString("username", usernameFromDB);
+                        editor.putString("email", emailFromDB);
+                        editor.putString("phoneNo", phoneNoFromDB);
+                        editor.putString("password", userEnteredPassword);
+                        editor.apply();
+
+
                         Intent intent = new Intent(getApplicationContext(), classtype);
+                        /*
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("phoneNo", phoneNoFromDB);
                         intent.putExtra("password", userEnteredPassword);
+                         */
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
                     } else {

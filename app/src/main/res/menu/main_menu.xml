@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="HOME" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/search"
+            android:title="SEARCH" />
+        <item
+            android:id="@+id/nav_rates"
+            android:icon="@drawable/ic_baseline_corporate_fare_24"
+            android:title="RATES" />
+        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/ic_baseline_local_offer_24"
+            android:title="OFFERS" />
+    </group>
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/fullname_icon"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_logout_24"
+                    android:title="Logout" />
+            </group>
+
+        </menu>
+    </item>
+
+    <item android:title="Categories">
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_place"
+                    android:icon="@drawable/restaurant"
+                    android:title="Place an order" />
+                <item
+                    android:id="@+id/nav_track"
+                    android:icon="@drawable/ic_baseline_location_on_24"
+                    android:title="Track" />
+                <item
+                    android:id="@+id/nav_history"
+                    android:icon="@drawable/ic_baseline_history_24"
+                    android:title="History" />
+                <item
+                    android:id="@+id/nav_contact"
+                    android:icon="@drawable/ic_baseline_headset_mic_24"
+                    android:title="Contact" />
+
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/settings"
+                    android:title="Settings" />
+            </group>
+
+        </menu>
+    </item>
+
+    <item android:title="Share">
+        <menu>
+
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_baseline_share_24"
+                    android:title="Share" />
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:icon="@drawable/ic_baseline_star_rate_24"
+                    android:title="Rate us" />
+            </group>
+
+        </menu>
+    </item>
+</menu>

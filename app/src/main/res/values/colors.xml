@@ -7,4 +7,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
+
+
+
+    <color name="home_background">#f2f5f8</color>
+    <color name="banner_background">#f1e9ce</color>
+    <color name="banner_background_light">#56f1e9ce</color>
+
+
+    <color name="card1">#d4cbe5</color>
+    <color name="card2">#7adccf</color>
+    <color name="card3">#f7c59f</color>
+    <color name="card4">#b8d7f5</color>
+    <color name="card5">#b8d79f</color>
+
+    <color name="primaryColor">#00BDFF</color>
+    <color name="highlightcolor">#000000</color>
+
 </resources>

@@ -18,6 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
         <activity
+            android:name=".UsersHome2"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".OrderConfirmation2"
             android:exported="true" />
         <!--

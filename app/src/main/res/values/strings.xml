@@ -41,4 +41,20 @@
     <string name="title_activity_online">Online</string>
     <string name="title_activity_current_location">CurrentLocation</string>
 
+
+
+    <string name="medicines">Medicines</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="shops">Shops</string>
+    <string name="goods">Goods</string>
+    <string name="airports">Airports</string>
+
+
+    <string name="featured_locations">All Featured Locations</string>
+    <string name="featured_locations_description">All the locations that are featured and have the top demand in town!</string>
+    <string name="most_viewed_locations">Most Viewed</string>
+    <string name="categories">Categories</string>
+    <string name="view_all">View All</string>
+    <string name="search_text">Search...</string>
+
 </resources>
