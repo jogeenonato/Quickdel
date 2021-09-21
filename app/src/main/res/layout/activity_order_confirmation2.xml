@@ -11,13 +11,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/teal_700">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:background="@color/teal_700">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +35,8 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="16dp"
                     android:text="EDIT"
-                    android:id="@+id/back">
+                    android:id="@+id/back"
+                    android:textColor="@color/white">
                 </TextView>
 
                 <TextView
@@ -46,7 +49,8 @@
                     android:layout_marginTop="16dp"
                     android:text="Your Quickdel Order #"
                     android:textStyle="bold"
-                    android:textColor="@color/teal_700">
+                    android:textSize="15sp"
+                    android:textColor="@color/white">
                 </TextView>
 
                 <TextView
@@ -58,7 +62,9 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="16dp"
                     android:id="@+id/tv_orderNo"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/white">
                 </TextView>
 
             </LinearLayout>
@@ -66,7 +72,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100"
+                android:background="@color/quantum_grey50"
                 android:paddingTop="10dp">
 
                 <TextView
@@ -99,7 +105,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -129,7 +135,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
 
                 <TextView
@@ -160,7 +166,38 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
+
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/teal_700"
+                    android:text="Recipient Mobile:"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_recipientNo"
+                    android:layout_width="237dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/quantum_grey50"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -187,6 +224,18 @@
                 </TextView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:text="$"
+                    android:textColor="@color/teal_700"></TextView>
+
+                <TextView
                     android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:layout_gravity="start"
@@ -202,7 +251,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -229,6 +278,18 @@
                 </TextView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:text="$"
+                    android:textColor="@color/teal_700"></TextView>
+
+                <TextView
                     android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:layout_gravity="start"
@@ -244,7 +305,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -271,6 +332,18 @@
                 </TextView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:text="$"
+                    android:textColor="@color/teal_700"></TextView>
+
+                <TextView
                     android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:layout_gravity="start"
@@ -286,7 +359,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -303,7 +376,7 @@
 
                 <TextView
                     android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="start"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="8dp"
@@ -311,6 +384,18 @@
                     android:background="@color/quantum_grey50"
                     android:id="@+id/tv_pWeight">
                 </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:text="$"
+                    android:textColor="@color/teal_700"></TextView>
 
                 <TextView
                     android:layout_width="80dp"
@@ -328,7 +413,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -345,7 +430,7 @@
 
                 <TextView
                     android:id="@+id/tv_description"
-                    android:layout_width="239dp"
+                    android:layout_width="235dp"
                     android:layout_height="100dp"
                     android:layout_gravity="start"
                     android:layout_marginLeft="6dp"
@@ -358,7 +443,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_cyanA100">
+                android:background="@color/quantum_grey50">
 
                 <TextView
                     android:layout_width="110dp"
@@ -374,16 +459,28 @@
                 </TextView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:text="$"
+                    android:textColor="@color/teal_700"></TextView>
+
+                <TextView
                     android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="130dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="8dp"
                     android:background="@color/quantum_grey50"
                     android:id="@+id/tv_total"
-                    android:layout_marginStart="130dp"
-                    android:layout_marginEnd="8dp">
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
                 </TextView>
 
             </LinearLayout>

@@ -45,7 +45,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     int i = 0;
-    EditText etPickup, etDestination, etDesc, recipient;
+    EditText etPickup, etDestination, etDesc, recipient, recipientNo;
     TextView tvDistance;
     String sType, orderNumber;
     double lat1 = 0;
@@ -79,6 +79,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         tvDistance = findViewById(R.id.text_distance);
         etDesc  = findViewById(R.id.et_description);
         recipient = findViewById(R.id.et_recipient);
+        recipientNo = findViewById(R.id.et_recipientMobile);
 
 
 
@@ -263,6 +264,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String dc = etDesc.getText().toString();
                 String rn = recipient.getText().toString();
                 String ds = tvDistance.getText().toString();
+                String rnNo = recipientNo.getText().toString();
 
                 double dsP = Double.parseDouble(ds);
 
@@ -342,6 +344,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setRecipient(rn);
                 reference.child(valueOf(i+1)).setValue(orders);
 
+                orders.setRecipientPhone(rnNo);
+                reference.child(valueOf(i+1)).setValue(orders);
+
                 orders.setOrderNumber(orderNumber);
                 reference.child(valueOf(i+1)).setValue(orders);
 
@@ -391,6 +396,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
         String recipientName = recipient.getText().toString();
         i.putExtra("RECIPIENT", recipientName);
+
+        String recipientNumber = recipientNo.getText().toString();
+        i.putExtra("RECIPIENTNO", recipientNumber);
 
         if (bike.isChecked()){
             String vehicle = ((RadioButton)findViewById(R.id.v_bike)).getText().toString();

@@ -174,6 +174,8 @@ public class OrderConfirmation2 extends AppCompatActivity {
         ((TextView)findViewById(R.id.tv_distancePrice)).setText(distancePrice);
         String recipientName = i.getStringExtra("RECIPIENT");
         ((TextView)findViewById(R.id.tv_recipient)).setText(recipientName);
+        String recipientNo = i.getStringExtra("RECIPIENTNO");
+        ((TextView)findViewById(R.id.tv_recipientNo)).setText(recipientNo);
         String vehicle = i.getStringExtra("VEHICLE");
         ((TextView)findViewById(R.id.tv_vehicle)).setText(vehicle);
         String vehiclePrice = i.getStringExtra("VPRICE");

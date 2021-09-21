@@ -92,18 +92,45 @@
 
             </EditText>
 
-            <TextView
-                android:id="@+id/text_distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"></TextView>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/km"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="KM: "
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.408"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"></TextView>
+
+                <TextView
+                    android:id="@+id/text_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.538"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"></TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
                 android:id="@+id/et_recipient"
                 android:layout_width="300dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
@@ -115,6 +142,22 @@
                 android:textAlignment="center"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck"></EditText>
 
+            <EditText
+                android:id="@+id/et_recipientMobile"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/antic"
+                android:hint="Recipient's Mobile"
+                android:inputType="phone"
+                android:maxLength="140"
+                android:padding="10dp"
+                android:textAlignment="center">
+
+            </EditText>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,30 +168,30 @@
                 android:text="Choose the Vehicle Type"
                 android:textColor="@color/teal_700"></TextView>
 
+
             <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal">
-
-                <RadioButton
-                    android:id="@+id/v_bike"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motorbike" />
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal">
 
+                    <RadioButton
+                        android:id="@+id/v_bike"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Motorbike"/>
 
-                <RadioButton
-                    android:id="@+id/v_sedan"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sedan" />
+                    <RadioButton
+                        android:id="@+id/v_sedan"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sedan" />
 
-                <RadioButton
-                    android:id="@+id/v_ute"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Ute" />
+                    <RadioButton
+                        android:id="@+id/v_ute"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ute" />
             </RadioGroup>
 
             <TextView
@@ -205,25 +248,25 @@
 
                 <RadioButton
                     android:id="@+id/weigh1"
-                    android:layout_width="200dp"
+                    android:layout_width="225dp"
                     android:layout_height="wrap_content"
                     android:text="Less than 1KG" />
 
                 <RadioButton
                     android:id="@+id/weight2"
-                    android:layout_width="200dp"
+                    android:layout_width="225dp"
                     android:layout_height="wrap_content"
                     android:text="Between 1.1 KG to 5 KG" />
 
                 <RadioButton
                     android:id="@+id/weight3"
-                    android:layout_width="200dp"
+                    android:layout_width="225dp"
                     android:layout_height="wrap_content"
                     android:text="Between 5.1 KG to 10 KG" />
 
                 <RadioButton
                     android:id="@+id/weight4"
-                    android:layout_width="200dp"
+                    android:layout_width="225dp"
                     android:layout_height="wrap_content"
                     android:text="More than 10 KG" />
             </RadioGroup>
@@ -234,7 +277,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:hint="Enter Description e.g. Fragile, Glass, Perishable, etc."
+                android:hint="Enter Description/Instructions e.g. Fragile, Glass, Perishable, etc."
                 android:maxLength="140"
                 android:padding="8dp"></EditText>
 

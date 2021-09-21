@@ -11,6 +11,14 @@ public class Orders {
     private String orderNumber;
     private String distance;
     private Double distancePrice;
+    private String recipientPhone;
+
+    public String getRecipientPhone() {
+        return recipientPhone;
+    }
+    public void setRecipientPhone(String recipientPhone) {
+        this.recipientPhone = recipientPhone;
+    }
 
     public Double getDistancePrice() {
         return distancePrice;
