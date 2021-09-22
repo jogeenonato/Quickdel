@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.quickdel">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -9,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,9 +24,8 @@
             android:exported="true">
 
         </activity>
-        <activity
-            android:name=".OrderConfirmation2"
-            android:exported="true" />
+
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,17 +37,45 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.ads.1:876692591044:android:2cebf6c77fc8143793d491"
+            android:value="ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy"/>
 
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme"/>
+
+
+
+
+        <activity
+            android:name=".DriverHomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_driver_home"
+            android:theme="@style/Theme.Quickdel.NoActionBar"/>
+
+
+
+
+
+
+        <activity
+            android:name=".OrderConfirmation2"
+            android:exported="true" />
         <activity
             android:name=".Online"
             android:exported="true"
             android:label="@string/title_activity_online" />
+
+
         <activity
             android:name=".PlaceQuickdelActivity2"
             android:exported="true" />
         <activity
             android:name=".VerifyPhoneNoActivity"
             android:exported="true" />
+
         <activity
             android:name=".UserProfileActivity"
             android:exported="true" />
@@ -56,19 +85,14 @@
             android:label="@string/title_activity_customer_settings" />
         <activity
             android:name=".LoadingScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity2"
             android:exported="true" />
         <activity
             android:name=".RegistrationActivity2"
             android:exported="true" />
+
         <activity android:name=".OrderConfirmation" />
         <activity android:name=".PlaceQuickdelActivity" />
         <activity
@@ -91,10 +115,11 @@
             android:name=".Payment"
             android:exported="true"
             android:label="Payment Method" />
-        <activity
+       <activity
             android:name=".Preferences"
             android:exported="true"
-            android:label="Preferences" />
+            android:label="Preferences"
+           tools:ignore="Instantiatable" />
         <activity
             android:name=".Conditions"
             android:exported="true"
@@ -117,7 +142,13 @@
             android:label="Settings" />
         <activity
             android:name=".RunnerMain"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".UsersHome"
             android:exported="true" />

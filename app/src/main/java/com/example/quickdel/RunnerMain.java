@@ -48,7 +48,7 @@ public class RunnerMain extends AppCompatActivity {
 
 
     public void openOnline() {
-        Intent intent = new Intent(this, com.example.quickdel.Online.class);
+        Intent intent = new Intent(this, com.example.quickdel.SplashScreenActivity.class);
         startActivity(intent);
     }
 
