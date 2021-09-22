@@ -243,7 +243,7 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/settings" />
+                                android:src="@drawable/settings3" />
 
                         </RelativeLayout>
 

@@ -270,51 +270,51 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
                 if (dsP <= 10){
                     orders.setDistancePrice(5.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else if (dsP <= 10 && dsP >= 25){
                     orders.setDistancePrice(7.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setDistancePrice(10.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 }
 
                 if (bike.isChecked()){
                     orders.setVehicle(v1);
                     orders.setVehiclePrice(10.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else if (sedan.isChecked()){
                     orders.setVehicle(v2);
                     orders.setVehiclePrice(12.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setVehicle(v3);
                     orders.setVehiclePrice(14.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 }
 
                 if (small.isChecked()){
                     orders.setSize(s1);
                     orders.setSizePrice(0.50);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else if (medium.isChecked()){
                     orders.setSize(s2);
                     orders.setSizePrice(0.60);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setSize(s3);
                     orders.setSizePrice(0.80);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 }
 
                 if (weight1.isChecked()){
                     orders.setWeight(w1);
                     orders.setWeightPrice(2.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else if (weight2.isChecked()){
                     orders.setWeight(w2);
                     orders.setWeightPrice(3.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else if (weight3.isChecked()) {
                     orders.setWeight(w3);
                     orders.setWeightPrice(4.00);
@@ -322,37 +322,37 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 } else {
                     orders.setWeight(w4);
                     orders.setWeightPrice(5.00);
-                    reference.child(valueOf(i+1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 }
 
 
                 orders.setDistance(ds);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setDescription(dc);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setUserID(uid);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setPickupPoint(pp);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setDestinationPoint(dp);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setRecipient(rn);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setRecipientPhone(rnNo);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
                 orders.setOrderNumber(orderNumber);
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
 
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
-                reference.child(valueOf(i+1)).setValue(orders);
+                reference.child(orderNumber).setValue(orders);
 
             }
         });

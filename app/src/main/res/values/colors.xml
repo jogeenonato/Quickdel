@@ -8,7 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="PrimaryColor">#cacaca</color>
-
+    <color name="tundora">#4A4A4A</color>
+    <color name="alto">#DADADA</color>
+    <color name="jungleGreen">#24988D</color>
+    <color name="boulder">#7B7B7B</color>
 
 
     <color name="home_background">#f2f5f8</color>
@@ -24,5 +27,15 @@
 
     <color name="primaryColor">#00BDFF</color>
     <color name="highlightcolor">#000000</color>
+
+
+    <!-- Order Sheet -->
+    <color name="colorGooglePayButtonBackground">@color/black</color>
+    <color name="colorSheetOverlay">@color/tundora</color>
+    <color name="colorSheetBackground">@color/white</color>
+    <color name="colorSheetSeparator">@color/alto</color>
+    <color name="colorSheetLabel">@color/jungleGreen</color>
+    <color name="colorSheetInfo">@color/boulder</color>
+    <color name="colorSheetValue">@color/black</color>
 
 </resources>

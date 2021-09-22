@@ -1,8 +1,17 @@
 package com.example.quickdel;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class OrderConfirmation2 extends AppCompatActivity {
 
 
-//    Button btnPay;
+   Button btnPay;
 //    Orders orders;
 //    RadioButton bike, sedan, ute, small, medium, large, weight1, weight2, weight3, weight4;
 //    FirebaseDatabase database;
@@ -28,8 +37,9 @@ public class OrderConfirmation2 extends AppCompatActivity {
         setContentView(R.layout.activity_order_confirmation2);
 
         setupBackButton();
+       btnPay = findViewById(R.id.btn_pay);
 
-//        btnPay = findViewById(R.id.btn_pay);
+
 //        orders = new Orders()  ;
 //        bike = findViewById(R.id.v_bike);
 //        sedan = findViewById(R.id.v_sedan);
@@ -193,6 +203,61 @@ public class OrderConfirmation2 extends AppCompatActivity {
         String total = i.getStringExtra("TOTAL");
         ((TextView)findViewById(R.id.tv_total)).setText(total);
 
+
+    }
+
+    public void gotoPayments(View view) {
+        showDialog();
+        //Intent intent = new Intent(this, Payment.class);
+        //startActivity(intent);
+        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    private void showDialog() {
+        Intent i = getIntent();
+        String recipientName = i.getStringExtra("RECIPIENT");
+        String total = i.getStringExtra("TOTAL");
+        String pp = i.getStringExtra("PICKUP");
+        String dp = i.getStringExtra("DESTINATION");
+
+
+        SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+        String name1 = settings.getString("name", "");
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.payment_dialog);
+
+        TextView pricetag = dialog.findViewById(R.id.price);
+        TextView recipient = dialog.findViewById(R.id.name);
+        TextView sender = dialog.findViewById(R.id.name2);
+        TextView pickup = dialog.findViewById(R.id.address2);
+        TextView destination = dialog.findViewById(R.id.address);
+        Button btn_payment = dialog.findViewById(R.id.pay_with_card_button);
+
+        pricetag.setText("$" + total);
+        recipient.setText(recipientName);
+        sender.setText(name1);
+        pickup.setText(pp);
+        destination.setText(dp);
+
+        btn_payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderConfirmation2.this, Payment.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
 
