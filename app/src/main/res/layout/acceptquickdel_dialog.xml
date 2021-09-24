@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="8dp"
+      >
+
+    <ImageButton
+        android:id="@+id/close_sheet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/button_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+      <TextView
+          android:id="@+id/orderNumber"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="You have new quickdel!"
+          android:textColor="@android:color/black"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="@id/close_sheet_button"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@id/close_sheet_button" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_info_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_info_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="40dp"
+        />
+
+    <TextView
+        android:id="@+id/ship_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="32dp"
+        android:text="Ship from"
+        android:textColor="@color/colorSheetLabel"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@id/close_sheet_button"
+        />
+
+
+
+    <androidx.constraintlayout.widget.Barrier
+
+
+        android:id="@+id/column_separator2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="ship_from, total"
+        />
+
+    <TextView
+        android:id="@+id/name2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Francisco Ferrero"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/column_separator"
+        app:layout_constraintTop_toTopOf="@id/ship_from"
+        />
+
+
+    <TextView
+        android:id="@+id/address2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:lineSpacingExtra="5sp"
+        android:text="210 Richmond Rd, Blacktown NSW 2148"
+        android:textColor="@color/colorSheetInfo"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/column_separator"
+        app:layout_constraintTop_toBottomOf="@+id/name2"
+        />
+
+    <View
+        android:id="@+id/ship_separator2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorSheetSeparator"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/address2"
+        />
+
+
+
+
+
+    <TextView
+        android:id="@+id/ship_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingEnd="32dp"
+        android:text="Ship to"
+        android:textColor="@color/colorSheetLabel"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/ship_separator2"
+
+        />
+
+
+
+    <androidx.constraintlayout.widget.Barrier
+
+
+        android:id="@+id/column_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="ship_to, total"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Carlo Jericho Yabut"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/column_separator"
+        app:layout_constraintTop_toTopOf="@id/ship_to"
+        />
+
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:lineSpacingExtra="5sp"
+        android:text="17 Patrick St Blacktown NSW 2148"
+        android:textColor="@color/colorSheetInfo"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/column_separator"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        />
+
+    <View
+        android:id="@+id/ship_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorSheetSeparator"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingEnd="32dp"
+        android:text="Total"
+        android:textColor="@color/colorSheetLabel"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/ship_separator"
+        />
+
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="$200.00"
+        android:textColor="@color/colorSheetValue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/column_separator"
+        app:layout_constraintTop_toBottomOf="@+id/ship_separator"
+        />
+
+    <View
+        android:id="@+id/price_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorSheetSeparator"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toStartOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        />
+
+
+    <TextView
+        android:id="@+id/refund"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:lineSpacingExtra="8sp"
+        android:text=""
+        android:textColor="@color/colorSheetInfo"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/right_info_guide"
+        app:layout_constraintStart_toEndOf="@id/left_info_guide"
+        app:layout_constraintTop_toBottomOf="@+id/price_separator"
+        />
+
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:layout_constraintTop_toBottomOf="@id/refund"
+     android:orientation="horizontal"
+     android:gravity="center">
+    <Button
+        android:id="@+id/btn_accept"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/button"
+        android:text="Accept" />
+
+    <Button
+        android:id="@+id/btn_decline"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/button"
+        android:text="Decline" />
+
+   <Button
+       android:id="@+id/btn_view"
+       android:layout_width="100dp"
+       android:layout_height="50dp"
+       android:layout_marginEnd="4dp"
+       android:layout_marginStart="4dp"
+       android:background="@drawable/button"
+       android:text="View" />
+ </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
