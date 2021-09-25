@@ -27,10 +27,10 @@ public class Payment extends AppCompatActivity {
             public void onClick(View v) {
                 // after clicking on pay we are displaying toast message as card added.
                 Toast.makeText(Payment.this, "Your Quickdel order has been placed!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Payment.this, UsersHome2.class);
+                Intent intent = new Intent(Payment.this, TrackRunner.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
-}
+} 

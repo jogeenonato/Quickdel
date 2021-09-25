@@ -53,7 +53,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     double lat2 = 0;
     double long2 = 0;
     int flag = 0;
-    String uid;
+    String uid, userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
             uid = user.getUid();
+            userName = user.getDisplayName();
         }
         
 

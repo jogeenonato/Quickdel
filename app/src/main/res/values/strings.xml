@@ -75,5 +75,6 @@
     <string name="categories">Categories</string>
     <string name="view_all">View All</string>
     <string name="search_text">Search...</string>
+    <string name="title_activity_track_runner">TrackRunner</string>
 
 </resources>
