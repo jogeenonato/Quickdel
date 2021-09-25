@@ -122,21 +122,23 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        locationListener = location -> {
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location){
 
-            try {
-                editTextLatitude.setText(Double.toString(location.getLatitude()));
-                editTextLongitude.setText(Double.toString(location.getLongitude()));
+                try {
 
-                latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Position"));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
+                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Position"));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        };
+            };
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
