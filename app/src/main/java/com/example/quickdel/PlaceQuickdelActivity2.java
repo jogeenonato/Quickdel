@@ -2,7 +2,9 @@ package com.example.quickdel;
 
 import static java.lang.String.valueOf;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -245,6 +247,11 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
         orderNumber = (orderNumbers.generateOrderNo(5));
 
+        SharedPreferences settings = getSharedPreferences("OrderNumber", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("orderNumber", orderNumber);
+        editor.apply();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -357,6 +364,15 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
                 reference.child(orderNumber).setValue(orders);
+
+                orders.setStatus("");
+                reference.child(orderNumber).setValue(orders);
+
+                orders.setRunnerID("");
+                reference.child(orderNumber).setValue(orders);
+
+
+
 
             }
         });

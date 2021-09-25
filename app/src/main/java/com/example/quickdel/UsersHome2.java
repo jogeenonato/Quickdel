@@ -150,6 +150,12 @@ public class  UsersHome2 extends AppCompatActivity implements NavigationView.OnN
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    public void openTrackRunner(View v) {
+        Intent intent = new Intent(this, Online.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
     private void categoriesRecycler() {
 
         //All Gradients

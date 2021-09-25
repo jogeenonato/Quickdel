@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -99,6 +101,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         listener = myFirebaseAuth -> {
             FirebaseUser user = myFirebaseAuth.getCurrentUser();
+            String getrunneruserid = String.valueOf(user.getUid());
+            SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("runnerID", getrunneruserid);
+            editor.apply();
+            //Toast.makeText(SplashScreenActivity.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
             if(user != null)
             {
                 checkUserFromFirebase();
@@ -116,7 +124,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                         if(datasnapshot.exists())
                         {
-                            //Toast.makeText(SplashScreenActivity.this, "User already registered", Toast.LENGTH_SHORT).show();
+
                             DriverInfoModel driverInfoModel = datasnapshot.getValue(DriverInfoModel.class);
 
                             goToHomeActivity(driverInfoModel);

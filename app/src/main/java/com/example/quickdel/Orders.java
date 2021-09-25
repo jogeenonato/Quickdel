@@ -11,7 +11,18 @@ public class Orders {
     private String orderNumber;
     private String distance;
     private Double distancePrice;
+    private String runnerID;
+
+    public void setRunnerID(String runnerID) {
+        this.runnerID = runnerID;
+    }
+
     private String recipientPhone;
+
+    public String getRunnerID() {
+        return runnerID;
+    }
+
 
     public String getStatus() {
         return status;

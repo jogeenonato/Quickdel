@@ -5,6 +5,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,12 +30,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class Online extends FragmentActivity implements OnMapReadyCallback {
 
@@ -67,6 +73,16 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         editTextLatitude = findViewById(R.id.editTextTextPersonName2);
         editTextLongitude = findViewById(R.id.editTextTextPersonName3);
         textView = findViewById(R.id.LocationDisplay);
+
+
+
+
+
+        editTextLatitude.setText("-33.77557");
+        editTextLongitude.setText("150.917485");
+        editTextLatitude.setVisibility(View.INVISIBLE);
+        editTextLongitude.setVisibility(View.INVISIBLE);
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Location");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -154,7 +170,31 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         public void getLocationDetails (View view){
             double latitude = latLng.latitude;
             double longitude = latLng.longitude;
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
+            // Query checkUser = reference.orderByChild("g").equalTo("r3grf5qg03");
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        double dbLatitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("0").getValue(double.class);
+                        double dbLongitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("1").getValue(double.class);
+                        String total1 = String.valueOf(dbLatitudeString);
+                        String total2 = String.valueOf(dbLongitudeString);
+                        editTextLatitude.setText(total1);
+                        editTextLongitude.setText(total2);
+                        editTextLatitude.setVisibility(View.INVISIBLE);
+                        editTextLongitude.setVisibility(View.INVISIBLE);
+                    } else {
 
+                    }
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
             if (!(editTextLongitude.getText().toString().isEmpty() || editTextLatitude.getText().toString().isEmpty())) {
                 latitude = Double.parseDouble(editTextLatitude.getText().toString());
                 longitude = Double.parseDouble(editTextLongitude.getText().toString());
