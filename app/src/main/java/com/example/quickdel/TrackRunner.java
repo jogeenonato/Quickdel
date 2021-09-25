@@ -17,6 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +37,7 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
     private final long MIN_TIME = 1000;
     private final long MIN_DIST = 5;
     String lt, lng;
-//    DatabaseReference onlineRef,currentUserRef,driversLocationRef;
+    DatabaseReference onlineRef,currentUserRef,driversLocationRef;
 
 
 
@@ -55,18 +56,18 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
-//        onlineRef = FirebaseDatabase.getInstance().getReference().child(".info/connected");
-//        driversLocationRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES);
-//        currentUserRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES)
-//                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        onlineRef = FirebaseDatabase.getInstance().getReference().child(".info/connected");
+        driversLocationRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES);
+        currentUserRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES)
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
                     String dbLatitudeString;
-                    dbLatitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("0").getValue().toString().substring(1, dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("0").getValue().toString().length() - 1);
-                    String dbLongitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("1").getValue().toString().substring(1, dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("1").getValue().toString().length() - 1);
+                    dbLatitudeString = dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().substring(1, dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().length() - 1);
+                    String dbLongitudeString = dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("1").getValue().toString().substring(1, dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("1").getValue().toString().length() - 1);
 
                     String[] stringLat = dbLatitudeString.split(",");
                     Arrays.sort(stringLat);

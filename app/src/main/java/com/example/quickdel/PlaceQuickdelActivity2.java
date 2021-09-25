@@ -47,7 +47,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     int i = 0;
     EditText etPickup, etDestination, etDesc, recipient, recipientNo;
     TextView tvDistance;
-    String sType, orderNumber;
+    String sType;
+    public static String orderNumber;
     double lat1 = 0;
     double long1 = 0;
     double lat2 = 0;
@@ -336,6 +337,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setUserID(uid);
                 reference.child(orderNumber).setValue(orders);
 
+                orders.setUserName(userName);
+                reference.child(orderNumber).setValue(orders);
+
                 orders.setPickupPoint(pp);
                 reference.child(orderNumber).setValue(orders);
 
@@ -350,7 +354,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
                 orders.setOrderNumber(orderNumber);
                 reference.child(orderNumber).setValue(orders);
-
 
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
                 reference.child(orderNumber).setValue(orders);
