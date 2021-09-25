@@ -19,6 +19,20 @@
         <deviceKey>
           <Key>
             <type value="SERIAL_NUMBER" />
+            <value value="52006ef8b2581537" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\franc\.android\avd\Pixel_3a_API_29.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </runningDeviceTargetsSelectedWithDialog>
             <value value="NE1GAM5762838025" />
           </Key>
         </deviceKey>

@@ -91,7 +91,7 @@
         />
 
 
-    <TextView
+    <EditText
         android:id="@+id/address2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
      android:orientation="horizontal"
      android:gravity="center">
     <Button
-        android:id="@+id/btn_accept"
+        android:id="@+id/btn_acceptar"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"

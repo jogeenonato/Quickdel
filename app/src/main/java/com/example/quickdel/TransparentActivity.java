@@ -3,20 +3,32 @@ package com.example.quickdel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TransparentActivity extends AppCompatActivity {
+
+    //public EditText recipient;
+    //public Button accept;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +36,24 @@ public class TransparentActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_transparent);
         showDialog();
+
+
+        /*recipient = findViewById(R.id.address2);
+        accept = findViewById(R.id.btn_acceptar);
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String destinationLocation = recipient.getText().toString();
+
+                Intent intent = new Intent(TransparentActivity.this,Track.class);
+                intent.putExtra("keydestination",destinationLocation);
+                startActivity(intent);
+            }
+        });*/
+
+
     }
 
 
@@ -41,6 +71,8 @@ public class TransparentActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.acceptquickdel_dialog);
 
+
+
         TextView orderNo = dialog.findViewById(R.id.orderNumber);
         TextView sender = dialog.findViewById(R.id.name2);
         TextView pickup = dialog.findViewById(R.id.address2);
@@ -48,11 +80,27 @@ public class TransparentActivity extends AppCompatActivity {
         TextView destination = dialog.findViewById(R.id.address);
         TextView pricetag = dialog.findViewById(R.id.price);
 
+
+
+        Button btn_accept = dialog.findViewById(R.id.btn_acceptar);
+
         orderNo.setText("New Quickdel: " + orderNumber);
         pickup.setText(pickupPoint);
         recipientname.setText(recipient);
         destination.setText(destinationPoint);
         pricetag.setText("$" + total1);
+
+        btn_accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransparentActivity.this, Track.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+
+
 
 
         dialog.show();
@@ -70,4 +118,5 @@ public class TransparentActivity extends AppCompatActivity {
         );
 
     }
+
 }
