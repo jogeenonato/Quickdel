@@ -167,6 +167,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                 //Snackbar.make(mapFragment.getView(),"You are online",Snackbar.LENGTH_LONG).show();
 
                         });
+
+//                driversLocationRef.child("runner").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
             }
         };
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());

@@ -24,6 +24,7 @@
 
         <activity
             android:name=".NotificationPrompt"
+
             android:exported="true" />
 
 
@@ -59,7 +60,9 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/SplashTheme">
+
+        </activity>
 
 
         <activity
@@ -113,7 +116,13 @@
         <activity android:name=".PlaceQuickdelActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".RegistrationActivity"
             android:exported="true" />

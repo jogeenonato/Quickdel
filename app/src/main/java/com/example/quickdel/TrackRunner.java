@@ -2,6 +2,7 @@ package com.example.quickdel;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -31,12 +32,12 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private ActivityTrackRunnerBinding binding;
     private DatabaseReference databaseReference;
+//    private DatabaseReference orderReference;
 
     private LocationListener locationListener;
     private LocationManager locationManager;
     private final long MIN_TIME = 1000;
     private final long MIN_DIST = 5;
-    String lt, lng;
     DatabaseReference onlineRef,currentUserRef,driversLocationRef;
 
 
@@ -56,6 +57,7 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
         onlineRef = FirebaseDatabase.getInstance().getReference().child(".info/connected");
         driversLocationRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES);
         currentUserRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES)
@@ -65,9 +67,11 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
-                    String dbLatitudeString;
-                    dbLatitudeString = dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().substring(1, dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().length() - 1);
+                    String dbLatitudeString = dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().substring(1, dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("0").getValue().toString().length() - 1);
                     String dbLongitudeString = dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("1").getValue().toString().substring(1, dataSnapshot.child(String.valueOf(currentUserRef)).child("l").child("1").getValue().toString().length() - 1);
+
+//                    String databaseLatitudeString = dataSnapshot.child("latitude").getValue().toString().substring(1, dataSnapshot.child("latitude").getValue().toString().length() - 1);
+//                    String databaseLongitudeString= dataSnapshot.child("longitude").getValue().toString().substring(1, dataSnapshot.child("longitude").getValue().toString().length() - 1);
 
                     String[] stringLat = dbLatitudeString.split(",");
                     Arrays.sort(stringLat);
@@ -127,14 +131,20 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
 //
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newPosition, 12));
 
-        locationListener = location -> {
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                    try {
+                        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                        mMap.addMarker(new MarkerOptions().position(latLng).title("Runner Position"));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
-            try {
-                lt = String.valueOf(location.getLatitude());
-                lng = String.valueOf(location.getLongitude());
-            } catch (Exception e) {
-                e.printStackTrace();
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
             }
+
         };
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -157,6 +167,8 @@ public class TrackRunner extends FragmentActivity implements OnMapReadyCallback 
         }
 
     }
+
+
 
 //    public void updateButtonOnclick(View view){
 //

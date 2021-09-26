@@ -121,8 +121,10 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
             uid = user.getUid();
-            userName = user.getDisplayName();
         }
+
+
+
         
 
         //Alternative to onResultActivity
@@ -275,6 +277,11 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String ds = tvDistance.getText().toString();
                 String rnNo = recipientNo.getText().toString();
 
+                SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+                String userName = settings.getString("name", "");
+                orders.setUserName(userName);
+                reference.child(orderNumber).setValue(orders);
+
                 double dsP = Double.parseDouble(ds);
 
                 if (dsP <= 10){
@@ -344,8 +351,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setUserID(uid);
                 reference.child(orderNumber).setValue(orders);
 
-                orders.setUserName(userName);
-                reference.child(orderNumber).setValue(orders);
 
                 orders.setPickupPoint(pp);
                 reference.child(orderNumber).setValue(orders);
@@ -370,8 +375,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
                 orders.setRunnerID("");
                 reference.child(orderNumber).setValue(orders);
-
-
 
 
             }

@@ -1,12 +1,7 @@
 package com.example.quickdel;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -18,19 +13,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.quickdel.databinding.ActivityOnlineBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
@@ -38,18 +40,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
-
 public class Online extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, ref;
+    GeoFire geoFire;
 
     private LocationListener locationListener;
     private LocationManager locationManager;
     private final long MIN_TIME = 1000;
     private final long MIN_DIST = 5;
     private LatLng latLng;
+    String assignedRunner;
+    private LocationRequest locationRequest;
+    private com.google.android.gms.location.LocationCallback locationCallback;
 
 
     private EditText editTextLatitude;
@@ -74,10 +78,6 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         editTextLongitude = findViewById(R.id.editTextTextPersonName3);
         textView = findViewById(R.id.LocationDisplay);
 
-
-
-
-
         editTextLatitude.setText("-33.77557");
         editTextLongitude.setText("150.917485");
         editTextLatitude.setVisibility(View.INVISIBLE);
@@ -86,7 +86,6 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Location");
         databaseReference.addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -134,9 +133,9 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         //Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         locationListener = new LocationListener() {
             @Override
@@ -146,7 +145,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
 
 
                     latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Position"));
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
                 }
@@ -171,30 +170,77 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
             double latitude = latLng.latitude;
             double longitude = latLng.longitude;
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
+            SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
+            String orderNumber = settings.getString("orderNumber", "");
             // Query checkUser = reference.orderByChild("g").equalTo("r3grf5qg03");
-            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        double dbLatitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("0").getValue(double.class);
-                        double dbLongitudeString = dataSnapshot.child("EEv3DbFcFLReQkwEQzpqs1GuKZi1").child("l").child("1").getValue(double.class);
-                        String total1 = String.valueOf(dbLatitudeString);
-                        String total2 = String.valueOf(dbLongitudeString);
-                        editTextLatitude.setText(total1);
-                        editTextLongitude.setText(total2);
-                        editTextLatitude.setVisibility(View.INVISIBLE);
-                        editTextLongitude.setVisibility(View.INVISIBLE);
-                    } else {
-
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    assignedRunner = snapshot.child(orderNumber).child("runnerID").getValue().toString();
                 }
-
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
+
+
+
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+//                        for(DataSnapshot item: dataSnapshot.getChildren()){
+//                            if (!dataSnapshot.hasChildren()) {
+//                                return;
+//                            }
+//                            for(DataSnapshot childSnapShot :item.getChildren()){
+//                                final String runner = childSnapShot.getKey();
+//                                final DataSnapshot parentSnapShot = childSnapShot.child(runner);
+//                                if (!parentSnapShot.hasChildren()) {
+//                                    continue;
+//                                }
+                        geoFire.getLocation("Runner'sLocation", new LocationCallback(){
+                            @Override
+                            public void onLocationResult(String key, GeoLocation location) {
+                                if (location != null){
+                                    Double dblatitude = location.latitude;
+                                    Double dblongitude = location.longitude;
+
+                                    String total1 = String.valueOf(dblatitude);
+                                    String total2 = String.valueOf(dblongitude);
+                                    editTextLatitude.setText(total1);
+                                    editTextLongitude.setText(total2);
+                                    editTextLatitude.setVisibility(View.INVISIBLE);
+                                    editTextLongitude.setVisibility(View.INVISIBLE);
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Toast.makeText(Online.this, "No Location Detected", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+//                                double dbLatitudeString = dataSnapshot.child(assignedRunner).child("l").child("0").getValue(double.class);
+//                                double dbLongitudeString = dataSnapshot.child(assignedRunner).child("l").child("1").getValue(double.class);
+
+//                            }
+//                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Online.this, "Database Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             if (!(editTextLongitude.getText().toString().isEmpty() || editTextLatitude.getText().toString().isEmpty())) {
                 latitude = Double.parseDouble(editTextLatitude.getText().toString());
                 longitude = Double.parseDouble(editTextLongitude.getText().toString());
@@ -234,4 +280,3 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
 
         }
     }
-
