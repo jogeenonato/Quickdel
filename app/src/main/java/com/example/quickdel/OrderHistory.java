@@ -23,7 +23,7 @@ public class OrderHistory extends AppCompatActivity {
     DatabaseReference databaseReference;
     OrderAdapter orderAdapter;
     ArrayList<Orders> list;
-    String userID, orderUserID;
+    String currentuserID, orderUserID;
 
 
 
@@ -53,11 +53,11 @@ public class OrderHistory extends AppCompatActivity {
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
-            userID = user.getUid();
+            currentuserID = user.getUid();
         }
 
 
-
+//        Query checkUser = databaseReference.child("orderNumber").orderByChild("userID").equalTo(currentuserID);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -71,8 +71,8 @@ public class OrderHistory extends AppCompatActivity {
                     }
 
                     orderAdapter.notifyDataSetChanged();
-//                }
-            }
+                }
+//            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

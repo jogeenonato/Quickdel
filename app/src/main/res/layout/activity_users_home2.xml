@@ -5,7 +5,6 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="openOrderHistory"
     tools:context=".UsersHome2">
 
     <com.google.android.material.navigation.NavigationView
@@ -180,7 +179,8 @@
                             android:layout_margin="8dp"
                             android:background="@color/card3"
                             android:clickable="true"
-                            android:elevation="8dp">
+                            android:elevation="8dp"
+                            android:onClick="openOrderHistory">
 
                             <ImageView
                                 android:layout_width="30dp"

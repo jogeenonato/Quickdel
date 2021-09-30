@@ -370,7 +370,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
                 reference.child(orderNumber).setValue(orders);
 
-                orders.setStatus("");
+                orders.setStatus("Placed");
                 reference.child(orderNumber).setValue(orders);
 
                 orders.setRunnerID("");
