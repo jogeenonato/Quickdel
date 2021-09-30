@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order No:"
+                android:textColor="@color/teal_700"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hist_orderno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="ABC01"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination:"
+                android:textColor="@color/teal_700"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hist_dest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Edsa Avenue"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status:"
+                android:textColor="@color/teal_700"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hist_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="paid"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/underline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primaryColor"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="6dp"
+            android:id="@+id/detailsexpandable"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipient:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_recipient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Julie Vargas"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipient Mobile:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_rMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0423123456"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick-Up:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_pickup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ortigas"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fragile"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distance(km):"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_distance"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/hist_distanceprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_size"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/hist_sizeprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_weight"
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/hist_weightprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hist_vehicle"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/hist_vehicleprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total:"
+                    android:textColor="@color/teal_700"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="225dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/hist_totalprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

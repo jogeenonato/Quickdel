@@ -13,15 +13,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.firebase.geofire.GeoFire;
-import com.firebase.geofire.GeoLocation;
-import com.firebase.geofire.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +41,7 @@ import java.util.Locale;
 public class Online extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private DatabaseReference databaseReference, ref;
+    private DatabaseReference databaseReference, ref, onlineRef,currentUserRef,driversLocationRef, reference;
     GeoFire geoFire;
 
     private LocationListener locationListener;
@@ -78,10 +76,13 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         editTextLongitude = findViewById(R.id.editTextTextPersonName3);
         textView = findViewById(R.id.LocationDisplay);
 
-        editTextLatitude.setText("-33.77557");
-        editTextLongitude.setText("150.917485");
+        editTextLatitude.setText("-32.9579715");
+        editTextLongitude.setText("150.1563683");
         editTextLatitude.setVisibility(View.INVISIBLE);
         editTextLongitude.setVisibility(View.INVISIBLE);
+
+        SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
+        String orderNumber = settings.getString("orderNumber", "");
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Location");
@@ -137,109 +138,127 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
+
         locationListener = new LocationListener() {
             @Override
-            public void onLocationChanged(@NonNull Location location){
-
+            public void onLocationChanged(@NonNull Location location) {
                 try {
-
-
                     latLng = new LatLng(location.getLatitude(), location.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            };
+        };
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         try {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DIST, locationListener);
-        }
-        catch (SecurityException e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
         }
-        }
-
+    }
 
         public void getLocationDetails (View view){
             double latitude = latLng.latitude;
             double longitude = latLng.longitude;
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
-            SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
-            String orderNumber = settings.getString("orderNumber", "");
+//            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
+//            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
+//            SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
+//            String runner = settings.getString("runnerID", "");
             // Query checkUser = reference.orderByChild("g").equalTo("r3grf5qg03");
 
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    assignedRunner = snapshot.child(orderNumber).child("runnerID").getValue().toString();
-                }
+//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    assignedRunner = snapshot.child(orderNumber).child("runnerID").getValue().toString();
+//                    Toast.makeText(Online.this, "RunnerID is: "+ assignedRunner, Toast.LENGTH_SHORT).show();
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+//            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.exists()) {
+//
+//                        double dbLatitudeString = dataSnapshot.child(runner).child("l").child("0").getValue(double.class);
+//                        double dbLongitudeString = dataSnapshot.child(runner).child("l").child("1").getValue(double.class);
+//
+//                        String total1 = String.valueOf(dbLatitudeString);
+//                        String total2 = String.valueOf(dbLongitudeString);
+//                        editTextLatitude.setText(total1);
+//                        editTextLongitude.setText(total2);
+//                        editTextLatitude.setVisibility(View.INVISIBLE);
+//                        editTextLongitude.setVisibility(View.INVISIBLE);
+//
+//                    }
+//                }
+//
+//
+//
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    Toast.makeText(Online.this, "Database Error", Toast.LENGTH_SHORT).show();
+//                }
+////            });
+//
+//            geoFire.getLocation("Runner'sLocation", new LocationCallback() {
+//                @Override
+//                public void onLocationResult(String key, GeoLocation location) {
+//                    if (location != null) {
+//                        mMap.addMarker(new MarkerOptions().position(latLng).title("Runner"));
+//                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+//                    } else {
+//                        //When location is null
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                    //LogDatabase error
+//                }
+//            });
 
-
+            reference = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES);
+            DatabaseReference onlineRef = FirebaseDatabase.getInstance().getReference().child(".info/connected");
+            driversLocationRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES);
+            currentUserRef = FirebaseDatabase.getInstance().getReference(Comon.DRIVERS_LOCATION_REFERENCES)
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
             reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-//                        for(DataSnapshot item: dataSnapshot.getChildren()){
-//                            if (!dataSnapshot.hasChildren()) {
-//                                return;
-//                            }
-//                            for(DataSnapshot childSnapShot :item.getChildren()){
-//                                final String runner = childSnapShot.getKey();
-//                                final DataSnapshot parentSnapShot = childSnapShot.child(runner);
-//                                if (!parentSnapShot.hasChildren()) {
-//                                    continue;
-//                                }
-                        geoFire.getLocation("Runner'sLocation", new LocationCallback(){
-                            @Override
-                            public void onLocationResult(String key, GeoLocation location) {
-                                if (location != null){
-                                    Double dblatitude = location.latitude;
-                                    Double dblongitude = location.longitude;
 
-                                    String total1 = String.valueOf(dblatitude);
-                                    String total2 = String.valueOf(dblongitude);
-                                    editTextLatitude.setText(total1);
-                                    editTextLongitude.setText(total2);
-                                    editTextLatitude.setVisibility(View.INVISIBLE);
-                                    editTextLongitude.setVisibility(View.INVISIBLE);
+                        double dbLatitudeString = dataSnapshot.child(String.valueOf(Comon.currentUser)).child("l").child("0").getValue(double.class);
+                        double dbLongitudeString = dataSnapshot.child(String.valueOf(Comon.currentUser)).child("l").child("1").getValue(double.class);
 
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                Toast.makeText(Online.this, "No Location Detected", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-//                                double dbLatitudeString = dataSnapshot.child(assignedRunner).child("l").child("0").getValue(double.class);
-//                                double dbLongitudeString = dataSnapshot.child(assignedRunner).child("l").child("1").getValue(double.class);
-
-//                            }
-//                        }
+                        String total1 = String.valueOf(dbLatitudeString);
+                        String total2 = String.valueOf(dbLongitudeString);
+                        editTextLatitude.setText(total1);
+                        editTextLongitude.setText(total2);
+                        editTextLatitude.setVisibility(View.INVISIBLE);
+                        editTextLongitude.setVisibility(View.INVISIBLE);
 
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Online.this, "Database Error", Toast.LENGTH_SHORT).show();
+                    //log database error
                 }
             });
+
 
             if (!(editTextLongitude.getText().toString().isEmpty() || editTextLatitude.getText().toString().isEmpty())) {
                 latitude = Double.parseDouble(editTextLatitude.getText().toString());
@@ -267,7 +286,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker in : " + address + city + state + country + postalCode + knonName));
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Runner"));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
             textView.setText(address + city + state + country + postalCode + knonName);
 
