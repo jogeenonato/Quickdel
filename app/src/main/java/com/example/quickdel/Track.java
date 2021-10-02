@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,13 +38,17 @@ public class Track extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_track);
 
         Intent intent = getIntent();
         SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
         String pickupPoint = settings.getString("pickupPoint", "");
         String edittext = settings.getString("recipient", "");
-        String Total = settings.getString("total1", "");
+        float total = settings.getFloat("total", -1);
+        String total1 = String.valueOf(total);
+
+
 
 
         //Assign Variable
@@ -64,7 +69,7 @@ public class Track extends AppCompatActivity {
 //        Recipient.setText(edittext);
 
         TextView mResultTv = findViewById(R.id.resultTv);
-        mResultTv.setText("Pick up Address: "+pickupPoint+"\n\nQuickdel to: "+edittext);
+        mResultTv.setText("Pick up Address: "+pickupPoint+"\n\nQuickdel to: "+edittext+"\n\nTotal: $ "+total1);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +98,20 @@ public class Track extends AppCompatActivity {
                     //when both value fill, display track
                     DisplayTrack(sSource,sDestination);
                 }
+                btTrack.setVisibility(View.INVISIBLE);
+                Thread timer = new Thread() {
+                    public void run(){
+                        try {
+                            sleep(3000);
+                            button.setVisibility(View.VISIBLE);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                timer.start();
+
 
             }
         });
