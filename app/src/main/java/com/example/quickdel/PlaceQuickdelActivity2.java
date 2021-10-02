@@ -125,7 +125,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
 
 
-        
+
 
         //Alternative to onResultActivity
 
@@ -134,7 +134,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == RESULT_OK && result.getData() != null){
-                        Place place = Autocomplete.getPlaceFromIntent(result.getData());
+                            Place place = Autocomplete.getPlaceFromIntent(result.getData());
                             //Check condition
                             if (sType.equals("pickup")){
                                 flag++;
@@ -148,8 +148,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 //                                String[] split = sSource.split(",");
 //                                lat1 = Double.parseDouble(split[0]);
 //                                long1 = Double.parseDouble(split[1]);
-                                    lat1 = place.getLatLng().latitude;
-                                    long1 = place.getLatLng().longitude;
+                                lat1 = place.getLatLng().latitude;
+                                long1 = place.getLatLng().longitude;
 
                             }else {
                                 //when type is destination
@@ -168,7 +168,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                                 long2 = place.getLatLng().longitude;
                             }
 
-                    if (flag >= 2) {
+                            if (flag >= 2) {
                                 //When flag is greater than or equal to two, calculate the distance
                                 distance(lat1, long1, lat2, long2);
                             }
@@ -205,8 +205,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                     private double degtorad(double lat1) {
                         return (lat1*Math.PI/180.0);
                     }
-                    }
-                );
+                }
+        );
 
 
         //Set Edit Text non-focusable
@@ -528,5 +528,3 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     }
 
 }
-
-

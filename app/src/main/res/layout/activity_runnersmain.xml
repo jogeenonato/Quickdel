@@ -45,6 +45,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="152dp"
         android:minHeight="48dp"
+        android:onClick="disable"
         android:text="Offline"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -147,8 +147,7 @@
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
                             android:background="@color/card2"
-                            android:elevation="8dp"
-                            android:onClick="openTrackRunner">
+                            android:elevation="8dp">
 
                             <ImageView
                                 android:layout_width="30dp"

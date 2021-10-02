@@ -55,16 +55,11 @@ public class RunnerMain extends AppCompatActivity {
     }
 
 
-
-
    public void disable (View v) {
-
-
 
         v.setEnabled(false);
         Button b = (Button) v;
         b.setText("Disabled");
-
 
     }
 

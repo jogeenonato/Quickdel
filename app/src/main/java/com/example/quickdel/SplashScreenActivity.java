@@ -124,7 +124,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                         if(datasnapshot.exists())
                         {
-
+                            //Toast.makeText(SplashScreenActivity.this, "User already registered", Toast.LENGTH_SHORT).show();
                             DriverInfoModel driverInfoModel = datasnapshot.getValue(DriverInfoModel.class);
 
                             goToHomeActivity(driverInfoModel);
@@ -249,7 +249,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
             if(resultCode == RESULT_OK)
             {
-                //creo q aquí es el runner
+
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             }
             else

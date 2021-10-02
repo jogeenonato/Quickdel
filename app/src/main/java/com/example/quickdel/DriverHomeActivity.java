@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -70,7 +71,9 @@ public class DriverHomeActivity extends AppCompatActivity {
         //Carlo code
         notificationManager = NotificationManagerCompat.from(this);
         lookForQuickdel();
+
     }
+
 
     private void lookForQuickdel() {
         ExampleThread thread = new ExampleThread(1000);
