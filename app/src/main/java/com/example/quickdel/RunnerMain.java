@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RunnerMain extends AppCompatActivity {
-    private Button button;
+    private Button button, button1;
 
 
     @Override
@@ -23,8 +23,8 @@ public class RunnerMain extends AppCompatActivity {
 
 
 
-        button = (Button) findViewById(R.id.button4);
-        button.setOnClickListener(new View.OnClickListener() {
+        button1 = (Button) findViewById(R.id.button4);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 openSettings();

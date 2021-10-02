@@ -1,6 +1,7 @@
 package com.example.quickdel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +17,12 @@ import android.widget.Toast;
 
 import com.example.quickdel.ui.home.HomeFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Track extends AppCompatActivity {
     //Initialize variable
-    EditText etSource,etDestination;
+    EditText etSource, etDestination;
     Button btTrack;
 
 
@@ -50,13 +55,14 @@ public class Track extends AppCompatActivity {
                 String sDestination = etDestination.getText().toString().trim();
 
                 //Check condition
-                if (sDestination.equals("")){
+                if (sDestination.equals("")) {
                     //When both value blank
                     Toast.makeText(getApplicationContext()
-                            , "Enter Destination point",Toast.LENGTH_LONG).show();}
-               // else{
-                    //when both value fill, display track
-                    DisplayTrack(sSource,sDestination);
+                            , "Enter Destination point", Toast.LENGTH_LONG).show();
+                }
+                // else{
+                //when both value fill, display track
+                DisplayTrack(sSource, sDestination);
                 //}
             }
         });
@@ -65,6 +71,7 @@ public class Track extends AppCompatActivity {
     private void DisplayTrack(String sSource, String sDestination) {
         //if the devise does not have a map installed, then redirect to playstore
         try {
+//            Intent[] intents = new Intent[2];
             //When google map is installed
             //Initialize uri
             Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + sSource + "/"
@@ -75,25 +82,42 @@ public class Track extends AppCompatActivity {
             intent.setPackage("com.google.android.apps.maps");
             //set flag
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+//          Intent intent1 = new Intent(Track.this, RunnerMain.class);
+          //startActivity(intent1);
+
             //start Activity
+//
+//            intents[0] = intent;
+//            intents[1] = intent1;
+
             startActivity(intent);
-        }catch (ActivityNotFoundException e){
+
+
+
+        } catch (ActivityNotFoundException e) {
             //When google map is not installed
             //Initialize uri
             Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
             //Initialize intent with action view
-            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             //Set flag
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //sTART ACTIVITY
             startActivity(intent);
 
 
-
-
-
         }
 
-        Intent intent = new Intent(Track.this, HomeFragment.class);
-        startActivity(intent);
-}}
+
+    }
+
+    @Override
+    public void onBackPressed() {
+         Intent intent1 = new Intent(Track.this, RunnerMain.class);
+         startActivity(intent1);
+
+    }
+
+
+}

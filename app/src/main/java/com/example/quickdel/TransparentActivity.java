@@ -70,6 +70,7 @@ public class TransparentActivity extends AppCompatActivity {
         String pickupPoint = settings.getString("pickupPoint", "");
         String recipient = settings.getString("recipient", "");
         String destinationPoint = settings.getString("destinationPoint", "");
+        String sendername = settings.getString("sender", "");
         float total = settings.getFloat("total", -1);
         String total1 = String.valueOf(total);
 
@@ -89,11 +90,13 @@ public class TransparentActivity extends AppCompatActivity {
 
 
         Button btn_accept = dialog.findViewById(R.id.btn_acceptar);
+        Button btn_decline = dialog.findViewById(R.id.btn_decline);
 
         orderNo.setText("New Quickdel: " + orderNumber);
         pickup.setText(pickupPoint);
         recipientname.setText(recipient);
         destination.setText(destinationPoint);
+        sender.setText(sendername);
         pricetag.setText("$" + total1);
 
         btn_accept.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +114,12 @@ public class TransparentActivity extends AppCompatActivity {
             }
         });
 
+        btn_decline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TransparentActivity.this.finish();
+            }
+        });
 
 
 

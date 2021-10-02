@@ -15,12 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/black">
+
             <ImageView
                 android:id="@+id/back_profile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:padding="5dp"
-                android:src="@drawable/ic_baseline_arrow_back_24"/>
+                android:src="@drawable/ic_baseline_arrow_back_24" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -47,10 +48,10 @@
                 android:layout_toRightOf="@+id/profile_image"
                 android:fontFamily="@font/cherry_cream_soda"
                 android:includeFontPadding="false"
+                android:inputType="textCapWords"
                 android:text="Carlo Jericho Yabut"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                android:inputType="textCapWords"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/username_top"

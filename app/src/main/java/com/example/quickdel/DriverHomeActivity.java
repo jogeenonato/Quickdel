@@ -44,6 +44,7 @@ public class DriverHomeActivity extends AppCompatActivity {
 
     //carlo code
     private NotificationManagerCompat notificationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,59 +73,89 @@ public class DriverHomeActivity extends AppCompatActivity {
     }
 
     private void lookForQuickdel() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
-        Query checkUser = reference.orderByChild("status").equalTo("paid");
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+        ExampleThread thread = new ExampleThread(1000);
+        thread.start();
+    }
 
-                        String orderNumber = snapshot.child("orderNumber").getValue(String.class);
-                        String pickupPoint = snapshot.child("pickupPoint").getValue(String.class);
-                        String recipient = snapshot.child("recipient").getValue(String.class);
-                        String destinationPoint = snapshot.child("destinationPoint").getValue(String.class);
-                        float total = snapshot.child("total").getValue(float.class);
+    class ExampleThread extends Thread {
+        int seconds;
+
+        ExampleThread(int seconds) {
+            this.seconds = seconds;
+        }
+
+        @Override
+        public void run() {
+            myloop:
+            for (final int[] i = {0}; i[0] < seconds; i[0]++) {
+                try {
+                    Thread.sleep(1000);
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
+                    Query checkUser = reference.orderByChild("status").equalTo("paid");
+                    checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                    String orderNumber = snapshot.child("orderNumber").getValue(String.class);
+                                    String pickupPoint = snapshot.child("pickupPoint").getValue(String.class);
+                                    String recipient = snapshot.child("recipient").getValue(String.class);
+                                    String destinationPoint = snapshot.child("destinationPoint").getValue(String.class);
+                                    String sender = snapshot.child("userName").getValue(String.class);
+                                    float total = snapshot.child("total").getValue(float.class);
 
 
-                        SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = settings.edit();
-                        editor.putString("orderNumber", orderNumber);
-                        editor.putString("pickupPoint", pickupPoint);
-                        editor.putString("recipient", recipient);
-                        editor.putString("destinationPoint", destinationPoint);
-                        editor.putFloat("total", total);
-                        editor.apply();
-                    }
-                    Intent notifyIntent = new Intent(DriverHomeActivity.this,TransparentActivity.class);
-                    notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //UNIQUE_ID if you expect more than one notification to appear
-                    PendingIntent intent = PendingIntent.getActivity(DriverHomeActivity.this, 0,
-                            notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                    SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = settings.edit();
+                                    editor.putString("orderNumber", orderNumber);
+                                    editor.putString("pickupPoint", pickupPoint);
+                                    editor.putString("recipient", recipient);
+                                    editor.putString("destinationPoint", destinationPoint);
+                                    editor.putString("sender", sender);
+                                    editor.putFloat("total", total);
+                                    editor.apply();
+                                }
+                                Intent notifyIntent = new Intent(DriverHomeActivity.this, TransparentActivity.class);
+                                notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                //UNIQUE_ID if you expect more than one notification to appear
+                                PendingIntent intent = PendingIntent.getActivity(DriverHomeActivity.this, 0,
+                                        notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                    Notification notification = new NotificationCompat.Builder(DriverHomeActivity.this, App.CHANNEL_1_ID)
-                            .setSmallIcon(R.drawable.ic_baseline_delivery_dining_24)
-                            .setContentTitle("Quickdel")
-                            .setContentText("You have a new quickdel!")
-                            .setPriority(NotificationCompat.PRIORITY_HIGH)
-                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                            .setContentIntent(intent)
-                            .setAutoCancel(true)
-                            .build();
+                                Notification notification = new NotificationCompat.Builder(DriverHomeActivity.this, App.CHANNEL_1_ID)
+                                        .setSmallIcon(R.drawable.ic_baseline_delivery_dining_24)
+                                        .setContentTitle("Quickdel")
+                                        .setContentText("You have a new quickdel!")
+                                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                        .setContentIntent(intent)
+                                        .setAutoCancel(true)
+                                        .build();
 
-                    notificationManager.notify(1, notification);
+                                notificationManager.notify(1, notification);
 
-                } else {
+                                i[0] = seconds;
 
+                                //currentThread().interrupt();
+                            } else {
+
+                            }
+                        }
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(i[0] == seconds) {
+                    break myloop;
                 }
             }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }
     }
 
     @Override

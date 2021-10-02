@@ -1,6 +1,11 @@
 package com.example.quickdel;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +18,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class OrderHistory extends AppCompatActivity {
-
+    ImageView back_btn;
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     OrderAdapter orderAdapter;
@@ -30,6 +36,7 @@ public class OrderHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_order_history);
 
         recyclerView = findViewById(R.id.orderhistory);
@@ -40,6 +47,7 @@ public class OrderHistory extends AppCompatActivity {
         list = new ArrayList<Orders>();
         orderAdapter = new OrderAdapter(this, list);
         recyclerView.setAdapter(orderAdapter);
+        back_btn = findViewById(R.id.btn_back);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -55,10 +63,18 @@ public class OrderHistory extends AppCompatActivity {
             // FirebaseUser.getIdToken() instead.
             currentuserID = user.getUid();
         }
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OrderHistory.super.onBackPressed();
+            }
+        });
 
-
-//        Query checkUser = databaseReference.child("orderNumber").orderByChild("userID").equalTo(currentuserID);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
+        String name1 = settings.getString("name", "");
+        Query checkUser = databaseReference.orderByChild("userName").equalTo(name1);
+     //  Query checkUser = databaseReference.child("orderNumber").orderByChild("userID").equalTo(currentuserID);
+        checkUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -80,5 +96,10 @@ public class OrderHistory extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
