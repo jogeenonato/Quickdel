@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ import java.util.Locale;
 public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
     Button btn;
+    ImageView back_btn;
     Orders orders;
     RandomAlphaNumeric orderNumbers;
     RadioButton bike, sedan, ute, small, medium, large, weight1, weight2, weight3, weight4;
@@ -61,6 +64,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_place_quickdel2);
         setTitle("Place Quickdel Order");
 
@@ -83,8 +87,14 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         etDesc  = findViewById(R.id.et_description);
         recipient = findViewById(R.id.et_recipient);
         recipientNo = findViewById(R.id.et_recipientMobile);
+        back_btn = findViewById(R.id.btn_back);
 
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PlaceQuickdelActivity2.super.onBackPressed();
+            }
+        });
 
         //Initialise Places API
         Places.initialize(getApplicationContext(), "AIzaSyACJxIppMvQl7aBxiRLHozzHSA64FU5P_4");
@@ -383,7 +393,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             }
         });
 
-        setupBackButton();
+//        setupBackButton();
     }
 
 
@@ -426,67 +436,67 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         String recipientNumber = recipientNo.getText().toString();
         i.putExtra("RECIPIENTNO", recipientNumber);
 
-        if (bike.isChecked()){
-            String vehicle = ((RadioButton)findViewById(R.id.v_bike)).getText().toString();
-            i.putExtra ("VEHICLE", vehicle);
+        if (bike.isChecked()) {
+            String vehicle = ((RadioButton) findViewById(R.id.v_bike)).getText().toString();
+            i.putExtra("VEHICLE", vehicle);
             String vehiclePrice = bikePrice.toString();
             i.putExtra("VPRICE", vehiclePrice);
             Total += bikePrice;
-        } else if (sedan.isChecked()){
-            String vehicle = ((RadioButton)findViewById(R.id.v_sedan)).getText().toString();
-            i.putExtra ("VEHICLE", vehicle);
+        } else if (sedan.isChecked()) {
+            String vehicle = ((RadioButton) findViewById(R.id.v_sedan)).getText().toString();
+            i.putExtra("VEHICLE", vehicle);
             String vehiclePrice = sedanPrice.toString();
             i.putExtra("VPRICE", vehiclePrice);
             Total += sedanPrice;
         } else {
-            String vehicle = ((RadioButton)findViewById(R.id.v_ute)).getText().toString();
-            i.putExtra ("VEHICLE", vehicle);
+            String vehicle = ((RadioButton) findViewById(R.id.v_ute)).getText().toString();
+            i.putExtra("VEHICLE", vehicle);
             String vehiclePrice = utePrice.toString();
             i.putExtra("VPRICE", vehiclePrice);
             Total += utePrice;
         }
 
-        if (small.isChecked()){
-            String size = ((RadioButton)findViewById(R.id.s_small)).getText().toString();
-            i.putExtra ("SIZE", size);
+        if (small.isChecked()) {
+            String size = ((RadioButton) findViewById(R.id.s_small)).getText().toString();
+            i.putExtra("SIZE", size);
             String sizePrice = smallPrice.toString();
             i.putExtra("SPRICE", sizePrice);
             Total += smallPrice;
-        } else if (medium.isChecked()){
-            String size = ((RadioButton)findViewById(R.id.s_medium)).getText().toString();
-            i.putExtra ("SIZE", size);
+        } else if (medium.isChecked()) {
+            String size = ((RadioButton) findViewById(R.id.s_medium)).getText().toString();
+            i.putExtra("SIZE", size);
             String sizePrice = mediumPrice.toString();
             i.putExtra("SPRICE", sizePrice);
             Total += mediumPrice;
         } else {
-            String size = ((RadioButton)findViewById(R.id.s_large)).getText().toString();
-            i.putExtra ("SIZE", size);
+            String size = ((RadioButton) findViewById(R.id.s_large)).getText().toString();
+            i.putExtra("SIZE", size);
             String sizePrice = largePrice.toString();
             i.putExtra("SPRICE", sizePrice);
             Total += largePrice;
         }
 
-        if (weight1.isChecked()){
-            String weight = ((RadioButton)findViewById(R.id.weigh1)).getText().toString();
-            i.putExtra ("WEIGHT", weight);
+        if (weight1.isChecked()) {
+            String weight = ((RadioButton) findViewById(R.id.weigh1)).getText().toString();
+            i.putExtra("WEIGHT", weight);
             String weightPrice = weight1Price.toString();
             i.putExtra("WPRICE", weightPrice);
             Total += weight1Price;
-        } else if (weight2.isChecked()){
-            String weight = ((RadioButton)findViewById(R.id.weight2)).getText().toString();
-            i.putExtra ("WEIGHT", weight);
+        } else if (weight2.isChecked()) {
+            String weight = ((RadioButton) findViewById(R.id.weight2)).getText().toString();
+            i.putExtra("WEIGHT", weight);
             String weightPrice = weight2Price.toString();
             i.putExtra("WPRICE", weightPrice);
             Total += weight2Price;
         } else if (weight3.isChecked()) {
-            String weight = ((RadioButton)findViewById(R.id.weight3)).getText().toString();
-            i.putExtra ("WEIGHT", weight);
+            String weight = ((RadioButton) findViewById(R.id.weight3)).getText().toString();
+            i.putExtra("WEIGHT", weight);
             String weightPrice = weight3Price.toString();
             i.putExtra("WPRICE", weightPrice);
             Total += weight3Price;
         } else {
-            String weight = ((RadioButton)findViewById(R.id.weight4)).getText().toString();
-            i.putExtra ("WEIGHT", weight);
+            String weight = ((RadioButton) findViewById(R.id.weight4)).getText().toString();
+            i.putExtra("WEIGHT", weight);
             String weightPrice = weight4Price.toString();
             i.putExtra("WPRICE", weightPrice);
             Total += weight4Price;
@@ -495,11 +505,11 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         double dsP = Double.parseDouble(ds);
 
 
-        if (dsP <= 10){
+        if (dsP <= 10) {
             String distancePrice = dPrice1.toString();
             i.putExtra("DPRICE", distancePrice);
             Total += dPrice1;
-        } else if (dsP <= 10 && dsP >= 25){
+        } else if (dsP <= 10 && dsP >= 25) {
             String distancePrice = dPrice2.toString();
             i.putExtra("DPRICE", distancePrice);
             Total += dPrice2;
@@ -510,7 +520,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         }
 
 
-
         String dc = etDesc.getText().toString();
         i.putExtra("DESC", dc);
 
@@ -518,9 +527,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         i.putExtra("TOTAL", total);
 
         startActivity(i);
+
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-
-
     private void calculateEarnings(){
 
         Double totalwithearn = orders.getTotal();
@@ -541,4 +550,18 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         });
     }
 
+//    private void setupBackButton() {
+//        TextView bck = findViewById(R.id.back);
+//        bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//    }
+
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

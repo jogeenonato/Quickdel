@@ -11,7 +11,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,7 @@ public class OrderConfirmation2 extends AppCompatActivity {
 
 
    Button btnPay;
+   ImageView back_btn;
 //    Orders orders;
 //    RadioButton bike, sedan, ute, small, medium, large, weight1, weight2, weight3, weight4;
 //    FirebaseDatabase database;
@@ -34,10 +37,19 @@ public class OrderConfirmation2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_order_confirmation2);
 
-        setupBackButton();
+//        setupBackButton();
        btnPay = findViewById(R.id.btn_pay);
+        back_btn = findViewById(R.id.btn_back);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OrderConfirmation2.super.onBackPressed();
+            }
+        });
 
 
 //        orders = new Orders()  ;
@@ -173,7 +185,7 @@ public class OrderConfirmation2 extends AppCompatActivity {
 
         Intent i = getIntent();
         String orderno = i.getStringExtra("ORDER");
-        ((TextView)findViewById(R.id.tv_orderNo)).setText(orderno);
+        ((TextView)findViewById(R.id.tv_orderNo)).setText("Order #" + orderno);
         String pp = i.getStringExtra("PICKUP");
         ((TextView)findViewById(R.id.tv_pickup)).setText(pp);
         String dp = i.getStringExtra("DESTINATION");
@@ -261,19 +273,22 @@ public class OrderConfirmation2 extends AppCompatActivity {
 
     }
 
-    private void setupBackButton() {
-        TextView bck = findViewById(R.id.back);
-        bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//    private void setupBackButton() {
+//        TextView bck = findViewById(R.id.back);
+//        bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//    }
+
+
+
+
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
-
-
-
-
 
 }

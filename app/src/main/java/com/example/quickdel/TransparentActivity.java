@@ -23,18 +23,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class TransparentActivity extends AppCompatActivity {
 
     //public EditText recipient;
     //public Button accept;
 
-
+    Orders orders;
+    DatabaseReference reference;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_transparent);
+        reference = database.getInstance().getReference().child("Orders");
         showDialog();
 
 
@@ -96,6 +102,12 @@ public class TransparentActivity extends AppCompatActivity {
         btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
+                String runnerUID = settings.getString("runnerID", "");
+
+               // orders.setRunnerID(runnerUID);
+                reference.child(orderNumber).child("runnerID").setValue(runnerUID);
+
                 Intent intent = new Intent(TransparentActivity.this, Track.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
