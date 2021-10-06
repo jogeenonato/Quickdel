@@ -1,499 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderConfirmation2"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".OrderConfirmation2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu2" />
+
+        <TextView
+            android:id="@+id/tv_orderNo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/baloo"
+            android:inputType="textCapWords"
+            android:text="Order #"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/teal_700">
+        android:background="@color/teal_700"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/teal_700"
             android:orientation="vertical"
-            android:padding="8dp"
-            android:background="@color/teal_700">
+            android:padding="8dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="16dp"
-                    android:text="EDIT"
-                    android:id="@+id/back"
-                    android:textColor="@color/white">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Your Quickdel Order #"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/white">
-                </TextView>
-
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="16dp"
-                    android:id="@+id/tv_orderNo"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/white">
-                </TextView>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50"
-                android:paddingTop="10dp">
+                android:background="@color/teal_700"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="5dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Pick-Up:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="5dp">
-                </TextView>
+                <com.google.android.material.textfield.TextInputLayout
 
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_pickup">
-                </TextView>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Pick Up Address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_pickup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_pin_drop_24"
+                        android:drawablePadding="10dp"
+                        android:text="Pick Up Location Address" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Destination Address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_destination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/destination"
+                        android:drawablePadding="10dp"
+                        android:text="Destination Location Address" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Recipient Name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_recipient"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/fullname_icon"
+                        android:drawablePadding="10dp"
+                        android:text="Recipient Name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Recipient Mobile">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_recipientNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/phone_number"
+                        android:drawablePadding="10dp"
+                        android:text="Recipient Mobile" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Distance">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_distance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/order_distance"
+                            android:drawablePadding="10dp"
+                            android:text="Distance" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_distance"
+                        android:hint="Price">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_distancePrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:text="Distance" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Vehicle Type">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_vehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/order_vehicle"
+                            android:drawablePadding="10dp"
+                            android:text="Vehicle Type" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_vehicle"
+                        android:hint="Price">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_vehiclePrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:text="Distance" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Package Size">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_pSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/goods"
+                            android:drawablePadding="10dp"
+                            android:text="Package Size" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_pSize"
+                        android:hint="Price">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_pSizePrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:text="Distance" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Package Weight">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_pWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/order_weight"
+                            android:drawablePadding="10dp"
+                            android:text="Package Weight" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_pWeight"
+                        android:hint="Price">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tv_pWeightPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:text="Distance" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_description_24"
+                        android:drawablePadding="10dp"
+                        android:text="Description" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Total">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                        android:drawablePadding="10dp"
+                        android:text="Total" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#000"
+                    android:onClick="gotoPayments"
+                    android:text="Pay Now"
+                    android:textColor="#fff"
+                    android:transitionName="logo_signin"
+                    app:backgroundTint="@color/black" />
 
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Destination:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_destination"
-                    android:layout_width="237dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/quantum_grey50"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Recipient"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_recipient"
-                    android:layout_width="237dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/quantum_grey50"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Recipient Mobile:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_recipientNo"
-                    android:layout_width="237dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/quantum_grey50"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Distance:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_distance">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="$"
-                    android:textColor="@color/teal_700"></TextView>
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_distancePrice">
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Vehicle Type:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_vehicle">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="$"
-                    android:textColor="@color/teal_700"></TextView>
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_vehiclePrice">
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Package Size:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_pSize">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="$"
-                    android:textColor="@color/teal_700"></TextView>
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_pSizePrice">
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Package Weight:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_pWeight">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="$"
-                    android:textColor="@color/teal_700"></TextView>
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_pWeightPrice">
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="Description:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_description"
-                    android:layout_width="235dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="start"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="6dp"
-                    android:background="@color/quantum_grey50"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/quantum_grey50">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/teal_700"
-                    android:text="TOTAL:"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="8dp">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="125dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="$"
-                    android:textColor="@color/teal_700"></TextView>
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/quantum_grey50"
-                    android:id="@+id/tv_total"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp">
-                </TextView>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_pay"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:onClick="gotoPayments"
-                android:text="Pay Now"></Button>
 
         </LinearLayout>
+
 
     </ScrollView>
 

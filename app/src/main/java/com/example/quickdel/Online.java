@@ -178,7 +178,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
-                                String runner = dataSnapshot.child("URkIP").child("runnerID").getValue(String.class);
+                                String runner = dataSnapshot.child(orderNumber).child("runnerID").getValue(String.class);
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
                                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -281,7 +281,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    String runner = dataSnapshot.child("URkIP").child("runnerID").getValue(String.class);
+                    String runner = dataSnapshot.child(orderNumber).child("runnerID").getValue(String.class);
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Runner'sLocation");
                     reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ import java.util.Locale;
 public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
     Button btn;
+    ImageView back_btn;
     Orders orders;
     RandomAlphaNumeric orderNumbers;
     RadioButton bike, sedan, ute, small, medium, large, weight1, weight2, weight3, weight4;
@@ -61,6 +64,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_place_quickdel2);
         setTitle("Place Quickdel Order");
 
@@ -83,8 +87,14 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         etDesc  = findViewById(R.id.et_description);
         recipient = findViewById(R.id.et_recipient);
         recipientNo = findViewById(R.id.et_recipientMobile);
+        back_btn = findViewById(R.id.btn_back);
 
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PlaceQuickdelActivity2.super.onBackPressed();
+            }
+        });
 
         //Initialise Places API
         Places.initialize(getApplicationContext(), "AIzaSyACJxIppMvQl7aBxiRLHozzHSA64FU5P_4");
@@ -380,7 +390,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             }
         });
 
-        setupBackButton();
+//        setupBackButton();
     }
 
 
@@ -515,16 +525,22 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         i.putExtra("TOTAL", total);
 
         startActivity(i);
+
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    private void setupBackButton() {
-        TextView bck = findViewById(R.id.back);
-        bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
+//    private void setupBackButton() {
+//        TextView bck = findViewById(R.id.back);
+//        bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//    }
 
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }
