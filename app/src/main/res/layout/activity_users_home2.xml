@@ -289,7 +289,7 @@
                             android:layout_margin="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="50dp"
-                            android:text="@string/featured_locations"
+                            android:text="@string/easy_steps"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="25dp"
@@ -299,7 +299,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="@string/featured_locations_description"
+                            android:text="@string/steps_description"
                             android:textColor="@color/black" />
 
 
@@ -330,7 +330,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            android:text="@string/most_viewed_locations"
+                            android:text="@string/options_available"
                             android:textAllCaps="true"
                             android:textSize="20sp" />
 
@@ -365,7 +365,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/baloo"
-                            android:text="@string/categories"
+                            android:text="@string/benefits"
                             android:textAllCaps="true"
                             android:textSize="20sp" />
 

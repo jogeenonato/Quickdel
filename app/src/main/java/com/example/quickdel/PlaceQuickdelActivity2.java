@@ -531,7 +531,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     private void calculateEarnings(){
-       // tvDistance.setText(String.format(Locale.UK, "%.2f", distance));
 
         Double totalwithearn = orders.getTotal();
         Double earnings = totalwithearn - (totalwithearn * 0.05);

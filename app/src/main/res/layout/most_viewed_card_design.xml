@@ -31,26 +31,26 @@
             android:lineHeight="20dp"
             android:layout_toEndOf="@id/mv_image"/>
 
-        <RatingBar
-            android:id="@+id/mv_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rating="4"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_below="@id/mv_title"
-            android:layout_toRightOf="@id/mv_image"
-            android:layout_marginLeft="10dp"/>
+<!--        <RatingBar-->
+<!--            android:id="@+id/mv_rating"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:rating="4"-->
+<!--            style="@style/Widget.AppCompat.RatingBar.Small"-->
+<!--            android:layout_below="@id/mv_title"-->
+<!--            android:layout_toRightOf="@id/mv_image"-->
+<!--            android:layout_marginLeft="10dp"/>-->
 
 
-        <TextView
-            android:id="@+id/mv_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Taco Bell Corporation is a California-based fast service restaurant chain that specializes in Mexican-style fast food"
-            android:layout_below="@id/mv_rating"
-            android:layout_toRightOf="@id/mv_image"
-            android:padding="10dp"
-            android:scrollbars="vertical"/>
+<!--        <TextView-->
+<!--            android:id="@+id/mv_desc"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/mv_rating"-->
+<!--            android:layout_toRightOf="@id/mv_image"-->
+<!--            android:padding="10dp"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:text="Taco Bell Corporation is a California-based fast service restaurant chain that specializes in Mexican-style fast food" />-->
 
 
     </RelativeLayout>

@@ -1,7 +1,5 @@
 package com.example.quickdel.HelperClasses.HomeAdapter;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +35,7 @@ public class MostViewedAdapter extends RecyclerView.Adapter<MostViewedAdapter.Mo
 
         holder.imageView.setImageResource(helperClass.getImageView());
         holder.textView.setText(helperClass.getTextView());
+
     }
 
     @Override
@@ -54,6 +53,7 @@ public class MostViewedAdapter extends RecyclerView.Adapter<MostViewedAdapter.Mo
 
             imageView = itemView.findViewById(R.id.mv_image);
             textView = itemView.findViewById(R.id.mv_title);
+
         }
     }
 }

@@ -4,6 +4,8 @@ public class MostViewedHelperClass {
     int imageView;
     String textView;
 
+
+
     public MostViewedHelperClass(int imageView, String textView) {
         this.imageView = imageView;
         this.textView = textView;
@@ -16,4 +18,7 @@ public class MostViewedHelperClass {
     public String getTextView() {
         return textView;
     }
+
+
+
 }
