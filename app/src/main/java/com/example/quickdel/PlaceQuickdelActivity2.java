@@ -531,24 +531,27 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     private void calculateEarnings(){
+       // tvDistance.setText(String.format(Locale.UK, "%.2f", distance));
 
         Double totalwithearn = orders.getTotal();
         Double earnings = totalwithearn - (totalwithearn * 0.05);
-        orders.setRunnerEarnings(earnings);
+        String newearnings = String.format(Locale.UK, "%.2f", earnings);
+        double DoubleEarnings = Double.parseDouble(newearnings);
+        orders.setRunnerEarnings(DoubleEarnings);
         reference.child(orderNumber).setValue(orders);
     }
 
 
 
-    private void setupBackButton() {
-        TextView bck = findViewById(R.id.back);
-        bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
+//    private void setupBackButton() {
+//        TextView bck = findViewById(R.id.back);
+//        bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//    }
 
 //    private void setupBackButton() {
 //        TextView bck = findViewById(R.id.back);
