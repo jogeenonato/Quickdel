@@ -3,77 +3,54 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable-v24/button.xml" value="0.22962962962962963" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable-v24/button_close.xml" value="0.22962962962962963" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable-v24/google_pay_button.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/borders.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/custom_eye.xml" value="0.21979166666666666" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/dialog_bg.xml" value="0.3828125" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/fullname_2.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/fullname_icon.xml" value="0.3828125" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/menu2.xml" value="0.1" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/password.xml" value="0.21979166666666666" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/restaurant.xml" value="0.2203125" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/settings.xml" value="0.2203125" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/transactions.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/drawable/usertype.xml" value="0.3769230769230769" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/acceptquickdel_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_conditions.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_delivery_to_destination.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_details.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_driver_home.xml" value="0.196875" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_earnings.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_faq.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_loading_screen.xml" value="0.3076923076923077" />
+        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_loading_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_login2.xml" value="0.25" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_online.xml" value="0.5" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation2.xml" value="0.33242753623188404" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_payment.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel2.xml" value="0.307518115942029" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_preferences.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_registration.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_registration2.xml" value="0.33" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_runner_preferences.xml" value="0.196875" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_runnersmain.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_settings.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_support.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_test.xml" value="0.2115036231884058" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_track.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_track_runner.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_transparent.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_user_profile.xml" value="0.33" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_users_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_users_home2.xml" value="0.33" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_verify_phone_no.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/app_bar_driver_home.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/categories_card_design.xml" value="0.16467502185951619" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/content_driver_home.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/featured_card_design.xml" value="0.5" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/fragment_gallery.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/fragment_home.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/fragment_slideshow.xml" value="0.196875" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/layout.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/layout_register.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/layout_sign_in_r.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/menu_header.xml" value="0.25" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/most_viewed_card_design.xml" value="0.67" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/nav_header_driver_home.xml" value="0.196875" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/orderitems.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/payment_dialog.xml" value="0.33" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/layout/settings_activity.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/menu/main_menu.xml" value="0.33" />
-        <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Je/AndroidStudioProjects/Quickdel/app/src/main/res/xml/root_preferences.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_driver_home.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_earnings.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_login2.xml" value="0.16171171171171173" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_online.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation.xml" value="0.3130630630630631" />
-        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation2.xml" value="0.2" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_confirmation2.xml" value="0.22" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_order_history.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel.xml" value="0.2301801801801802" />
-        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel2.xml" value="0.33" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_place_quickdel2.xml" value="0.25" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_runnersmain.xml" value="0.27522522522522525" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_settings.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_test.xml" value="0.17657657657657658" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_track_runner.xml" value="0.22432432432432434" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_transparent.xml" value="0.23243243243243245" />
         <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_users_home.xml" value="0.2301801801801802" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_users_home2.xml" value="0.17792792792792791" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/content_driver_home.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/earningsitems.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/orderitems.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/Jogee/AndroidStudioProjects/Quickdel/app/src/main/res/layout/settings_activity.xml" value="0.25" />
         <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_conditions.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_interface.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/franc/AndroidStudioProjects/Quickdel/app/src/main/res/layout/activity_online.xml" value="0.264" />
@@ -89,12 +66,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.23369565217391305" />
-      </ProjectState>
-    </option>
   </component>
 </project>

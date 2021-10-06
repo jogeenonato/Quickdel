@@ -1,41 +1,32 @@
 package com.example.quickdel;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 import android.view.WindowManager;
-import android.widget.Button;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quickdel.databinding.ActivityDriverHomeBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.sql.Driver;
-
-import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class DriverHomeActivity extends AppCompatActivity {
 
@@ -107,6 +98,7 @@ public class DriverHomeActivity extends AppCompatActivity {
                                     String destinationPoint = snapshot.child("destinationPoint").getValue(String.class);
                                     String sender = snapshot.child("userName").getValue(String.class);
                                     float total = snapshot.child("total").getValue(float.class);
+                                    float runnerEarnings = snapshot.child("runnerEarnings").getValue(float.class);
 
 
                                     SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
@@ -117,6 +109,7 @@ public class DriverHomeActivity extends AppCompatActivity {
                                     editor.putString("destinationPoint", destinationPoint);
                                     editor.putString("sender", sender);
                                     editor.putFloat("total", total);
+                                    editor.putFloat("runnerEarnings", runnerEarnings);
                                     editor.apply();
                                 }
                                 Intent notifyIntent = new Intent(DriverHomeActivity.this, TransparentActivity.class);

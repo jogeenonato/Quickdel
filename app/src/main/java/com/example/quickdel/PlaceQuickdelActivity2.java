@@ -370,11 +370,14 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
                 reference.child(orderNumber).setValue(orders);
 
+
                 orders.setStatus("Placed");
                 reference.child(orderNumber).setValue(orders);
 
                 orders.setRunnerID("");
                 reference.child(orderNumber).setValue(orders);
+
+                calculateEarnings();
 
 
             }
@@ -516,6 +519,17 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
         startActivity(i);
     }
+
+
+    private void calculateEarnings(){
+
+        Double totalwithearn = orders.getTotal();
+        Double earnings = totalwithearn - (totalwithearn * 0.05);
+        orders.setRunnerEarnings(earnings);
+        reference.child(orderNumber).setValue(orders);
+    }
+
+
 
     private void setupBackButton() {
         TextView bck = findViewById(R.id.back);

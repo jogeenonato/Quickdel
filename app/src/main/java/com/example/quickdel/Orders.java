@@ -12,6 +12,15 @@ public class Orders {
     private String distance;
     private Double distancePrice;
     private String runnerID;
+    private Double runnerEarnings;
+
+    public Double getRunnerEarnings() {
+        return runnerEarnings;
+    }
+
+    public void setRunnerEarnings(Double runnerEarnings) {
+        this.runnerEarnings = runnerEarnings;
+    }
 
     public void setRunnerID(String runnerID) {
         this.runnerID = runnerID;

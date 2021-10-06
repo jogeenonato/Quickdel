@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RunnerMain extends AppCompatActivity {
-    private Button button, button1;
+    private Button button, button1, button2;
 
 
     @Override
@@ -40,6 +40,14 @@ public class RunnerMain extends AppCompatActivity {
             }
         });
 
+        button2 = (Button) findViewById(R.id.earn);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openEarnings();
+            }
+        });
+
 
     }
 
@@ -54,6 +62,11 @@ public class RunnerMain extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void openEarnings() {
+        Intent intent = new Intent(this,com.example.quickdel.Earnings.class);
+        startActivity(intent);
+    }
 
    public void disable (View v) {
 

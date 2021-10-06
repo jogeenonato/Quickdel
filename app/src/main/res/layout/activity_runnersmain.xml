@@ -67,13 +67,12 @@
         tools:text="Inbox" />
 
     <Button
-        android:id="@+id/cancelorder"
+        android:id="@+id/earn"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="152dp"
         android:background="@drawable/dollar"
-        android:onClick="disable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button2"
         tools:text="earnings" />
@@ -90,7 +89,7 @@
         android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cancelorder" />
+        app:layout_constraintStart_toEndOf="@+id/earn" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -127,7 +126,7 @@
         android:layout_marginEnd="12dp"
         android:text="Earnings"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/cancelorder" />
+        app:layout_constraintTop_toBottomOf="@+id/earn" />
 
     <TextView
         android:id="@+id/textView5"
