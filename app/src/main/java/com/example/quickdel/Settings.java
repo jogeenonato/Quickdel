@@ -91,7 +91,7 @@ public class Settings extends AppCompatActivity {
     }
 
     public void openPayment() {
-        Intent intent = new Intent(this, com.example.quickdel.Payment.class);
+        Intent intent = new Intent(this, com.example.quickdel.RunnerPaymentMethod.class);
         startActivity(intent);
     }
 
