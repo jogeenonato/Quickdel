@@ -26,7 +26,9 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:text="Choose your Vehicle Type"
-                android:textColor="@color/teal_700"></TextView>
+                android:textColor="@color/teal_700">
+
+            </TextView>
 
 
             <RadioGroup
@@ -138,9 +140,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:onClick="proceedButtonOnClick"
                 android:padding="16dp"
-                android:text="Proceed"></Button>
+                android:text="Proceed">
+
+            </Button>
 
         </LinearLayout>
 

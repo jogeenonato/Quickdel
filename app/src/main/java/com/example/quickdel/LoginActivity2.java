@@ -120,7 +120,7 @@ public class LoginActivity2 extends AppCompatActivity {
             classtype = UsersHome2.class;
         }  else {
             usertypereference = "runners";
-            classtype = RunnerMain.class;
+            classtype = RunnersHome.class;
         }
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(usertypereference);
         Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);

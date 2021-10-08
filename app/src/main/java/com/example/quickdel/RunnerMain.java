@@ -64,7 +64,7 @@ public class RunnerMain extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                openEarnings();
+                openRunnersHome();
             }
         });
 
@@ -99,8 +99,8 @@ public class RunnerMain extends AppCompatActivity {
     }
 
 
-    public void openEarnings() {
-        Intent intent = new Intent(this,com.example.quickdel.Earnings.class);
+    public void openRunnersHome() {
+        Intent intent = new Intent(this,com.example.quickdel.RunnersHome.class);
         startActivity(intent);
     }
 

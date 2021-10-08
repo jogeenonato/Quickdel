@@ -37,8 +37,6 @@ public class RunnerPaymentMethod extends AppCompatActivity {
         runnerDBRef = FirebaseDatabase.getInstance().getReference().child("runners");
 
 
-
-
         save.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View view){
@@ -52,7 +50,6 @@ public class RunnerPaymentMethod extends AppCompatActivity {
         String accountBSB = accBSB.getText().toString();
         String accountNo = accNumber.getText().toString();
 
-
         RunnerPaymentData runnerPaymentData = new RunnerPaymentData(accountName, accountBSB, accountNo);
 
         SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
@@ -64,7 +61,6 @@ public class RunnerPaymentMethod extends AppCompatActivity {
                 runnerDBRef.child("Payment").setValue(runnerPaymentData);
                 Toast.makeText(RunnerPaymentMethod.this,"Bank Details Successfully Saved", Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
