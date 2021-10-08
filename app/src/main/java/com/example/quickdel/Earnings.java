@@ -3,8 +3,8 @@ package com.example.quickdel;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,13 +33,7 @@ public class Earnings extends AppCompatActivity implements EarningsAdapter.OnNot
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_earnings);
 
-//        back_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Earnings.super.onBackPressed();
-//            }
-//        });
-
+        back_btn = findViewById(R.id.btn_back);
         recyclerView = findViewById(R.id.earnings);
         database = FirebaseDatabase.getInstance().getReference("Orders");
         recyclerView.setHasFixedSize(true);
@@ -48,6 +42,13 @@ public class Earnings extends AppCompatActivity implements EarningsAdapter.OnNot
         list1 = new ArrayList<>();
         earningsAdapter = new EarningsAdapter(list1, this);
         recyclerView.setAdapter(earningsAdapter);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Earnings.super.onBackPressed();
+            }
+        });
 
 
         SharedPreferences settings1 = getSharedPreferences("Runner", Context.MODE_PRIVATE);
@@ -82,9 +83,9 @@ public class Earnings extends AppCompatActivity implements EarningsAdapter.OnNot
 
 
     }
-//    public void finish () {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
+    public void finish () {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 
 }

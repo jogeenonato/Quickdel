@@ -86,7 +86,7 @@ public class Settings extends AppCompatActivity {
     }
 
     public void openPreferences() {
-        Intent intent = new Intent(this, com.example.quickdel.Preferences.class);
+        Intent intent = new Intent(this, com.example.quickdel.RunnerPreferences.class);
         startActivity(intent);
     }
 

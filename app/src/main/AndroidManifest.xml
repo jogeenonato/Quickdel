@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -24,6 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
         <activity
+            android:name=".DeliveryAddress"
+            android:exported="true" />
+        <activity
+            android:name=".CustomerPaymentMethod"
+            android:exported="true" />
+        <activity
             android:name=".RunnerPaymentMethod"
             android:exported="true" />
         <activity
@@ -31,13 +36,13 @@
             android:exported="true" />
         <activity
             android:name=".DeliveryToDestination"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".UploadPicture"
             android:exported="true" />
         <activity
             android:name=".OrderHistory"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".NotificationPrompt"
             android:exported="true" />
@@ -69,7 +74,7 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".DriverHomeActivity"
             android:exported="true"
@@ -97,15 +102,6 @@
             android:label="@string/title_activity_customer_settings" />
         <activity
             android:name=".LoadingScreenActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".LoginActivity2"
-            android:exported="true" />
-
-        <activity
-            android:name=".RegistrationActivity2"
-            android:exported="true">
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,14 +109,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
+        <activity
+            android:name=".LoginActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrationActivity2"
+            android:exported="true">
+            android:exported="true">
+        </activity>
         <activity android:name=".OrderConfirmation" />
         <activity android:name=".PlaceQuickdelActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="true" />
@@ -168,8 +169,7 @@
             android:label="Settings" />
         <activity
             android:name=".RunnerMain"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".UsersHome"
             android:exported="true" />
