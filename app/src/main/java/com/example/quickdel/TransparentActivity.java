@@ -107,7 +107,7 @@ public class TransparentActivity extends AppCompatActivity {
 
                // orders.setRunnerID(runnerUID);
                 reference.child(orderNumber).child("runnerID").setValue(runnerUID);
-
+                reference.child(orderNumber).child("status").setValue("Accepted by Runner");
                 Intent intent = new Intent(TransparentActivity.this, Track.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

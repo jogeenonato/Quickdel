@@ -134,6 +134,10 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
                 startActivity(new Intent(getApplicationContext(), PlaceQuickdelActivity2.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
+            case R.id.nav_settings:
+                startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
         }
         return true;
     }
@@ -151,13 +155,19 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
     }
 
     public void openTrackRunner(View v) {
-        Intent intent = new Intent(this, Online.class);
+        Intent intent = new Intent(this, TrackList.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void openOrderHistory(View v) {
         Intent intent = new Intent(this, OrderHistory.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void openCustomerSettings(View v) {
+        Intent intent = new Intent(this, CustomerSettingsActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

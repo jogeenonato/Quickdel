@@ -38,7 +38,7 @@ public class RunnerMain extends AppCompatActivity {
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("runnerID", getrunneruserid);
             editor.apply();
-            Toast.makeText(RunnerMain.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(RunnerMain.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
 
         };
 

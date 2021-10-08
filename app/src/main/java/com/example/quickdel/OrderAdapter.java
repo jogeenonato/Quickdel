@@ -11,22 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>{
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> {
 
 
     Context context;
     ArrayList<Orders> list;
+    private OnNoteListener mOnNoteListener;
 
-    public OrderAdapter(Context context, ArrayList<Orders> list) {
-        this.context = context;
+    public OrderAdapter(ArrayList<Orders> list, OnNoteListener onNoteListener) {
+//        this.context = context;
         this.list = list;
+        this.mOnNoteListener = onNoteListener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.orderitems,parent,false);
-        return new MyViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderitems, parent, false);
+        return new MyViewHolder(v, mOnNoteListener);
     }
 
     @Override
@@ -59,11 +61,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         return list.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView orderNumber, DestinationPoint, status, PickupPoint, Recipient, recipientPhone, Vehicle,VehiclePrice, Size,SizePrice, Weight,WeightPrice, distance,distancePrice, Total, Description;
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView orderNumber, DestinationPoint, status, PickupPoint, Recipient, recipientPhone, Vehicle, VehiclePrice, Size, SizePrice, Weight, WeightPrice, distance, distancePrice, Total, Description;
+        OnNoteListener onNoteListener;
 //        LinearLayout linearLayout;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
             orderNumber = itemView.findViewById(R.id.hist_orderno);
@@ -82,8 +85,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             distance = itemView.findViewById(R.id.hist_distance);
             distancePrice = itemView.findViewById(R.id.hist_distanceprice);
             Total = itemView.findViewById(R.id.hist_totalprice);
+            this.onNoteListener = onNoteListener;
+            itemView.setOnClickListener(this);
 //            linearLayout = itemView.findViewById(R.id.detailsexpandable);
-
 
 
 //            orderNumber.setOnClickListener(new View.OnClickListener(){
@@ -99,5 +103,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 //            });
 
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteclick(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener {
+        void onNoteclick(int position);
     }
 }

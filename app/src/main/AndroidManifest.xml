@@ -29,6 +29,12 @@
 
 
         <activity
+            android:name=".DeliveryAddress"
+            android:exported="true" />
+        <activity
+            android:name=".CustomerPaymentMethod"
+            android:exported="true" />
+        <activity
             android:name=".RunnerPaymentMethod"
             android:exported="true" />
         <activity
@@ -106,6 +112,13 @@
         <activity
             android:name=".LoadingScreenActivity"
             android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginActivity2"
             android:exported="true" >
@@ -114,6 +127,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            android:exported="true" />
+        <activity
+            android:name=".RegistrationActivity2"
+            android:exported="true">
+            android:exported="true">
         </activity>
         <activity
             android:name=".RegistrationActivity2"
@@ -130,6 +148,9 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TrackList"
             android:exported="true" />
         <activity
             android:name=".test"
@@ -171,6 +192,7 @@
             android:name=".RunnerMain"
             android:exported="true" />
 
+            android:exported="true" />
         <activity
             android:name=".UsersHome"
             android:exported="true" />
