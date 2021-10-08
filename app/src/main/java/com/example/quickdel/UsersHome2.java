@@ -1,22 +1,20 @@
 package com.example.quickdel;
 
+import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.example.quickdel.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.example.quickdel.HelperClasses.HomeAdapter.CategoriesHelperClass;
@@ -174,10 +172,10 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
 
 
         ArrayList<CategoriesHelperClass> categoriesHelperClasses = new ArrayList<>();
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.restaurant_image, "Restaurant", gradient1));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.medicines2, "Medicines", gradient3));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.goodscartoon, "Goods", gradient2));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.shopping, "Shops", gradient4));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.restaurant_image, "Quick", gradient1));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.medicines2, "Convenient", gradient3));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.goodscartoon, "Affordable", gradient2));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.shopping, "Reliable", gradient4));
 
 
         categoriesRecycler.setHasFixedSize(true);
@@ -193,9 +191,9 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
 
         ArrayList<FeaturedHelperClass> featuredLocations = new ArrayList<>();
 
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.chemist, "Chemist", "Chemist Warehouse Group is an Australian company operating a chain of retail pharmacies"));
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.bigw, "BIG W", "BIG W is an Australian chain of discount department stores, which was founded in regional New South Wales in 1964."));
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.tacobell2, "Taco Bell", "Taco Bell Corporation is a California-based fast service restaurant chain that specializes in Mexican-style fast food"));
+        featuredLocations.add(new FeaturedHelperClass(R.drawable.place, "Place", "Enter the pick-up and destination point, choose the order options, add notes, and confirm"));
+        featuredLocations.add(new FeaturedHelperClass(R.drawable.pay, "Pay & Wait", "Pay with your credit card and wait for your runner to get to your location to pick-up the goods"));
+        featuredLocations.add(new FeaturedHelperClass(R.drawable.track, "Track & Relax", "You can track your runner for your peace of mind. You will be notified once the delivery is done."));
 
         adapter = new FeaturedAdapter(featuredLocations);
         featuredRecycler.setAdapter(adapter);
@@ -209,9 +207,9 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
         mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<MostViewedHelperClass> mostViewedLocations = new ArrayList<>();
-        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.tacobell2, "Taco Bell"));
-        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.chemist, "Chemist"));
-        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.bigw, "BIG W"));
+        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.bike, "Motorbike - Use for small packages"));
+        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.car, "Sedan - Use for medium to large packages"));
+        mostViewedLocations.add(new MostViewedHelperClass(R.drawable.ute, "Ute - Use for big packages"));
 
         adapter = new MostViewedAdapter(mostViewedLocations);
         mostViewedRecycler.setAdapter(adapter);

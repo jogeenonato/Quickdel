@@ -69,10 +69,10 @@
     <string name="airports">Airports</string>
 
 
-    <string name="featured_locations">All Featured Locations</string>
-    <string name="featured_locations_description">All the locations that are featured and have the top demand in town!</string>
-    <string name="most_viewed_locations">Most Viewed</string>
-    <string name="categories">Categories</string>
+    <string name="easy_steps">Three Easy Steps</string>
+    <string name="steps_description">Have anything delivered without leaving your home in just three easy steps</string>
+    <string name="options_available">Vehicle Choices</string>
+    <string name="benefits">Benefits</string>
     <string name="view_all">View All</string>
     <string name="search_text">Search...</string>
     <!-- TODO: Remove or change this placeholder text -->

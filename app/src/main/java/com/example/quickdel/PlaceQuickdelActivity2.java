@@ -115,29 +115,14 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             }
         });
 
-
-
         //Get current user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // Name, email address, and profile photo Url
-            //String name = user.getDisplayName();
-            //String email = user.getEmail();
 
-            // Check if user's email is verified
-            //boolean emailVerified = user.isEmailVerified();
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
             uid = user.getUid();
         }
 
-
-
-
-
-        //Alternative to onResultActivity
+        //Alternative to onResultActivity that is deprecated
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -152,12 +137,6 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                                 etPickup.setText(place.getAddress());
                                 //get latitude and longitude
                                 String sSource = valueOf(place.getLatLng());
-//                                sSource = sSource.replaceAll("lat/lng", "");
-//                                sSource = sSource.replace("(", "");
-//                                sSource = sSource.replace(")", "");
-//                                String[] split = sSource.split(",");
-//                                lat1 = Double.parseDouble(split[0]);
-//                                long1 = Double.parseDouble(split[1]);
                                 lat1 = place.getLatLng().latitude;
                                 long1 = place.getLatLng().longitude;
 
@@ -168,12 +147,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                                 etDestination.setText(place.getAddress());
                                 //Get latitude and longitude
                                 String sDestination = valueOf(place.getLatLng());
-//                                sDestination = sDestination.replaceAll("lat/lng", "");
-//                                sDestination = sDestination.replace("(", "");
-//                                sDestination = sDestination.replace(")", "");
-//                                String[] split = sDestination.split(",");
-//                                lat2 = Double.parseDouble(split[0]);
-//                                long2 = Double.parseDouble(split[1]);
+
                                 lat2 = place.getLatLng().latitude;
                                 long2 = place.getLatLng().longitude;
                             }
@@ -263,6 +237,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("orderNumber", orderNumber);
         editor.apply();
+
+        //Add order details in the database
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -502,6 +478,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             Total += weight4Price;
         }
 
+        //Set price for distance
+
         double dsP = Double.parseDouble(ds);
 
 
@@ -530,8 +508,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
+    //Calculate earnings of runner
     private void calculateEarnings(){
-       // tvDistance.setText(String.format(Locale.UK, "%.2f", distance));
 
         Double totalwithearn = orders.getTotal();
         Double earnings = totalwithearn - (totalwithearn * 0.05);

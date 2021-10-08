@@ -313,7 +313,7 @@
                         android:id="@+id/et_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="textCapWords"
                         android:drawableLeft="@drawable/ic_baseline_description_24"
                         android:drawableStart="@drawable/ic_baseline_description_24"
                         android:drawablePadding="10dp"/>
