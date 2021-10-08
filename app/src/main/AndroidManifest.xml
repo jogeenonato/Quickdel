@@ -170,9 +170,6 @@
             android:name=".RunnerMain"
             android:exported="true"/>
 
-
-
-            android:exported="true"></activity>
         <activity
             android:name=".UsersHome"
             android:exported="true" />
