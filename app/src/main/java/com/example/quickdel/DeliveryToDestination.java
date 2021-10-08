@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -36,10 +37,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.sql.DriverManager;
 import java.util.UUID;
 
@@ -58,10 +61,11 @@ public class DeliveryToDestination extends AppCompatActivity {
     FirebaseStorage storage;
 
     ImageView imageView;
-    Button button, uploadPhoto;
+    Button button, uploadPhoto, cameraPhoto;
     public Uri uri;
 
-    Uri imageUri;
+    Uri imageUri, cameraUri;
+    FirebaseDatabase firebaseDatabase;
 
 
     @Override
@@ -89,6 +93,10 @@ public class DeliveryToDestination extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         uploadPhoto = findViewById(R.id.uploadPhoto);
+
+        cameraPhoto = findViewById(R.id.cameraPhoto);
+
+        //firebaseDatabase = FirebaseDatabase.getInstance("https://quickdel-3d7ee-default-rtdb.firebaseio.com/");
 
 
         if (ContextCompat.checkSelfPermission(DeliveryToDestination.this,
@@ -119,14 +127,18 @@ public class DeliveryToDestination extends AppCompatActivity {
             public void onClick(View view) {
 
                 //upload Image on button click
+                //
                 uploadImage();
 
-
             }
-
-
         });
-
+        cameraPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadCamera();
+                nono.getContract();
+            }
+        });
 
         //String sourceLocation = getIntent().getStringExtra("keysource");
         String sourceLocation = "";
@@ -134,14 +146,6 @@ public class DeliveryToDestination extends AppCompatActivity {
 
         etSource.setText(sourceLocation);
         etDestination.setText(pickupPoint);
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v){
-//                openUploadPicture();
-//            }
-//        });
-
 
         btDeliver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,14 +164,31 @@ public class DeliveryToDestination extends AppCompatActivity {
                 //when both value fill, display track
                 DisplayTrack(sSource, sDestination);
                 //}
-
             }
         });
+    }
+    private void uploadPicture() {
+
+        //final String randomKey = UUID.randomUUID().toString();
+
+
+        // mountainsRef = mStorage.child("mountains.jpg").child(uri.getLastPathSegment());
+        StorageReference mountainsRef = mStorage.child("mountains.jpg");
+
+// Create a reference to 'images/mountains.jpg'
+
+        //StorageReference mountainImagesRef = mStorage.child("images/mountains.jpg").child(uri.getLastPathSegment());
+        StorageReference mountainImagesRef = mStorage.child("images/mountains.jpg");
+
+
+// While the file names are the same, the references point to different files
+        mountainsRef.getName().equals(mountainImagesRef.getName());    // true
+        mountainsRef.getPath().equals(mountainImagesRef.getPath());    // false
     }
 
     private void uploadImage() {
 
-        if (imageUri != null){
+        if (imageUri != null) {
             StorageReference reference = storage.getReference().child("images/" + UUID.randomUUID().toString());
             //we are creating a reference to store the image in firebase storage
             //It will be stored inside image folder in firebase storage.
@@ -178,27 +199,46 @@ public class DeliveryToDestination extends AppCompatActivity {
             reference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Toast.makeText(DeliveryToDestination.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
 
-                    }else{
+                    } else {
                         Toast.makeText(DeliveryToDestination.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
-
                 }
             });
-
-
         }
     }
 
+    private void uploadCamera() {
 
+        if (imageUri != null) {
+            StorageReference reference = storage.getReference().child("images/" + UUID.randomUUID().toString());
+            //we are creating a reference to store the image in firebase storage
+            //It will be stored inside image folder in firebase storage.
+            //use user auth id instead of uuid if your app has firebase auth
+
+            //using the below code  will store the file
+
+            reference.putFile(cameraUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(DeliveryToDestination.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+
+                    } else {
+                        Toast.makeText(DeliveryToDestination.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+    }
 
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri result) {
-                    if (result != null){
+                    if (result != null) {
                         imageView.setImageURI(result);
                         //result will be set in imageUri
                         imageUri = result;
@@ -207,11 +247,17 @@ public class DeliveryToDestination extends AppCompatActivity {
             });
 
 
-//    private void openUploadPicture() {
-//        Intent intent = new Intent(this, com.example.quickdel.UploadPicture.class);
-//        startActivity(intent);
-//    }
-
+    ActivityResultLauncher<String> nono = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if (result != null){
+                        imageView.setImageURI(result);
+                        //result will be set in imageUri
+                        cameraUri = result;
+                    }
+                }
+            });
 
 
     private void DisplayTrack(String sSource, String sDestination) {
@@ -229,74 +275,47 @@ public class DeliveryToDestination extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //start Activity
             startActivity(intent);
-        }catch (ActivityNotFoundException e){
+        } catch (ActivityNotFoundException e) {
             //When google map is not installed
             //Initialize uri
             Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
             //Initialize intent with action view
-            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             //Set flag
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //sTART ACTIVITY
             startActivity(intent);
-
         }
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK){
+        if (requestCode == 100 && resultCode == RESULT_OK) {
             //Get capture image
             //mProgress.setMessage("Uploading Image...");
-           // mProgress.show();
-           // Bitmap captureImage = (Bitmap) data.getExtras().get("data");
+            // mProgress.show();
+             //Bitmap captureImage = (Bitmap) data.getExtras().get("data");
             //set capture image to imageview
-           // picture.setImageBitmap(captureImage);
-
+            //imageView.setImageBitmap(captureImage);
             //uploadPicture();
-
-
-
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
-            Uri uri = data.getData();
+            cameraUri = data.getData();
 
 
-
-
-
-//            StorageReference filepath = mStorage.child("Photos").child(uri.getLastPathSegment());
-//            filepath.putFile(uri).addOnSuccessListener(taskSnapshot -> {
-//               // Snackbar.make(findViewById(android.R.id.content), "image uploaded", Snackbar.LENGTH_LONG).show();
-//                //mProgress.dismiss();
-//                //Toast.makeText(DeliveryToDestination.this,"Uploading Finished", Toast.LENGTH_LONG).show();
-//
+//            StorageReference filepath = mStorage.child("images/").child(cameraUri.getLastPathSegment());
+//            filepath.putFile(cameraUri).addOnSuccessListener(taskSnapshot -> {
+//              // Snackbar.make(findViewById(android.R.id.content), "image uploaded", Snackbar.LENGTH_LONG).show();
+////                //mProgress.dismiss();
+////                //Toast.makeText(DeliveryToDestination.this,"Uploading Finished", Toast.LENGTH_LONG).show();
+////
 //            });
-
-
         }
-        //Intent intent = new Intent(DeliveryToDestination.this, DriverHomeActivity.class);
-        //startActivity(intent);
-    }
 
-//    private void uploadPicture() {
-//
-//        //final String randomKey = UUID.randomUUID().toString();
-//
-//
-//        // mountainsRef = mStorage.child("mountains.jpg").child(uri.getLastPathSegment());
-//        StorageReference mountainsRef = mStorage.child("mountains.jpg");
-//
-//// Create a reference to 'images/mountains.jpg'
-//
-//        //StorageReference mountainImagesRef = mStorage.child("images/mountains.jpg").child(uri.getLastPathSegment());
-//        StorageReference mountainImagesRef = mStorage.child("images/mountains.jpg");
-//
-//
-//// While the file names are the same, the references point to different files
-//        mountainsRef.getName().equals(mountainImagesRef.getName());    // true
-//        mountainsRef.getPath().equals(mountainImagesRef.getPath());    // false
+
+
 
     }
+}
 
