@@ -36,6 +36,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -62,16 +64,19 @@ public class DeliveryToDestination extends AppCompatActivity {
     public Uri uri;
 
     Uri imageUri;
+    DatabaseReference reference;
+    FirebaseDatabase database;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_to_destination);
-
+        reference = database.getInstance().getReference().child("Orders");
 
         SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
         String pickupPoint = settings.getString("destinationPoint", "");
+        String orderNumber = settings.getString("orderNumber", "");
 
         imageView = findViewById(R.id.image_view);
         button = findViewById(R.id.button);
@@ -101,6 +106,8 @@ public class DeliveryToDestination extends AppCompatActivity {
         }
         bt_Open.setOnClickListener(view -> {
 
+
+            reference.child(orderNumber).child("status").setValue("Runner is in Destination Location");
             //Open Camera
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 100);
@@ -168,7 +175,9 @@ public class DeliveryToDestination extends AppCompatActivity {
     private void uploadImage() {
 
         if (imageUri != null){
-            StorageReference reference = storage.getReference().child("images/" + UUID.randomUUID().toString());
+            SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
+            String orderNumber = settings.getString("orderNumber", "");
+            StorageReference reference = storage.getReference().child("images/" + orderNumber);
             //we are creating a reference to store the image in firebase storage
             //It will be stored inside image folder in firebase storage.
             //use user auth id instead of uuid if your app has firebase auth
@@ -179,6 +188,9 @@ public class DeliveryToDestination extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()){
+                        DatabaseReference reference1;
+                        reference1 = database.getInstance().getReference().child("Orders");
+                        reference1.child(orderNumber).child("status").setValue("Delivered");
                         Toast.makeText(DeliveryToDestination.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
 
                     }else{
@@ -190,6 +202,7 @@ public class DeliveryToDestination extends AppCompatActivity {
 
 
         }
+
     }
 
 

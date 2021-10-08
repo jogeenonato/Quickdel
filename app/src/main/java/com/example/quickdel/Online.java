@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.firebase.geofire.GeoFire;
@@ -51,6 +52,7 @@ import java.util.Locale;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class Online extends FragmentActivity implements OnMapReadyCallback {
+    private NotificationManagerCompat notificationManager;
 
     private GoogleMap mMap;
     private DatabaseReference databaseReference, ref, onlineRef, currentUserRef, driversLocationRef, reference;
@@ -65,7 +67,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
     private LocationRequest locationRequest;
     private com.google.android.gms.location.LocationCallback locationCallback;
 
-
+    String stopnotif1 = "go", stopnotif2 = "go", stopnotif3 = "go", stopnotif4 = "go";
     private EditText editTextLatitude;
     private EditText editTextLongitude;
     private TextView textView;
@@ -78,7 +80,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_online);
-
+        notificationManager = NotificationManagerCompat.from(this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -99,46 +101,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                 Online.super.onBackPressed();
             }
         });
-//        editTextLatitude.setText("-32.9579715");
-//        editTextLongitude.setText("150.1563683");
-//        editTextLatitude.setVisibility(View.INVISIBLE);
-//        editTextLongitude.setVisibility(View.INVISIBLE);
 //
-//
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Location");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                try {
-//                    String databaseLatitudeString = dataSnapshot.child("latitude").getValue().toString().substring(1, dataSnapshot.child("latitude").getValue().toString().length() - 1);
-//                    String databaseLongitudeString = dataSnapshot.child("longitude").getValue().toString().substring(1, dataSnapshot.child("longitude").getValue().toString().length() - 1);
-//
-//                    String[] stringLat = databaseLatitudeString.split(", ");
-//                    Arrays.sort(stringLat);
-//                    String latitude = stringLat[stringLat.length - 1].split("=")[1];
-//
-//                    String[] stringLong = databaseLongitudeString.split(", ");
-//                    Arrays.sort(stringLong);
-//                    String longitude = stringLat[stringLong.length - 1].split("=")[1];
-//
-//                    LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-//
-//                    mMap.addMarker(new MarkerOptions().position(latLng).title(latitude + " , " + longitude));
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        getrunnerlocation();
     }
 
 
@@ -158,18 +121,12 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onLocationChanged(@NonNull Location location) {
                 try {
-                    //Add a marker in Sydney and move the camera
-//       LatLng sydney = new LatLng(-34, 151);
-//       mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//       mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
 
-//        SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
-//        String runner = settings.getString("runnerID", "");
 
 
-                    SharedPreferences settings1 = getSharedPreferences("OrderNumber", Context.MODE_PRIVATE);
+                    SharedPreferences settings1 = getSharedPreferences("TrackOrderNumber", Context.MODE_PRIVATE);
                     String orderNumber = settings1.getString("orderNumber", "");
 
                     Query checkUser = ref.orderByChild("orderNumber").equalTo(orderNumber);
@@ -192,11 +149,8 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                                             String total2 = String.valueOf(dbLongitudeString);
                                             editTextLatitude.setText(total1);
                                             editTextLongitude.setText(total2);
-//                                            editTextLatitude.setVisibility(View.INVISIBLE);
-//                                            editTextLongitude.setVisibility(View.INVISIBLE);
                                             double latitude = Double.parseDouble(total1);
                                             double longitude = Double.parseDouble(total2);
-                                            //latLng = new LatLng(latitude, longitude);
 
                                             Geocoder geocoder;
                                             List<Address> addresses;
@@ -219,10 +173,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                                             } catch (IOException e) {
                                                 e.printStackTrace();
                                             }
-//                    editTextLatitude.setText("-32.9579715");
-//                    editTextLongitude.setText("150.1563683");
                                             LatLng latLng = new LatLng(Double.parseDouble(total1), Double.parseDouble(total2));
-//                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
                                             mMap.addMarker(new MarkerOptions().position(latLng).title("Runner"));
                                             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
@@ -265,14 +216,81 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         }
     }
 
+    public void sendOnChannel2() {
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("Orders");
+        SharedPreferences settings1 = getSharedPreferences("TrackOrderNumber", Context.MODE_PRIVATE);
+        String orderNumber1 = settings1.getString("orderNumber", "");
+
+        Query checkUser1 = ref1.orderByChild("orderNumber").equalTo(orderNumber1);
+        checkUser1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String status = dataSnapshot.child(orderNumber1).child("status").getValue(String.class);
+                    if (status.equals("Accepted by Runner") && stopnotif1.equals("go")) {
+                        stopnotif1 = "stop";
+                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
+                                .setSmallIcon(R.drawable.notifstatus)
+                                .setContentTitle("Quickdel")
+                                .setContentText(status)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .build();
+
+                        notificationManager.notify(1, notification);
+                    } else if (status.equals("Runner is in Pick up Location") && stopnotif2.equals("go")) {
+                        stopnotif2 = "stop";
+                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
+                                .setSmallIcon(R.drawable.notifstatus)
+                                .setContentTitle("Quickdel")
+                                .setContentText(status)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .build();
+
+                        notificationManager.notify(1, notification);
+                    } else if (status.equals("Runner is in Destination Location") && stopnotif3.equals("go")) {
+                        stopnotif3 = "stop";
+                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
+                                .setSmallIcon(R.drawable.notifstatus)
+                                .setContentTitle("Quickdel")
+                                .setContentText(status)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .build();
+
+                        notificationManager.notify(1, notification);
+                    } else if (status.equals("Delivered") && stopnotif4.equals("go")) {
+                        stopnotif4 = "stop";
+                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
+                                .setSmallIcon(R.drawable.notifstatus)
+                                .setContentTitle("Quickdel")
+                                .setContentText(status)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .build();
+
+                        notificationManager.notify(1, notification);
+                    }
+
+                } else {
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
     public void newrunnerlocation() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
 
-//        SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
-//        String runner = settings.getString("runnerID", "");
-
-
-        SharedPreferences settings1 = getSharedPreferences("OrderNumber", Context.MODE_PRIVATE);
+        SharedPreferences settings1 = getSharedPreferences("TrackOrderNumber", Context.MODE_PRIVATE);
         String orderNumber = settings1.getString("orderNumber", "");
 
         Query checkUser = ref.orderByChild("orderNumber").equalTo(orderNumber);
@@ -295,11 +313,8 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                                 String total2 = String.valueOf(dbLongitudeString);
                                 editTextLatitude.setText(total1);
                                 editTextLongitude.setText(total2);
-//                                            editTextLatitude.setVisibility(View.INVISIBLE);
-//                                            editTextLongitude.setVisibility(View.INVISIBLE);
                                 double latitude = Double.parseDouble(total1);
                                 double longitude = Double.parseDouble(total2);
-                                //latLng = new LatLng(latitude, longitude);
 
                                 Geocoder geocoder;
                                 List<Address> addresses;
@@ -322,12 +337,8 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-//                    editTextLatitude.setText("-32.9579715");
-//                    editTextLongitude.setText("150.1563683");
                                 LatLng latLng = new LatLng(Double.parseDouble(total1), Double.parseDouble(total2));
-//                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
                                 mMap.addMarker(new MarkerOptions().position(latLng).title("Runner"));
-                                //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
                                 textView.setText(address + city + state + country + postalCode + knonName);
 
@@ -502,10 +513,6 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         thread.start();
     }
 
-//    private void lookForQuickdel() {
-//        DriverHomeActivity.ExampleThread thread = new DriverHomeActivity.ExampleThread(1000);
-//        thread.start();
-//    }
 
     class ExampleThread extends Thread {
         int seconds;
@@ -522,17 +529,11 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                     Thread.sleep(1000);
 
                     newrunnerlocation();
-//                    i[0] = seconds;
-
-                    //currentThread().interrupt();
-
+                    sendOnChannel2();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-//                if (i[0] == seconds) {
-//                    break myloop;
-//                }
             }
         }
     }

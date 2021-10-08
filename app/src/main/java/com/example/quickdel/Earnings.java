@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Earnings extends AppCompatActivity {
+public class Earnings extends AppCompatActivity implements EarningsAdapter.OnNoteListener {
     ImageView back_btn;
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -45,13 +46,12 @@ public class Earnings extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list1 = new ArrayList<>();
-        earningsAdapter = new EarningsAdapter(this, list1);
+        earningsAdapter = new EarningsAdapter(list1, this);
         recyclerView.setAdapter(earningsAdapter);
 
 
         SharedPreferences settings1 = getSharedPreferences("Runner", Context.MODE_PRIVATE);
         String runnerUID = settings1.getString("runnerID", "");
-
         Query checkUser = database.orderByChild("runnerID").equalTo(runnerUID);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,6 +72,15 @@ public class Earnings extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+//      String data = String.valueOf(list1.get(position).getOrderNumber());
+//      Toast.makeText(Earnings.this,  data, Toast.LENGTH_SHORT).show();
+//
+
+
     }
 //    public void finish () {
 //        super.finish();

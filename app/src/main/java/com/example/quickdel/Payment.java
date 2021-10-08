@@ -40,9 +40,9 @@ public class Payment extends AppCompatActivity {
                 String orderNumber = settings.getString("orderNumber", "");
                 //orders.setStatus("paid");
                 Toast.makeText(Payment.this, "Your Quickdel order has been placed!" + orderNumber, Toast.LENGTH_SHORT).show();
-                reference.child(orderNumber).child("status").setValue("paid");
+                reference.child(orderNumber).child("status").setValue("Paid");
 
-                Intent intent = new Intent(Payment.this, UsersHome2.class);
+                Intent intent = new Intent(Payment.this, TrackList.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

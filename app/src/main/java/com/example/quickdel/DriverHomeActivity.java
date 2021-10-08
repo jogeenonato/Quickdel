@@ -85,7 +85,7 @@ public class DriverHomeActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(1000);
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
-                    Query checkUser = reference.orderByChild("status").equalTo("paid");
+                    Query checkUser = reference.orderByChild("status").equalTo("Paid");
                     checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

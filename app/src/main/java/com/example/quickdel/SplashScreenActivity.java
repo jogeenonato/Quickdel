@@ -106,7 +106,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("runnerID", getrunneruserid);
             editor.apply();
-            Toast.makeText(SplashScreenActivity.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SplashScreenActivity.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
             if(user != null)
             {
                 checkUserFromFirebase();

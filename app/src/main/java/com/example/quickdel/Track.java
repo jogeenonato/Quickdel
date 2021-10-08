@@ -24,6 +24,8 @@ import com.example.quickdel.ui.gallery.GalleryFragment;
 import com.example.quickdel.ui.gallery.GalleryViewModel;
 import com.example.quickdel.ui.home.HomeFragment;
 import com.example.quickdel.ui.slideshow.SlideshowFragment;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.DriverManager;
 
@@ -33,14 +35,15 @@ public class Track extends AppCompatActivity {
 
     Button btTrack;
     Button button;
-
+    DatabaseReference reference;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_track);
-
+        reference = database.getInstance().getReference().child("Orders");
         Intent intent = getIntent();
         SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
         String pickupPoint = settings.getString("pickupPoint", "");
@@ -85,6 +88,7 @@ public class Track extends AppCompatActivity {
         btTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //Get value from edit text
                 String sSource = etSource.getText().toString().trim();
                 String sDestination = etDestination.getText().toString().trim();
@@ -125,6 +129,9 @@ public class Track extends AppCompatActivity {
 
     }
     public void openDeliveryToDestination() {
+        SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
+        String orderNumber = settings.getString("orderNumber", "");
+        reference.child(orderNumber).child("status").setValue("Runner is in Pick up Location");
         Intent intent = new Intent(this, com.example.quickdel.DeliveryToDestination.class);
         startActivity(intent);
     }

@@ -153,7 +153,7 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
     }
 
     public void openTrackRunner(View v) {
-        Intent intent = new Intent(this, Online.class);
+        Intent intent = new Intent(this, TrackList.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
