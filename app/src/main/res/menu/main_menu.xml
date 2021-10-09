@@ -54,8 +54,7 @@
                 <item
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_baseline_headset_mic_24"
-                    android:title="Contact" />
-
+                    android:title="Support" />
                 <item
                     android:id="@+id/nav_settings"
                     android:icon="@drawable/settings3"
