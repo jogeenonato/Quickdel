@@ -101,14 +101,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         listener = myFirebaseAuth -> {
             FirebaseUser user = myFirebaseAuth.getCurrentUser();
-            String getrunneruserid = user.getUid();
-            SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("runnerID", getrunneruserid);
-            editor.apply();
 //            Toast.makeText(SplashScreenActivity.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
             if(user != null)
             {
+                String getrunneruserid = user.getUid();
+                SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("runnerID", getrunneruserid);
+                editor.apply();
                 checkUserFromFirebase();
             }
 
