@@ -54,27 +54,28 @@ public class TrackList extends AppCompatActivity implements OrderAdapter.OnNoteL
         back_btn = findViewById(R.id.btn_back);
         title.setText("Track List");
         btn_refresh.setImageResource(R.drawable.ic_baseline_refresh_24);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            //String name = user.getDisplayName();
-            //String email = user.getEmail();
-
-            // Check if user's email is verified
-            //boolean emailVerified = user.isEmailVerified();
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            currentuserID = user.getUid();
-        }
+        btn_refresh.setVisibility(View.VISIBLE);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            // Name, email address, and profile photo Url
+//            //String name = user.getDisplayName();
+//            //String email = user.getEmail();
+//
+//            // Check if user's email is verified
+//            //boolean emailVerified = user.isEmailVerified();
+//
+//            // The user's ID, unique to the Firebase project. Do NOT use this value to
+//            // authenticate with your backend server, if you have one. Use
+//            // FirebaseUser.getIdToken() instead.
+//            currentuserID = user.getUid();
+//        }
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                TrackList.super.onBackPressed();
                 Intent intent1 = new Intent(TrackList.this, UsersHome2.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         btn_refresh.setOnClickListener(new View.OnClickListener() {

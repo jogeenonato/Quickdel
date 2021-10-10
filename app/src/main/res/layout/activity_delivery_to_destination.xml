@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
     tools:context=".Track">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu" />
+
+        <TextView
+            android:id="@+id/full_name_top"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/prompt_semi_bold"
+            android:inputType="textCapWords"
+            android:text="Runner Interface"
+            android:textSize="26dp" />
 
 
-
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/banner_background"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow_black" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/et_source"
@@ -25,50 +53,75 @@
         tools:visibility="gone" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/et_destination"
-        android:hint="Enter Destination Address"
-        android:padding="12dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/editbox_background"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_recipient"
-        android:text="Take Quickdel to Recipient"
-        android:layout_marginTop="40dp"
-        app:backgroundTint="@color/black"/>
-
-    <Button
-        android:id="@+id/uploadPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Upload picture and finish"
-        app:backgroundTint="@color/black"/>
-
-    <ImageView
-        android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="40dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Enter Destination Address"
+        android:padding="12dp" />
 
-    <Button
-        android:id="@+id/uploadPhoto"
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="upload"
-        android:layout_gravity="center_horizontal"
-        app:backgroundTint="@color/black"/>
-    <Button
-        android:id="@+id/cameraPhoto"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt_recipient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:text="Take Quickdel to Recipient"
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/uploadPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:text="Upload picture and finish"
+            android:visibility="invisible"
+            app:backgroundTint="@color/black" />
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="40dp"
+            android:visibility="invisible" />
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Finish Order"
-        android:layout_gravity="center_horizontal"
-        app:backgroundTint="@color/black"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/uploadPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:text="upload"
+            android:enabled="false"
+            android:visibility="invisible"
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/cameraPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Finish Order"
+            android:visibility="invisible"
+            app:backgroundTint="@color/black" />
+    </RelativeLayout>
 
 
 

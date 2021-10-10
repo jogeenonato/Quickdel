@@ -106,7 +106,7 @@ public class Track extends AppCompatActivity {
                 Thread timer = new Thread() {
                     public void run(){
                         try {
-                            sleep(3000);
+                            sleep(2000);
                             button.setVisibility(View.VISIBLE);
                         } catch (InterruptedException e) {
                             e.printStackTrace();

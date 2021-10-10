@@ -3,6 +3,7 @@ package com.example.quickdel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -15,6 +16,7 @@ public class CustomerSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.settings_activity);
 
         back_btn = findViewById(R.id.btn_back);
@@ -72,28 +74,33 @@ public class CustomerSettingsActivity extends AppCompatActivity {
     public void openFaq() {
         Intent intent = new Intent(this, com.example.quickdel.Faq.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void openConditions() {
         Intent intent = new Intent(this, com.example.quickdel.Conditions.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 
     public void openPayment() {
         Intent intent = new Intent(this, com.example.quickdel.CustomerPaymentMethod.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void openSupport() {
         Intent intent = new Intent(this, com.example.quickdel.Support.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 
     public void openDeliveryAddress() {
         Intent intent = new Intent(this, com.example.quickdel.DeliveryAddress.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void finish () {

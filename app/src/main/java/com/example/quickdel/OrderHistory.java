@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,7 +98,13 @@ public class OrderHistory extends AppCompatActivity implements OrderAdapter.OnNo
         });
 
     }
+    @Override
+    public void onBackPressed() {
 
+            super.onBackPressed();
+
+
+    }
 
     public void finish() {
         super.finish();

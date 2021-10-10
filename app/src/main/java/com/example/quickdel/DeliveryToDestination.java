@@ -98,8 +98,6 @@ public class DeliveryToDestination extends AppCompatActivity {
         bt_finish = findViewById(R.id.cameraPhoto);
 
 
-
-
         if (ContextCompat.checkSelfPermission(DeliveryToDestination.this,
                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(DeliveryToDestination.this,
@@ -115,6 +113,10 @@ public class DeliveryToDestination extends AppCompatActivity {
             //Open Camera
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 100);
+            bt_Open.setVisibility(View.INVISIBLE);
+            uploadPhoto.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.VISIBLE);
+
         });
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +124,7 @@ public class DeliveryToDestination extends AppCompatActivity {
             public void onClick(View view) {
                 mGetContent.launch("image/*");
 
+                uploadPhoto.setEnabled(true);
             }
         });
 
@@ -131,6 +134,7 @@ public class DeliveryToDestination extends AppCompatActivity {
 
                 //upload Image on button click
                 uploadImage();
+
 
 
             }
@@ -171,11 +175,27 @@ public class DeliveryToDestination extends AppCompatActivity {
                 //when both value fill, display track
                 DisplayTrack(sSource, sDestination);
                 //}
+                btDeliver.setVisibility(View.INVISIBLE);
+                Thread timer = new Thread() {
+                    public void run() {
+                        try {
+                            sleep(1000);
+                            bt_Open.setVisibility(View.VISIBLE);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                timer.start();
             }
         });
         bt_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference reference1;
+                reference1 = database.getInstance().getReference().child("Orders");
+                reference1.child(orderNumber).child("status").setValue("Delivered");
                 openFinalAnimation();
             }
         });
@@ -188,7 +208,7 @@ public class DeliveryToDestination extends AppCompatActivity {
 
     private void uploadImage() {
 
-        if (imageUri != null){
+        if (imageUri != null) {
             SharedPreferences settings = getSharedPreferences("Order", Context.MODE_PRIVATE);
             String orderNumber = settings.getString("orderNumber", "");
             StorageReference reference = storage.getReference().child("images/" + orderNumber);
@@ -201,13 +221,12 @@ public class DeliveryToDestination extends AppCompatActivity {
             reference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()){
-                        DatabaseReference reference1;
-                        reference1 = database.getInstance().getReference().child("Orders");
-                        reference1.child(orderNumber).child("status").setValue("Delivered");
-                        Toast.makeText(DeliveryToDestination.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+                    if (task.isSuccessful()) {
 
-                    }else{
+                        Toast.makeText(DeliveryToDestination.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+                        uploadPhoto.setVisibility(View.INVISIBLE);
+                        bt_finish.setVisibility(View.VISIBLE);
+                    } else {
                         Toast.makeText(DeliveryToDestination.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
 
@@ -220,12 +239,11 @@ public class DeliveryToDestination extends AppCompatActivity {
     }
 
 
-
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri result) {
-                    if (result != null){
+                    if (result != null) {
                         imageView.setImageURI(result);
                         //result will be set in imageUri
                         imageUri = result;
@@ -238,7 +256,6 @@ public class DeliveryToDestination extends AppCompatActivity {
 //        Intent intent = new Intent(this, com.example.quickdel.UploadPicture.class);
 //        startActivity(intent);
 //    }
-
 
 
     private void DisplayTrack(String sSource, String sDestination) {
@@ -256,12 +273,12 @@ public class DeliveryToDestination extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //start Activity
             startActivity(intent);
-        }catch (ActivityNotFoundException e){
+        } catch (ActivityNotFoundException e) {
             //When google map is not installed
             //Initialize uri
             Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
             //Initialize intent with action view
-            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             //Set flag
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //sTART ACTIVITY
@@ -270,27 +287,24 @@ public class DeliveryToDestination extends AppCompatActivity {
         }
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK){
+        if (requestCode == 100 && resultCode == RESULT_OK) {
             //Get capture image
             //mProgress.setMessage("Uploading Image...");
-           // mProgress.show();
-           // Bitmap captureImage = (Bitmap) data.getExtras().get("data");
+            // mProgress.show();
+            // Bitmap captureImage = (Bitmap) data.getExtras().get("data");
             //set capture image to imageview
-           // picture.setImageBitmap(captureImage);
+            // picture.setImageBitmap(captureImage);
 
             //uploadPicture();
-
 
 
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
             Uri uri = data.getData();
-
-
-
 
 
 //            StorageReference filepath = mStorage.child("Photos").child(uri.getLastPathSegment());
@@ -325,5 +339,5 @@ public class DeliveryToDestination extends AppCompatActivity {
 //        mountainsRef.getName().equals(mountainImagesRef.getName());    // true
 //        mountainsRef.getPath().equals(mountainImagesRef.getPath());    // false
 
-    }
+}
 

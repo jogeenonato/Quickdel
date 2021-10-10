@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
@@ -28,6 +32,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +49,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class PlaceQuickdelActivity2 extends AppCompatActivity {
+public class PlaceQuickdelActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Button btn;
     ImageView back_btn;
@@ -64,7 +69,11 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     double long2 = 0;
     int flag = 0;
     String uid, userName;
-
+    ImageView menuIcon;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    LinearLayout contentView;
+    static final float END_SCALE = 0.7f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +102,13 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         recipientNo = findViewById(R.id.et_recipientMobile);
         back_btn = findViewById(R.id.btn_back);
 
+        menuIcon = findViewById(R.id.menu_icon);
+        contentView = findViewById(R.id.contentview);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
+
+        navigationDrawer();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -341,7 +357,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 } else if (weight3.isChecked()) {
                     orders.setWeight(w3);
                     orders.setWeightPrice(Double.valueOf(df2.format(weight3Price)));
-                    reference.child(valueOf(i + 1)).setValue(orders);
+                    reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setWeight(w4);
                     orders.setWeightPrice(Double.valueOf(df2.format(weight4Price)));
@@ -407,6 +423,47 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 //        setupBackButton();
     }
 
+    private void navigationDrawer() {
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drawerLayout.isDrawerVisible(GravityCompat.START))
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                else drawerLayout.openDrawer(GravityCompat.START);
+
+            }
+        });
+
+        animateNavigationDrawer();
+    }
+
+    private void animateNavigationDrawer() {
+        //Add any color or remove it to use the default one!
+        //To make it transparent use Color.Transparent in side setScrimColor();
+        //drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.setScrimColor(getResources().getColor(R.color.card4));
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+                // Scale the View based on current slide offset
+                final float diffScaledOffset = slideOffset * (1 - END_SCALE);
+                final float offsetScale = 1 - diffScaledOffset;
+                contentView.setScaleX(offsetScale);
+                contentView.setScaleY(offsetScale);
+
+                // Translate the View, accounting for the scaled width
+                final float xOffset = drawerView.getWidth() * slideOffset;
+                final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
+                final float xTranslation = xOffset - xOffsetDiff;
+                contentView.setTranslationX(xTranslation);
+            }
+        });
+    }
 
 
     private void handleOrder() {
@@ -595,5 +652,50 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+    @Override
+    public void onBackPressed() {
+
+        if(drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_profile:
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.nav_logout:
+                startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
+                finish();
+                break;
+            case R.id.nav_track:
+                startActivity(new Intent(getApplicationContext(), TrackList.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.nav_history:
+                startActivity(new Intent(getApplicationContext(), OrderHistory.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.nav_home:
+                if (drawerLayout.isDrawerVisible(GravityCompat.START))
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                else drawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.nav_place:
+                startActivity(new Intent(getApplicationContext(), PlaceQuickdelActivity2.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.nav_settings:
+                startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+        }
+        return false;
     }
 }

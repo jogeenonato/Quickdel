@@ -14,12 +14,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/menu" />
+
 
         <TextView
             android:id="@+id/full_name_top"

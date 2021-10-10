@@ -39,7 +39,7 @@ public class Payment extends AppCompatActivity {
                 SharedPreferences settings = getSharedPreferences("OrderNumber", Context.MODE_PRIVATE);
                 String orderNumber = settings.getString("orderNumber", "");
                 //orders.setStatus("paid");
-                Toast.makeText(Payment.this, "Your Quickdel order has been placed!" + orderNumber, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Payment.this, "Your Quickdel order has been placed!", Toast.LENGTH_SHORT).show();
                 reference.child(orderNumber).child("status").setValue("Paid");
 
                 Intent intent = new Intent(Payment.this, TrackList.class);

@@ -1,353 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".PlaceQuickdelActivity2">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
-
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/menu" />
-
-        <TextView
-            android:id="@+id/full_name_top"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/prompt_semi_bold"
-            android:inputType="textCapWords"
-            android:text="Place a Quickdel"
-            android:textSize="25dp" />
-
-
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:background="@color/banner_background"
-            android:padding="5dp"
-            android:src="@drawable/back_arrow_black" />
-    </RelativeLayout>
-
-    <ScrollView
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_gravity="start"
+        android:background="@color/white"
+        android:theme="@style/navigationTheme"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/main_menu" />
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/menu" />
+
+            <TextView
+                android:id="@+id/full_name_top"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/prompt_semi_bold"
+                android:inputType="textCapWords"
+                android:text="Place a Quickdel"
+                android:textSize="25dp" />
 
 
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/banner_background"
+                android:padding="5dp"
+                android:src="@drawable/back_arrow_black" />
+        </RelativeLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Set Location"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/prompt_semi_bold"
-                    android:textSize="18dp"/>
 
-                <EditText
-                    android:id="@+id/pickup"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawableLeft="@drawable/ic_location"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/prompt_semi_bold"
-                    android:hint="Enter Pickup Point"
-                    android:padding="10dp"
-                    tools:ignore="TouchTargetSizeCheck">
-
-                </EditText>
-
-                <EditText
-                    android:id="@+id/destination"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawableLeft="@drawable/ic_location"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/prompt_semi_bold"                    android:hint="Enter Destination"
-                    android:padding="10dp"
-                    tools:ignore="TouchTargetSizeCheck">
-
-                </EditText>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/km"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:text="KM: "
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.408"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.511"></TextView>
-
-                    <TextView
-                        android:id="@+id/text_distance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="10dp"
-                        android:textAlignment="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.538"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.511"></TextView>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Recipient's Name"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_recipient"
-                        android:layout_width="match_parent"
-                        android:fontFamily="@font/prompt_semi_bold"
-                        android:layout_height="wrap_content"
-                        android:inputType="textCapWords"
-                        android:drawableLeft="@drawable/fullname_icon"
-                        android:drawableStart="@drawable/fullname_icon"
-                        android:drawablePadding="10dp"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Recipient's Mobile"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_recipientMobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:fontFamily="@font/prompt_semi_bold"
-                        android:drawableLeft="@drawable/phone_number"
-                        android:drawableStart="@drawable/phone_number"
-
-                        android:drawablePadding="10dp"
-                        android:inputType="number"
-                        android:maxLength="10"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Choose the Vehicle Type"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/prompt_semi_bold"
-                    android:textSize="18dp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/borders"
-                    android:elevation="24dp"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="4dp"
-                    android:padding="8dp">
-
-                    <RadioButton
-                        android:id="@+id/v_bike"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Motorbike"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/v_sedan"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sedan"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/v_ute"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Ute"
-                        android:textSize="16dp"/>
-                </RadioGroup>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Choose the Package Size"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/prompt_semi_bold"
-                    android:textSize="18dp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/borders"
-                    android:elevation="24dp"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <RadioButton
-                        android:id="@+id/s_small"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Small"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/s_medium"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Medium"
-                        android:textSize="16dp" />
-
-                    <RadioButton
-                        android:id="@+id/s_large"
-                        android:layout_width="120dp"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_height="wrap_content"
-                        android:text="Large"
-                        android:textSize="16dp"/>
-
-                </RadioGroup>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Choose the Package Weight"
-                    android:fontFamily="@font/prompt_semi_bold"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/borders"
-                    android:elevation="24dp"
                     android:orientation="vertical"
-                    android:layout_marginTop="4dp"
-                    android:padding="8dp">
+                    android:padding="20dp">
 
-                    <RadioButton
-                        android:id="@+id/weigh1"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:text="Set Location"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/pickup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Less than 1KG"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/weight2"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Between 1.1 KG to 5 KG"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/weight3"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Between 5.1 KG to 10 KG"
-                        android:textSize="16dp"/>
-
-                    <RadioButton
-                        android:id="@+id/weight4"
-                        style="@android:style/Widget.CompoundButton.RadioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="More than 10 KG"
-                        android:textSize="16dp"/>
-                </RadioGroup>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Runner's Special Instructions"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textCapWords"
-                        android:drawableLeft="@drawable/ic_baseline_description_24"
-                        android:drawableStart="@drawable/ic_baseline_description_24"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:drawableStart="@drawable/ic_location"
+                        android:drawableLeft="@drawable/ic_location"
                         android:drawablePadding="10dp"
-                        android:maxLength="140"/>
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:hint="Enter Pickup Point"
+                        android:padding="10dp"
+                        tools:ignore="TouchTargetSizeCheck">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    </EditText>
 
-                <Button
-                    android:id="@+id/proceed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#000"
-                    android:text="Proceed"
-                    android:textColor="#fff"
-                    android:transitionName="logo_signin"
-                    android:layout_marginTop="10dp"
-                    app:backgroundTint="@color/black" />
+                    <EditText
+                        android:id="@+id/destination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:drawableStart="@drawable/ic_location"
+                        android:drawableLeft="@drawable/ic_location"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:hint="Enter Destination"
+                        android:padding="10dp"
+                        tools:ignore="TouchTargetSizeCheck">
+
+                    </EditText>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/km"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="KM: "
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.408"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.511"></TextView>
+
+                        <TextView
+                            android:id="@+id/text_distance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.538"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.511"></TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Recipient's Name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_recipient"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/fullname_icon"
+                            android:drawableLeft="@drawable/fullname_icon"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/prompt_semi_bold"
+                            android:inputType="textCapWords" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Recipient's Mobile">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_recipientMobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:drawableStart="@drawable/phone_number"
+                            android:drawableLeft="@drawable/phone_number"
+                            android:drawablePadding="10dp"
+
+                            android:fontFamily="@font/prompt_semi_bold"
+                            android:inputType="number"
+                            android:maxLength="10" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:text="Choose the Vehicle Type"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/borders"
+                        android:elevation="24dp"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <RadioButton
+                            android:id="@+id/v_bike"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Motorbike"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/v_sedan"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sedan"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/v_ute"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ute"
+                            android:textSize="16dp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:text="Choose the Package Size"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/borders"
+                        android:elevation="24dp"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <RadioButton
+                            android:id="@+id/s_small"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Small"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/s_medium"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Medium"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/s_large"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Large"
+                            android:textSize="16dp" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/prompt_semi_bold"
+                        android:text="Choose the Package Weight"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/borders"
+                        android:elevation="24dp"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <RadioButton
+                            android:id="@+id/weigh1"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Less than 1KG"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/weight2"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Between 1.1 KG to 5 KG"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/weight3"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Between 5.1 KG to 10 KG"
+                            android:textSize="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/weight4"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="More than 10 KG"
+                            android:textSize="16dp" />
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Runner's Special Instructions">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_description_24"
+                            android:drawableLeft="@drawable/ic_baseline_description_24"
+                            android:drawablePadding="10dp"
+                            android:inputType="textCapWords"
+                            android:maxLength="140" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/proceed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="#000"
+                        android:text="Proceed"
+                        android:textColor="#fff"
+                        android:transitionName="logo_signin"
+                        app:backgroundTint="@color/black" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

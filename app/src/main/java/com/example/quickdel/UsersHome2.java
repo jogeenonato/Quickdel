@@ -27,7 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    static final float END_SCALE = 0.7f;
+
 
     RecyclerView featuredRecycler, mostViewedRecycler, categoriesRecycler;
     RecyclerView.Adapter adapter;
@@ -36,7 +36,7 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     LinearLayout contentView;
-
+    static final float END_SCALE = 0.7f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +47,9 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
         featuredRecycler = findViewById(R.id.featured_recycler);
         mostViewedRecycler = findViewById(R.id.mv_recycler);
         categoriesRecycler = findViewById(R.id.categories_recycler);
+
         menuIcon = findViewById(R.id.menu_icon);
         contentView = findViewById(R.id.contentview);
-
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
 
@@ -124,6 +124,15 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
             case R.id.nav_logout:
                 startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
                 finish();
+                break;
+            case R.id.nav_track:
+                startActivity(new Intent(getApplicationContext(), TrackList.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.nav_history:
+                startActivity(new Intent(getApplicationContext(), OrderHistory.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                 break;
             case R.id.nav_home:
                 if (drawerLayout.isDrawerVisible(GravityCompat.START))

@@ -35,11 +35,7 @@
             android:padding="5dp"
             android:src="@drawable/back_arrow_black" />
 
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/menu" />
+
 
         <ScrollView
             android:layout_width="match_parent"
