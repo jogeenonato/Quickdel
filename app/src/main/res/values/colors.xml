@@ -26,6 +26,13 @@
     <color name="card4">#b8d7f5</color>
     <color name="card5">#b8d79f</color>
 
+    <color name="home1">#6bffff</color>
+    <color name="home2">#009bcc</color>
+    <color name="home3">#068eb6</color>
+    <color name="home4">#00CDFF</color>
+    <color name="home5">#00ccff</color>
+    <color name="home6">#1E98D7</color>
+
     <color name="primaryColor">#00BDFF</color>
     <color name="highlightcolor">#000000</color>
 

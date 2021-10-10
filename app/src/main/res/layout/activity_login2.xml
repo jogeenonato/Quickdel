@@ -20,12 +20,22 @@
         android:id="@+id/logoImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello There, Welcome Back!"
-        android:textSize="40sp"
-        android:fontFamily="@font/cherry_cream_soda"
+        android:layout_marginTop="-18dp"
+        android:fontFamily="@font/prompt_semi_bold"
+        android:text="Hello There,"
         android:textColor="#000"
-        android:layout_marginTop="-20dp"
-        android:transitionName="logo_text"/>
+        android:textSize="40sp"
+        android:transitionName="logo_text" />
+    <TextView
+        android:id="@+id/logoImage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-18dp"
+        android:fontFamily="@font/prompt_semi_bold"
+        android:text="Welcome Back!"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:transitionName="logo_text" />
 
     <TextView
         android:id="@+id/slogan_name"
@@ -68,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:checked="true"
+                android:fontFamily="@font/prompt_semi_bold"
                 android:text="Customer"
                 android:textSize="16dp" />
 
@@ -75,6 +86,7 @@
                 android:id="@+id/rbRunners"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/prompt_semi_bold"
                 android:text="Runner"
                 android:textSize="16dp" />
         </RadioGroup>

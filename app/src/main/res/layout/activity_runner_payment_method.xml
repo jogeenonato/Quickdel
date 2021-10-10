@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RunnerPaymentMethod"
-    android:background="@color/home_background"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
             android:text="Payment Method"
-            android:textSize="30dp" />
+            android:textSize="28dp" />
 
 
         <ImageView
@@ -64,8 +64,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Name"
-                    android:textColor="@color/teal_700"/>
+                    android:text="Full Name"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -81,23 +81,25 @@
                     android:textColor="@color/teal_700"
                     android:background="@android:drawable/editbox_background"
                     android:padding="8dp"
-                    android:id="@+id/acc_name"
+                    android:id="@+id/c_name"
                     android:inputType="textCapWords"/>
 
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="8dp" >
+                android:orientation="horizontal"
+                android:padding="10dp" >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="BSB"
-                    android:textColor="@color/teal_700"/>
+                    android:text="Card Number"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -108,14 +110,60 @@
                 android:padding="8dp" >
 
                 <EditText
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:textColor="@color/teal_700"
                     android:background="@android:drawable/editbox_background"
                     android:padding="8dp"
-                    android:id="@+id/acc_bsb"
-                    android:maxLength="6"
-                    android:inputType="number"/>
+                    android:id="@+id/c_cardno"
+                    android:inputType="number"
+                    android:maxLength="16"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Expiry Date"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <EditText
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:textColor="@color/teal_700"
+                    android:background="@android:drawable/editbox_background"
+                    android:padding="8dp"
+                    android:id="@+id/c_month"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:hint="MM"/>
+
+                <EditText
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:textColor="@color/teal_700"
+                    android:background="@android:drawable/editbox_background"
+                    android:padding="8dp"
+                    android:id="@+id/c_year"
+                    android:maxLength="4"
+                    android:inputType="number"
+                    android:layout_marginStart="8dp"
+                    android:hint="YYYY"/>
 
             </LinearLayout>
 
@@ -128,8 +176,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Number"
-                    android:textColor="@color/teal_700"/>
+                    android:text="CVC"
+                    android:textColor="@color/black"
+                    />
 
             </LinearLayout>
 
@@ -140,14 +189,14 @@
                 android:padding="8dp" >
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:textColor="@color/teal_700"
                     android:background="@android:drawable/editbox_background"
-                    android:padding="10dp"
-                    android:id="@+id/acc_number"
-                    android:maxLength="10"
-                    android:inputType="number"/>
+                    android:padding="8dp"
+                    android:id="@+id/c_cvc"
+                    android:maxLength="3"
+                    android:inputType="numberPassword"/>
 
             </LinearLayout>
 
@@ -155,14 +204,32 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <Button
-        android:id="@+id/savepayment"
-        android:layout_width="300dp"
+        android:id="@+id/savecustomerpayment"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
-        android:background="#000"
-        android:text="Save"
-        android:textColor="#fff"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
+        android:backgroundTint="@color/black"
+        android:text="Save" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By providing your credit card details, you agree to Quickdel's Terms and Conditions."
+            android:textColor="@color/black"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
 
 </LinearLayout>

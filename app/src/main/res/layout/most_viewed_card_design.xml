@@ -23,13 +23,13 @@
             android:id="@+id/mv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Taco Bell"
-            android:layout_toRightOf="@+id/mv_image"
             android:layout_marginLeft="10dp"
-            android:textSize="20sp"
-            android:fontFamily="@font/baloo"
+            android:layout_toEndOf="@id/mv_image"
+            android:layout_toRightOf="@+id/mv_image"
+            android:fontFamily="@font/prompt_semi_bold"
             android:lineHeight="20dp"
-            android:layout_toEndOf="@id/mv_image"/>
+            android:text="Taco Bell"
+            android:textSize="20sp" />
 
 <!--        <RatingBar-->
 <!--            android:id="@+id/mv_rating"-->

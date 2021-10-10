@@ -24,7 +24,7 @@
             android:id="@+id/featured_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:text="Chemist"
             android:textColor="@color/black"
             android:textSize="20sp"/>
@@ -34,6 +34,7 @@
             android:id="@+id/featured_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/prompt_regular"
             android:text="Chemist Warehouse Group is an Australian company operating a chain of retail pharmacies"/>
 
     </LinearLayout>

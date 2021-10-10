@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/home_background"
+    android:background="@color/white"
     tools:context=".PlaceQuickdelActivity2">
 
     <RelativeLayout
@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
-            android:text="Place an Order"
-            android:textSize="30dp" />
+            android:text="Place a Quickdel"
+            android:textSize="25dp" />
 
 
         <ImageView
@@ -66,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:text="Set Location"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:fontFamily="@font/prompt_semi_bold"
+                    android:textSize="18dp"/>
 
                 <EditText
                     android:id="@+id/pickup"
@@ -77,10 +78,12 @@
                     android:drawableStart="@drawable/ic_location"
                     android:drawableLeft="@drawable/ic_location"
                     android:drawablePadding="10dp"
-                    android:fontFamily="@font/antic"
+                    android:fontFamily="@font/prompt_semi_bold"
                     android:hint="Enter Pickup Point"
                     android:padding="10dp"
-                    tools:ignore="TouchTargetSizeCheck"></EditText>
+                    tools:ignore="TouchTargetSizeCheck">
+
+                </EditText>
 
                 <EditText
                     android:id="@+id/destination"
@@ -91,10 +94,11 @@
                     android:drawableStart="@drawable/ic_location"
                     android:drawableLeft="@drawable/ic_location"
                     android:drawablePadding="10dp"
-                    android:fontFamily="@font/antic"
-                    android:hint="Enter Destination"
+                    android:fontFamily="@font/prompt_semi_bold"                    android:hint="Enter Destination"
                     android:padding="10dp"
-                    tools:ignore="TouchTargetSizeCheck"></EditText>
+                    tools:ignore="TouchTargetSizeCheck">
+
+                </EditText>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -141,6 +145,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_recipient"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/prompt_semi_bold"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
                         android:drawableLeft="@drawable/fullname_icon"
@@ -161,6 +166,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
+                        android:fontFamily="@font/prompt_semi_bold"
                         android:drawableLeft="@drawable/phone_number"
                         android:drawableStart="@drawable/phone_number"
                         android:drawablePadding="10dp"/>
@@ -173,7 +179,8 @@
                     android:text="Choose the Vehicle Type"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:fontFamily="@font/prompt_semi_bold"
+                    android:textSize="18dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -215,7 +222,8 @@
                     android:text="Choose the Package Size"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:fontFamily="@font/prompt_semi_bold"
+                    android:textSize="18dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -256,9 +264,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose the Package Weight"
+                    android:fontFamily="@font/prompt_semi_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"

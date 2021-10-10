@@ -23,9 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
         <activity
+            android:name=".FinalAnimation"
+            android:exported="true" />
+        <activity
             android:name=".RunnersHome"
             android:exported="true" />
-
 
 
         <activity
@@ -43,6 +45,12 @@
         <activity
             android:name=".DeliveryToDestination"
             android:exported="true" />
+
+        <activity
+            android:name=".RunnerPreferences"
+            android:exported="true"
+            android:label="Runners Preferences" />
+
         <activity
             android:name=".UploadPicture"
             android:exported="true" />
@@ -61,7 +69,15 @@
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".UsersHome2"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
 
 
 
@@ -89,6 +105,8 @@
             android:exported="true"
             android:label="@string/title_activity_driver_home"
             android:theme="@style/Theme.Quickdel.NoActionBar" />
+
+
         <activity
             android:name=".OrderConfirmation2"
             android:exported="true" />
@@ -105,6 +123,7 @@
         <activity
             android:name=".UserProfileActivity"
             android:exported="true" />
+
         <activity
             android:name=".CustomerSettingsActivity"
             android:exported="true"
@@ -112,30 +131,15 @@
         <activity
             android:name=".LoadingScreenActivity"
             android:exported="true" />
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".LoginActivity2"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             android:exported="true" />
-        <activity
-            android:name=".RegistrationActivity2"
-            android:exported="true">
-            android:exported="true">
-        </activity>
+
         <activity
             android:name=".RegistrationActivity2"
             android:exported="true"/>
+
+
 
 
         <activity android:name=".OrderConfirmation" />
@@ -149,6 +153,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
+
         <activity
             android:name=".TrackList"
             android:exported="true" />
@@ -159,6 +164,7 @@
             android:name=".Support"
             android:exported="true"
             android:label="Suppport" />
+
         <activity
             android:name=".Payment"
             android:exported="true"
@@ -191,11 +197,11 @@
         <activity
             android:name=".RunnerMain"
             android:exported="true" />
-
-            android:exported="true" />
         <activity
             android:name=".UsersHome"
             android:exported="true" />
+
+
 
         <meta-data
             android:name="preloaded_fonts"

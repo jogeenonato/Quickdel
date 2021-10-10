@@ -11,14 +11,14 @@
         android:id="@+id/background_gradient"
         android:layout_width="300dp"
         android:layout_height="150dp"
-        android:padding="10dp"
-        android:background="@color/card2">
+        android:background="@color/home1"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/categories_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semibold_italic"
             android:text="Restaurant"
             android:textAllCaps="true"
             android:textColor="@color/quantum_grey700"

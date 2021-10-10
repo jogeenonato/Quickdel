@@ -15,7 +15,7 @@
         android:layout_marginBottom="10dp"
         android:padding="16dp"
         android:text="Sign in with Phone"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btn_google_sign_in"

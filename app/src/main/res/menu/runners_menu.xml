@@ -37,10 +37,10 @@
                 <item
                     android:id="@+id/nav_terms"
                     android:icon="@drawable/ic_baseline_rule_24"
-                    android:title="Terms and Conditions" />
+                    android:title="Terms &amp; Conditions" />
                 <item
                     android:id="@+id/nav_earnings"
-                    android:icon="@drawable/ic_baseline_headset_mic_24"
+                    android:icon="@drawable/dollar"
                     android:title="Earnings" />
 
 

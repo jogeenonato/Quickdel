@@ -1,24 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Picture">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".RunnerPreferences">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="400dp"
-        android:id="@+id/image_view"/>
-
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="open"
-        android:layout_gravity="center_horizontal"/>
+        android:padding="20dp">
 
+
+        <TextView
+            android:id="@+id/full_name_top"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/prompt_semi_bold"
+            android:inputType="textCapWords"
+            android:text="Preferences"
+            android:textSize="28dp" />
+
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/banner_background"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow_black" />
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/menu" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="250dp"
+                android:fontFamily="@font/prompt_semi_bold"
+                android:padding="10dp"
+                android:text="Choose your vehicle type"
+                android:textColor="@color/black"
+                android:textSize="22dp">
+
+            </TextView>
+
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp">
+
+                <RadioButton
+                    android:id="@+id/v_bike_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bike"
+                    android:textSize="18dp" />
+
+
+                <RadioButton
+                    android:id="@+id/v_sedan_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sedan"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/v_ute_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ute"
+                    android:textSize="18dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/prompt_semi_bold"
+                android:padding="10dp"
+                android:text="Select the size package\nyou can carry "
+                android:textColor="@color/black"
+                android:textSize="22dp">
+
+            </TextView>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dp">
+
+                <RadioButton
+                    android:id="@+id/s_small_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Small"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/s_medium_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Medium"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/s_large_r"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Large"
+                    android:textSize="18dp" />
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/prompt_semi_bold"
+                android:padding="10dp"
+                android:text="Choose the package \nweight you can carry"
+                android:textColor="@color/black"
+                android:textSize="22dp">
+
+            </TextView>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dp">
+
+                <RadioButton
+                    android:id="@+id/weigh1_r"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Less than 1KG"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/weight2_r"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Between 1.1 KG to 5 KG"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/weight3_r"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Between 5.1 KG to 10 KG"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/weight4_r"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="More than 10 KG"
+                    android:textSize="18dp" />
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/proceed_r"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="Proceed">
+
+            </Button>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

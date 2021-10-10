@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
             android:text="Settings"
             android:textSize="30dp" />
@@ -59,6 +59,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="Payment Method"
+                android:fontFamily="@font/prompt_semi_bold"                app:backgroundTint="@color/black"
                 android:id="@+id/c_payment"
                 android:gravity="center_horizontal"
                 android:padding="8dp">
@@ -77,6 +78,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="Delivery Address"
+                android:fontFamily="@font/prompt_semi_bold"
+                app:backgroundTint="@color/black"
                 android:id="@+id/c_address"
                 android:gravity="center_horizontal"
                 android:padding="8dp">
@@ -95,7 +98,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="Frequently Asked Questions"
+                app:backgroundTint="@color/black"
                 android:id="@+id/c_faq"
+                android:fontFamily="@font/prompt_semi_bold"
                 android:gravity="center_horizontal"
                 android:padding="8dp">
             </Button>
@@ -111,7 +116,9 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                app:backgroundTint="@color/black"
                 android:text="Support"
+                android:fontFamily="@font/prompt_semi_bold"
                 android:id="@+id/c_support"
                 android:gravity="center_horizontal"
                 android:padding="8dp">
@@ -128,7 +135,9 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Terms and Conditions"
+                android:text="Terms &amp; Conditions"
+                android:fontFamily="@font/prompt_semi_bold"
+                app:backgroundTint="@color/black"
                 android:id="@+id/c_terms"
                 android:gravity="center_horizontal"
                 android:padding="8dp">

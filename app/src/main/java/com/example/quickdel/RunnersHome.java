@@ -216,9 +216,9 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
 
         ArrayList<FeaturedHelperClass> featuredLocations = new ArrayList<>();
 
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.go_online, "Go Online", "Tap on \"Gon online\" and start receivng Quickdels!!"));
+        featuredLocations.add(new FeaturedHelperClass(R.drawable.online11, "Go Online", "Tap on \"Go online\" and start receiving Quickdels!"));
         featuredLocations.add(new FeaturedHelperClass(R.drawable.take_picture, "Take a picture", "When you arrive to your destination take a picture of the Quickdel"));
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.money, "Get your money", "Once you finish your order it will be few hours for you to receive the money."));
+        featuredLocations.add(new FeaturedHelperClass(R.drawable.money, "Get paid", "Within few hours you will receive your money."));
 
         adapter = new FeaturedAdapter(featuredLocations);
         featuredRecycler.setAdapter(adapter);

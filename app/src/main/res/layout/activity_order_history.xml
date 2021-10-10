@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
             android:text="History"
             android:textSize="30dp" />

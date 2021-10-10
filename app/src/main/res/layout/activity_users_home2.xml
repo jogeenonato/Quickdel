@@ -113,22 +113,23 @@
                             android:layout_width="58dp"
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
-                            android:background="@color/card1"
+                            android:background="@color/home4"
                             android:clickable="true"
                             android:elevation="8dp"
                             android:onClick="openPlaceQuickdelActivity">
 
                             <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/restaurant" />
+                                android:src="@drawable/chita_day" />
 
                         </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center_horizontal"
                             android:text="Place"
                             android:textAlignment="center" />
@@ -146,7 +147,7 @@
                             android:layout_width="58dp"
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
-                            android:background="@color/card2"
+                            android:background="@color/home1"
                             android:elevation="8dp"
                             android:onClick="openTrackRunner">
 
@@ -161,6 +162,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center_horizontal"
                             android:text="Track"
                             android:textAlignment="center" />
@@ -177,7 +179,7 @@
                             android:layout_width="58dp"
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
-                            android:background="@color/card3"
+                            android:background="@color/home2"
                             android:clickable="true"
                             android:elevation="8dp"
                             android:onClick="openOrderHistory">
@@ -193,6 +195,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center_horizontal"
                             android:text="History"
                             android:textAlignment="center" />
@@ -209,7 +212,7 @@
                             android:layout_width="58dp"
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
-                            android:background="@color/card4"
+                            android:background="@color/home5"
                             android:elevation="8dp">
 
                             <ImageView
@@ -223,6 +226,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center_horizontal"
                             android:text="Contact"
                             android:textAlignment="center" />
@@ -239,7 +243,7 @@
                             android:layout_width="58dp"
                             android:layout_height="58dp"
                             android:layout_margin="8dp"
-                            android:background="@color/card5"
+                            android:background="@color/home6"
                             android:elevation="8dp"
                             android:onClick="openCustomerSettings">
 
@@ -254,6 +258,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center_horizontal"
                             android:text="Settings"
                             android:textAlignment="center" />
@@ -281,7 +286,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@color/quantum_grey500"
+                        android:background="@color/quantum_grey400"
                         android:orientation="vertical">
 
                         <TextView
@@ -290,6 +295,7 @@
                             android:layout_margin="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="50dp"
+                            android:fontFamily="@font/prompt_semi_bold"
                             android:text="@string/easy_steps"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
@@ -300,6 +306,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
+                            android:fontFamily="@font/prompt_regular"
                             android:text="@string/steps_description"
                             android:textColor="@color/black" />
 
@@ -330,7 +337,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/options_available"
                             android:textAllCaps="true"
                             android:textSize="20sp" />
@@ -340,6 +347,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/view_all" />
 
                     </RelativeLayout>
@@ -365,7 +373,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/benefits"
                             android:textAllCaps="true"
                             android:textSize="20sp" />

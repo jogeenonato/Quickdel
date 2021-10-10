@@ -10,19 +10,35 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu" />
 
         <TextView
             android:id="@+id/full_name_top"
-            android:layout_width="500dp"
-            android:layout_height="60dp"
-            android:background="@drawable/blackbackground"
-            android:fontFamily="@font/baloo"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
-            android:text="Frequently Asked Questions"
-            android:textColor="@color/white"
-            android:textSize="26dp" />
+            android:text="Faq"
+            android:textSize="30dp" />
 
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/banner_background"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow_black" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

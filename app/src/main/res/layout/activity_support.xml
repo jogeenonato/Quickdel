@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="disable"
     tools:context=".Support">
 
   <TextView
@@ -62,10 +61,8 @@
       android:id="@+id/button7"
       android:layout_width="73dp"
       android:layout_height="44dp"
-
       android:layout_marginStart="300dp"
       android:layout_marginBottom="212dp"
-      android:onClick="Sent"
       android:text="Send"
       app:layout_constraintBottom_toTopOf="@+id/textView9"
       app:layout_constraintStart_toStartOf="parent" />

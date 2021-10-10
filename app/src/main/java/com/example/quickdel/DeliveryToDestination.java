@@ -60,7 +60,7 @@ public class DeliveryToDestination extends AppCompatActivity {
     FirebaseStorage storage;
 
     ImageView imageView;
-    Button button, uploadPhoto;
+    Button button, uploadPhoto, bt_finish;
     public Uri uri;
 
     Uri imageUri;
@@ -94,6 +94,10 @@ public class DeliveryToDestination extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         uploadPhoto = findViewById(R.id.uploadPhoto);
+
+        bt_finish = findViewById(R.id.cameraPhoto);
+
+
 
 
         if (ContextCompat.checkSelfPermission(DeliveryToDestination.this,
@@ -167,9 +171,19 @@ public class DeliveryToDestination extends AppCompatActivity {
                 //when both value fill, display track
                 DisplayTrack(sSource, sDestination);
                 //}
-
             }
         });
+        bt_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFinalAnimation();
+            }
+        });
+    }
+
+    public void openFinalAnimation() {
+        Intent intent = new Intent(this, FinalAnimation.class);
+        startActivity(intent);
     }
 
     private void uploadImage() {

@@ -64,6 +64,12 @@ public class DriverHomeActivity extends AppCompatActivity {
         lookForQuickdel();
 
     }
+    @Override
+    public void onBackPressed() {
+
+        startActivity(new Intent(getApplicationContext(), DriverHomeActivity.class));
+
+    }
 
 
     private void lookForQuickdel() {

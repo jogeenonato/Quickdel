@@ -28,10 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
-            android:text="Runner Interface"
-            android:textSize="30dp" />
+            android:text="Start Quickdel"
+            android:textSize="26dp" />
 
 
         <ImageView
@@ -57,7 +57,7 @@
         android:id="@+id/et_destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
         android:background="@android:drawable/editbox_background"
         android:hint="Enter Pickedup location"
         android:padding="12dp"
@@ -68,7 +68,7 @@
         android:id="@+id/recipient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
         android:background="@android:drawable/editbox_background"
         android:padding="12dp"
         android:visibility="gone"
@@ -87,24 +87,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <ImageButton
             android:id="@+id/bt_track"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="135dp"
             android:layout_marginTop="16dp"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/startdestination_bt"
             android:onClick="disable"
             android:text="Start Quickdel" />
 
-        <Button
+        <ImageButton
             android:id="@+id/bt_startDestination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="135dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
+            android:background="@drawable/startdestination_bt"
             android:onClick="disable"
             android:text="Quickdel collected"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            app:backgroundTint="@color/black" />
     </RelativeLayout>
 
 

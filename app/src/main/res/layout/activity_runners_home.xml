@@ -79,148 +79,64 @@
                         android:layout_width="140dp"
                         android:layout_height="135dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="50dp"
                         android:background="@drawable/gogo" />
 
 
                 </RelativeLayout>
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="140dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_margin="8dp"
-                            android:background="@color/purple_200"
-                            android:clickable="true"
-                            android:elevation="8dp"
-                            android:onClick="openOrderHistory">
-
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/inbox" />
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Inbox"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/black"
-                            android:textAlignment="center" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_margin="8dp"
-                            android:background="@color/purpleDark"
-                            android:elevation="8dp">
-
-                            <ImageView
-                                android:id="@+id/iv_earnings"
-                                android:layout_width="150dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/purpleDark"
-                                android:src="@drawable/ic_baseline_attach_money_24" />
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Earnings"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/black"
-                            android:textAlignment="center" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_margin="8dp"
-                            android:background="@color/purple_200"
-                            android:elevation="8dp">
-
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/settings3" />
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Settings"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/black"/>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="250dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="70dp"
                     android:background="@color/quantum_grey300">
+
+                    <LinearLayout
+                        android:id="@+id/featured_background"
+                        android:layout_width="120dp"
+                        android:layout_height="280dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/quantum_grey300"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="50dp"
+                            android:fontFamily="@font/prompt_semi_bold"
+                            android:text="@string/easy_steps"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:fontFamily="@font/prompt_regular"
+                            android:text="@string/steps_description_runner"
+                            android:textColor="@color/black" />
+
+
+                    </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/featured_recycler"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
+                        android:layout_toRightOf="@+id/featured_background"
                         android:background="@color/home_background" />
 
 
@@ -241,7 +157,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/options_available"
                             android:textAllCaps="true"
                             android:textSize="20sp" />
@@ -251,6 +167,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/view_all" />
 
                     </RelativeLayout>
@@ -276,7 +194,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/benefits"
                             android:textAllCaps="true"
                             android:textSize="20sp" />
@@ -286,6 +204,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:fontFamily="@font/prompt_semibold_italic"
                             android:text="@string/view_all" />
 
                     </RelativeLayout>
@@ -296,9 +215,6 @@
                         android:layout_height="170dp" />
 
                 </LinearLayout>
-
-
-
 
             </LinearLayout>
 

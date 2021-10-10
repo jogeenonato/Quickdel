@@ -29,8 +29,9 @@
           android:layout_height="wrap_content"
           android:text="You have new quickdel!"
           android:textColor="@android:color/black"
-          android:textSize="18sp"
+          android:textSize="22sp"
           android:textStyle="bold"
+          android:fontFamily="@font/prompt_semi_bold"
           app:layout_constraintBottom_toBottomOf="@id/close_sheet_button"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,8 @@
         android:layout_height="wrap_content"
         android:paddingEnd="32dp"
         android:text="Ship from"
-        android:textColor="@color/colorSheetLabel"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/left_info_guide"
         app:layout_constraintTop_toBottomOf="@id/close_sheet_button"
@@ -127,7 +129,9 @@
         android:layout_marginTop="15dp"
         android:paddingEnd="32dp"
         android:text="Ship to"
-        android:textColor="@color/colorSheetLabel"
+        android:textStyle="bold"
+
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/left_info_guide"
         app:layout_constraintTop_toBottomOf="@+id/ship_separator2"
@@ -192,7 +196,8 @@
         android:layout_marginTop="32dp"
         android:paddingEnd="32dp"
         android:text="Total"
-        android:textColor="@color/colorSheetLabel"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/left_info_guide"
         app:layout_constraintTop_toBottomOf="@+id/ship_separator"
@@ -252,6 +257,7 @@
         android:layout_marginEnd="4dp"
         android:layout_marginStart="4dp"
         android:background="@drawable/button"
+        app:backgroundTint="@color/black"
         android:text="Accept" />
 
     <Button
@@ -261,7 +267,8 @@
         android:layout_marginEnd="4dp"
         android:layout_marginStart="4dp"
         android:background="@drawable/button"
-        android:text="Decline" />
+        android:text="Decline"
+        app:backgroundTint="@color/black"/>
 
    <Button
        android:id="@+id/btn_view"
@@ -270,7 +277,8 @@
        android:layout_marginEnd="4dp"
        android:layout_marginStart="4dp"
        android:background="@drawable/button"
-       android:text="View" />
+       android:text="View"
+       app:backgroundTint="@color/black"/>
  </LinearLayout>
   </androidx.constraintlayout.widget.ConstraintLayout>
 
