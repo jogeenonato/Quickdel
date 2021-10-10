@@ -165,11 +165,14 @@
                         android:id="@+id/et_recipientMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+
                         android:fontFamily="@font/prompt_semi_bold"
                         android:drawableLeft="@drawable/phone_number"
                         android:drawableStart="@drawable/phone_number"
-                        android:drawablePadding="10dp"/>
+
+                        android:drawablePadding="10dp"
+                        android:inputType="number"
+                        android:maxLength="10"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -325,7 +328,8 @@
                         android:inputType="textCapWords"
                         android:drawableLeft="@drawable/ic_baseline_description_24"
                         android:drawableStart="@drawable/ic_baseline_description_24"
-                        android:drawablePadding="10dp"/>
+                        android:drawablePadding="10dp"
+                        android:maxLength="140"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

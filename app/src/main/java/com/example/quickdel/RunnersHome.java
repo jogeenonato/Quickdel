@@ -1,6 +1,8 @@
 package com.example.quickdel;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,6 +26,8 @@ import com.example.quickdel.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.quickdel.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.quickdel.HelperClasses.HomeAdapter.MostViewedHelperClass;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -38,6 +42,8 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
     NavigationView navigationView;
     LinearLayout contentView;
     ImageButton btOnline;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +63,31 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
 
         btOnline = findViewById(R.id.go_online);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        listener = myFirebaseAuth -> {
+            FirebaseUser user = myFirebaseAuth.getCurrentUser();
+            if(user != null)
+            {
+                String getrunneruserid = user.getUid();
+                SharedPreferences settings = getSharedPreferences("Runner", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("runnerID", getrunneruserid);
+                editor.apply();
+                // Toast.makeText(RunnerMain.this,  getrunneruserid, Toast.LENGTH_SHORT).show();
+            }
+
+        };
+
 
         navigationDrawer();
 
         featuredRecycler();
         mostViewedRecycler();
         categoriesRecycler();
+
+
+
 
         btOnline.setOnClickListener(new View.OnClickListener() {
             @Override
