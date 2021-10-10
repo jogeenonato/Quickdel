@@ -19,6 +19,7 @@
             android:layout_width="37dp"
             android:layout_height="37dp"
             android:layout_centerVertical="true"
+            android:visibility="invisible"
             android:src="@drawable/menu" />
 
         <TextView
@@ -53,10 +54,9 @@
       android:id="@+id/logoImage2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="-50dp"
       android:fontFamily="@font/prompt_regular"
       android:text="How can we help you?"
-      android:textColor="#000"
+      android:textColor="@color/black"
       android:textSize="28dp" />
     </LinearLayout>
 
@@ -75,10 +75,10 @@
       <EditText
           android:id="@+id/et_phone"
           android:layout_width="match_parent"
-          android:hint="Subject"
+          android:hint="Phone No."
           android:layout_height="wrap_content"
           android:inputType="text"
-          android:drawableLeft="@drawable/fullname_icon"
+          android:drawableLeft="@drawable/phone_number"
 
           android:drawablePadding="10dp"/>
 

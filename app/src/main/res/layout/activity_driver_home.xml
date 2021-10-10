@@ -52,6 +52,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@color/banner_background"
                 android:padding="5dp"
+                android:visibility="invisible"
                 android:src="@drawable/ic_baseline_add_24" />
         </RelativeLayout>
 

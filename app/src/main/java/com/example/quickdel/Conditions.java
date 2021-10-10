@@ -1,19 +1,27 @@
 package com.example.quickdel;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Conditions extends AppCompatActivity {
-
+    ImageView back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_conditions);
-
+        back_btn = findViewById(R.id.btn_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Conditions.super.onBackPressed();
+            }
+        });
         TextView mMessageWindow = (TextView) findViewById(R.id.messageWindow);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -91,5 +99,10 @@ public class Conditions extends AppCompatActivity {
 
         mMessageWindow.setText(stringBuilder.toString());
 
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

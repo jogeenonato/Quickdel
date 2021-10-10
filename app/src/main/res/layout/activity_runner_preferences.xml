@@ -19,6 +19,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:visibility="invisible"
             android:src="@drawable/menu" />
 
         <TextView

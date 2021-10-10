@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/baloo"
+                android:fontFamily="@font/prompt_semi_bold"
                 android:inputType="textCapWords"
                 android:text="Track"
                 android:textSize="30dp" />
@@ -61,6 +61,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:visibility="invisible"
                 android:onClick="getLocationDetails"
                 android:text="Track" />
         </RelativeLayout>
@@ -68,7 +69,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             android:padding="5dp">
+
 
             <TextView
                 android:id="@+id/LocationDisplay"

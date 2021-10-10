@@ -71,14 +71,10 @@
     </item>
 
 
-    <item android:title="Share">
+    <item android:title="Logout">
         <menu>
 
             <group android:checkableBehavior="none">
-                <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_baseline_share_24"
-                    android:title="Share" />
 
                 <item
                     android:id="@+id/nav_logout"

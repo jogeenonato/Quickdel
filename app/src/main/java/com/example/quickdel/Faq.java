@@ -1,7 +1,9 @@
 package com.example.quickdel;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +18,7 @@ public class Faq extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Versions> versionsList;
 
-
+    ImageView back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,13 @@ public class Faq extends AppCompatActivity {
         setContentView(R.layout.activity_faq);
 
         recyclerView = findViewById(R.id.recyclerView);
-
+        back_btn = findViewById(R.id.btn_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Faq.super.onBackPressed();
+            }
+        });
         initData();
         setRecyclerView();
 
@@ -52,5 +60,10 @@ public class Faq extends AppCompatActivity {
         versionsList.add(new Versions("I can not find the picked up location address", "Contact the picked up person.\n" +
                 "Contact the recipient” link.\n" +
                 "If no response contact us at 01800124578."));
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

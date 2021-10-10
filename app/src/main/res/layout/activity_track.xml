@@ -21,6 +21,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:visibility="invisible"
             android:src="@drawable/menu" />
 
         <TextView
@@ -93,9 +94,10 @@
             android:layout_height="135dp"
             android:layout_marginTop="16dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/startdestination_bt"
+            android:background="@drawable/final1"
             android:onClick="disable"
-            android:text="Start Quickdel" />
+            android:text="Start Quickdel"
+            android:visibility="visible"/>
 
         <ImageButton
             android:id="@+id/bt_startDestination"
@@ -103,11 +105,10 @@
             android:layout_height="135dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:background="@drawable/startdestination_bt"
+            android:background="@drawable/final2"
             android:onClick="disable"
             android:text="Quickdel collected"
-            android:visibility="invisible"
-            app:backgroundTint="@color/black" />
+            android:visibility="invisible" />
     </RelativeLayout>
 
 

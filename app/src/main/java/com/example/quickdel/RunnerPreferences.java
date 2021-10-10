@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,12 +43,13 @@ public class RunnerPreferences extends AppCompatActivity {
     DatabaseReference reference;
     String sType;
     int i = 0;
-
+    ImageView back_btn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_runner_preferences);
 
         btn = findViewById(R.id.proceed_r);
@@ -62,7 +65,13 @@ public class RunnerPreferences extends AppCompatActivity {
         weight3 = findViewById(R.id.weight3_r);
         weight4 = findViewById(R.id.weight4_r);
 
-
+        back_btn = findViewById(R.id.btn_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RunnerPreferences.super.onBackPressed();
+            }
+        });
 
         //Initialise Places API
         Places.initialize(getApplicationContext(), "AIzaSyC5Dl6IRV_S908iz8VHnMED-pQ0SbOEAl0");
@@ -138,7 +147,11 @@ public class RunnerPreferences extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 
 }
 

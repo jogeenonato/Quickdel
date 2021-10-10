@@ -5,8 +5,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,16 +19,23 @@ import androidx.core.content.ContextCompat;
 public class test extends AppCompatActivity {
     EditText etPhone, etMessage;
     Button btSend;
-
+    ImageView back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_support);
 
         etPhone = findViewById(R.id.et_phone);
         etMessage = findViewById(R.id.et_message);
         btSend = findViewById(R.id.bt_send);
-
+        back_btn = findViewById(R.id.btn_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                test.super.onBackPressed();
+            }
+        });
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,5 +85,10 @@ public class test extends AppCompatActivity {
             Toast.makeText(getApplicationContext()
                     , "Permission Denied!",Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
