@@ -37,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -241,6 +242,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         editor.putString("orderNumber", orderNumber);
         editor.apply();
 
+        DecimalFormat df2 = new DecimalFormat("#.##");
+
         //Add order details in the database
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -265,6 +268,21 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 String rn = recipient.getText().toString();
                 String ds = tvDistance.getText().toString();
                 String rnNo = recipientNo.getText().toString();
+                Double bikePrice = 10.00;
+                Double sedanPrice = 12.00;
+                Double utePrice = 14.50;
+                Double smallPrice = 0.55;
+                Double mediumPrice = 0.65;
+                Double largePrice = 0.85;
+                Double weight1Price = 2.50;
+                Double weight2Price = 3.50;
+                Double weight3Price = 4.50;
+                Double weight4Price = 5.50;
+                Double dPrice1 = 5.00;
+                Double dPrice2 = 7.00;
+                Double dPrice3 = 10.00;
+                Double total = 0.00;
+
 
                 SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
                 String userName = settings.getString("name", "");
@@ -274,59 +292,59 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 double dsP = Double.parseDouble(ds);
 
                 if (dsP <= 10){
-                    orders.setDistancePrice(5.00);
+                    orders.setDistancePrice(Double.valueOf(df2.format(dPrice1)));
                     reference.child(orderNumber).setValue(orders);
                 } else if (dsP <= 10 && dsP >= 25){
-                    orders.setDistancePrice(7.00);
+                    orders.setDistancePrice(Double.valueOf(df2.format(dPrice2)));
                     reference.child(orderNumber).setValue(orders);
                 } else {
-                    orders.setDistancePrice(10.00);
+                    orders.setDistancePrice(Double.valueOf(df2.format(dPrice3)));
                     reference.child(orderNumber).setValue(orders);
                 }
 
                 if (bike.isChecked()){
                     orders.setVehicle(v1);
-                    orders.setVehiclePrice(10.00);
+                    orders.setVehiclePrice(Double.valueOf(df2.format(bikePrice)));
                     reference.child(orderNumber).setValue(orders);
                 } else if (sedan.isChecked()){
                     orders.setVehicle(v2);
-                    orders.setVehiclePrice(12.00);
+                    orders.setVehiclePrice(Double.valueOf(df2.format(sedanPrice)));
                     reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setVehicle(v3);
-                    orders.setVehiclePrice(14.00);
+                    orders.setVehiclePrice(Double.valueOf(df2.format(utePrice)));
                     reference.child(orderNumber).setValue(orders);
                 }
 
                 if (small.isChecked()){
                     orders.setSize(s1);
-                    orders.setSizePrice(0.50);
+                    orders.setSizePrice(Double.valueOf(df2.format(smallPrice)));
                     reference.child(orderNumber).setValue(orders);
                 } else if (medium.isChecked()){
                     orders.setSize(s2);
-                    orders.setSizePrice(0.60);
+                    orders.setSizePrice(Double.valueOf(df2.format(mediumPrice)));
                     reference.child(orderNumber).setValue(orders);
                 } else {
                     orders.setSize(s3);
-                    orders.setSizePrice(0.80);
+                    orders.setSizePrice(Double.valueOf(df2.format(largePrice)));
                     reference.child(orderNumber).setValue(orders);
                 }
 
                 if (weight1.isChecked()){
                     orders.setWeight(w1);
-                    orders.setWeightPrice(2.00);
+                    orders.setWeightPrice(Double.valueOf(df2.format(weight1Price)));
                     reference.child(orderNumber).setValue(orders);
                 } else if (weight2.isChecked()){
                     orders.setWeight(w2);
-                    orders.setWeightPrice(3.00);
+                    orders.setWeightPrice(Double.valueOf(df2.format(weight2Price)));
                     reference.child(orderNumber).setValue(orders);
                 } else if (weight3.isChecked()) {
                     orders.setWeight(w3);
-                    orders.setWeightPrice(4.00);
+                    orders.setWeightPrice(Double.valueOf(df2.format(weight3Price)));
                     reference.child(valueOf(i + 1)).setValue(orders);
                 } else {
                     orders.setWeight(w4);
-                    orders.setWeightPrice(5.00);
+                    orders.setWeightPrice(Double.valueOf(df2.format(weight4Price)));
                     reference.child(orderNumber).setValue(orders);
                 }
 
@@ -356,7 +374,9 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 orders.setOrderNumber(orderNumber);
                 reference.child(orderNumber).setValue(orders);
 
-                orders.setTotal(orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice());
+
+                total = orders.getWeightPrice()+orders.getSizePrice()+ orders.getVehiclePrice()+ orders.getDistancePrice();
+                orders.setTotal(Double.valueOf(df2.format(total)));
                 reference.child(orderNumber).setValue(orders);
 
 
@@ -382,6 +402,8 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
             }
         });
 
+
+
 //        setupBackButton();
     }
 
@@ -391,20 +413,35 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         //launch OrderConfirmation activity
         Intent i = new Intent(this, OrderConfirmation2.class);
 
+
         Double bikePrice = 10.00;
+        String stringBike = String.format(Locale.UK, "%.2f", bikePrice);
         Double sedanPrice = 12.00;
-        Double utePrice = 14.00;
-        Double smallPrice = 0.50;
-        Double mediumPrice = 0.60;
-        Double largePrice = 0.80;
-        Double weight1Price = 2.00;
-        Double weight2Price = 3.00;
-        Double weight3Price = 4.00;
-        Double weight4Price = 5.00;
+        String stringSedan = String.format(Locale.UK, "%.2f", sedanPrice);
+        Double utePrice = 14.50;
+        String stringUte = String.format(Locale.UK, "%.2f", utePrice);
+        Double smallPrice = 0.55;
+        String stringSmall = String.format(Locale.UK, "%.2f", smallPrice);
+        Double mediumPrice = 0.65;
+        String stringMedium = String.format(Locale.UK, "%.2f", mediumPrice);
+        Double largePrice = 0.85;
+        String stringLarge = String.format(Locale.UK, "%.2f", largePrice);
+        Double weight1Price = 2.50;
+        String stringW1 = String.format(Locale.UK, "%.2f", weight1Price);
+        Double weight2Price = 3.50;
+        String stringW2 = String.format(Locale.UK, "%.2f", weight2Price);
+        Double weight3Price = 4.50;
+        String stringW3 = String.format(Locale.UK, "%.2f", weight3Price);
+        Double weight4Price = 5.50;
+        String stringW4 = String.format(Locale.UK, "%.2f", weight4Price);
         Double dPrice1 = 5.00;
+        String stringDP1 = String.format(Locale.UK, "%.2f", dPrice1);
         Double dPrice2 = 7.00;
+        String stringDP2 = String.format(Locale.UK, "%.2f", dPrice2);
         Double dPrice3 = 10.00;
+        String stringDP3 = String.format(Locale.UK, "%.2f", dPrice3);
         Double Total = 0.00;
+
 
 
         String orderno = orderNumber;
@@ -428,19 +465,19 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         if (bike.isChecked()) {
             String vehicle = ((RadioButton) findViewById(R.id.v_bike)).getText().toString();
             i.putExtra("VEHICLE", vehicle);
-            String vehiclePrice = bikePrice.toString();
+            String vehiclePrice = stringBike;
             i.putExtra("VPRICE", vehiclePrice);
             Total += bikePrice;
         } else if (sedan.isChecked()) {
             String vehicle = ((RadioButton) findViewById(R.id.v_sedan)).getText().toString();
             i.putExtra("VEHICLE", vehicle);
-            String vehiclePrice = sedanPrice.toString();
+            String vehiclePrice = stringSedan;
             i.putExtra("VPRICE", vehiclePrice);
             Total += sedanPrice;
         } else {
             String vehicle = ((RadioButton) findViewById(R.id.v_ute)).getText().toString();
             i.putExtra("VEHICLE", vehicle);
-            String vehiclePrice = utePrice.toString();
+            String vehiclePrice = stringUte;
             i.putExtra("VPRICE", vehiclePrice);
             Total += utePrice;
         }
@@ -448,19 +485,19 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         if (small.isChecked()) {
             String size = ((RadioButton) findViewById(R.id.s_small)).getText().toString();
             i.putExtra("SIZE", size);
-            String sizePrice = smallPrice.toString();
+            String sizePrice = stringSmall;
             i.putExtra("SPRICE", sizePrice);
             Total += smallPrice;
         } else if (medium.isChecked()) {
             String size = ((RadioButton) findViewById(R.id.s_medium)).getText().toString();
             i.putExtra("SIZE", size);
-            String sizePrice = mediumPrice.toString();
+            String sizePrice = stringMedium;
             i.putExtra("SPRICE", sizePrice);
             Total += mediumPrice;
         } else {
             String size = ((RadioButton) findViewById(R.id.s_large)).getText().toString();
             i.putExtra("SIZE", size);
-            String sizePrice = largePrice.toString();
+            String sizePrice = stringLarge;
             i.putExtra("SPRICE", sizePrice);
             Total += largePrice;
         }
@@ -468,25 +505,25 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         if (weight1.isChecked()) {
             String weight = ((RadioButton) findViewById(R.id.weigh1)).getText().toString();
             i.putExtra("WEIGHT", weight);
-            String weightPrice = weight1Price.toString();
+            String weightPrice = stringW1;
             i.putExtra("WPRICE", weightPrice);
             Total += weight1Price;
         } else if (weight2.isChecked()) {
             String weight = ((RadioButton) findViewById(R.id.weight2)).getText().toString();
             i.putExtra("WEIGHT", weight);
-            String weightPrice = weight2Price.toString();
+            String weightPrice = stringW2;
             i.putExtra("WPRICE", weightPrice);
             Total += weight2Price;
         } else if (weight3.isChecked()) {
             String weight = ((RadioButton) findViewById(R.id.weight3)).getText().toString();
             i.putExtra("WEIGHT", weight);
-            String weightPrice = weight3Price.toString();
+            String weightPrice = stringW3;
             i.putExtra("WPRICE", weightPrice);
             Total += weight3Price;
         } else {
             String weight = ((RadioButton) findViewById(R.id.weight4)).getText().toString();
             i.putExtra("WEIGHT", weight);
-            String weightPrice = weight4Price.toString();
+            String weightPrice = stringW4;
             i.putExtra("WPRICE", weightPrice);
             Total += weight4Price;
         }
@@ -497,15 +534,15 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
 
 
         if (dsP <= 10) {
-            String distancePrice = dPrice1.toString();
+            String distancePrice = stringDP1;
             i.putExtra("DPRICE", distancePrice);
             Total += dPrice1;
         } else if (dsP <= 10 && dsP >= 25) {
-            String distancePrice = dPrice2.toString();
+            String distancePrice = stringDP2;
             i.putExtra("DPRICE", distancePrice);
             Total += dPrice2;
         } else {
-            String distancePrice = dPrice3.toString();
+            String distancePrice = stringDP3;
             i.putExtra("DPRICE", distancePrice);
             Total += dPrice3;
         }
@@ -514,7 +551,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
         String dc = etDesc.getText().toString();
         i.putExtra("DESC", dc);
 
-        String total = Total.toString();
+        String total = String.format(Locale.UK, "%.2f", Total);;
         i.putExtra("TOTAL", total);
 
         startActivity(i);
@@ -526,7 +563,7 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
     private void calculateEarnings(){
 
         Double totalwithearn = orders.getTotal();
-        Double earnings = totalwithearn - (totalwithearn * 0.05);
+        Double earnings = totalwithearn - (totalwithearn * 0.25);
         String newearnings = String.format(Locale.UK, "%.2f", earnings);
         double DoubleEarnings = Double.parseDouble(newearnings);
         orders.setRunnerEarnings(DoubleEarnings);
