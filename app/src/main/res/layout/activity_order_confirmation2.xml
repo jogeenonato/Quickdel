@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_700"
+        android:background="@color/white"
         android:padding="20dp">
 
         <ImageView
@@ -18,18 +18,17 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/menu2" />
+            android:src="@drawable/menu" />
 
         <TextView
             android:id="@+id/tv_orderNo"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/prompt_semi_bold"
             android:inputType="textCapWords"
-            android:text="Order #"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:text="Order No"
+            android:textSize="28dp" />
 
 
         <ImageView
@@ -37,8 +36,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
+            android:background="@color/banner_background"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+            android:src="@drawable/back_arrow_black" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -50,7 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_700"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -58,7 +59,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/teal_700"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:padding="10dp">
 

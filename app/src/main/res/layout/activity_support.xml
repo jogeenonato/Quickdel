@@ -1,70 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Support">
+    tools:context=".Support"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
 
-  <TextView
-      android:id="@+id/textView7"
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu" />
+
+        <TextView
+            android:id="@+id/full_name_top"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/prompt_semi_bold"
+            android:inputType="textCapWords"
+            android:text="Contact"
+            android:textSize="30dp" />
+
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/banner_background"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow_black" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/logoImage2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="76dp"
-      android:layout_marginTop="116dp"
-      android:text="Tell us how we can help you"
-      android:textSize="18dp"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      android:layout_marginTop="-50dp"
+      android:fontFamily="@font/prompt_regular"
+      android:text="How can we help you?"
+      android:textColor="#000"
+      android:textSize="28dp" />
+    </LinearLayout>
 
-  <TextView
-      android:id="@+id/textView9"
-      android:layout_width="228dp"
-      android:layout_height="68dp"
-      android:layout_marginStart="76dp"
-      android:layout_marginEnd="89dp"
-      android:layout_marginBottom="72dp"
-      android:text="You can also call us through our Customer Support hotline at 021235587"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="parent" />
 
-  <ImageView
-      android:id="@+id/imageView"
-      android:layout_width="22dp"
-      android:layout_height="31dp"
-      android:layout_marginBottom="72dp"
-      android:rotationY="180"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.498"
-      app:layout_constraintStart_toStartOf="parent"
-      app:srcCompat="@drawable/phone" />
-
-  <EditText
-      android:id="@+id/et_message"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="252dp"
-      android:background="@android:drawable/editbox_background"
-      android:gravity="top"
-      android:hint="Enter message"
-      android:inputType="textMultiLine"
-      android:minLines="6"
-      android:padding="12dp"
-      app:layout_constraintBottom_toTopOf="@+id/textView9"
-      app:layout_constraintTop_toBottomOf="@+id/textView7"
-      tools:layout_editor_absoluteX="-26dp" />
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="20dp"
+      android:orientation="vertical">
 
-  <Button
-      android:id="@+id/button7"
-      android:layout_width="73dp"
-      android:layout_height="44dp"
-      android:layout_marginStart="300dp"
-      android:layout_marginBottom="212dp"
-      android:text="Send"
-      app:layout_constraintBottom_toTopOf="@+id/textView9"
-      app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+      <EditText
+          android:id="@+id/et_phone"
+          android:layout_width="match_parent"
+          android:hint="Subject"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:drawableLeft="@drawable/fullname_icon"
+
+          android:drawablePadding="10dp"/>
+
+
+
+      <EditText
+          android:id="@+id/et_message"
+          android:hint="Compose e-mail"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          android:drawablePadding="10dp"/>
+
+
+
+
+    <Button
+        android:id="@+id/bt_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#000"
+        android:text="Send"
+        android:textColor="#fff"
+        app:backgroundTint="@color/black" />
+
+    <TextView
+
+        android:textSize="20dp"
+        android:fontFamily="@font/prompt_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E-mail us at support@quickdel.com text us or give us a call at: 0180125893"
+        android:textColor="@color/black" />
+
+
+  </LinearLayout>
+
+
+
+</LinearLayout>

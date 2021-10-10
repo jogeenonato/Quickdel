@@ -30,8 +30,14 @@
             android:exported="true" />
         <activity
             android:name=".RunnersHome"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".DeliveryAddress"
@@ -48,6 +54,7 @@
         <activity
             android:name=".DeliveryToDestination"
             android:exported="true" />
+
 
         <activity
             android:name=".RunnerPreferences"
@@ -73,6 +80,7 @@
         <activity
             android:name=".UsersHome2"
             android:exported="true" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -102,6 +110,7 @@
         <activity
             android:name=".OrderConfirmation2"
             android:exported="true" />
+
         <activity
             android:name=".Online"
             android:exported="true"
@@ -122,14 +131,8 @@
             android:label="@string/title_activity_customer_settings" />
         <activity
             android:name=".LoadingScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-            android:exported="true" />
         <activity
             android:name=".LoginActivity2"
             android:exported="true" />
@@ -161,11 +164,14 @@
             android:exported="true" />
         <activity
             android:name=".test"
-            android:exported="true" />
+            android:exported="true"/> >
+
         <activity
             android:name=".Support"
             android:exported="true"
             android:label="Suppport" />
+
+
 
         <activity
             android:name=".Payment"
