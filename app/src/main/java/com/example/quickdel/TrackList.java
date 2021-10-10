@@ -72,7 +72,9 @@ public class TrackList extends AppCompatActivity implements OrderAdapter.OnNoteL
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TrackList.super.onBackPressed();
+//                TrackList.super.onBackPressed();
+                Intent intent1 = new Intent(TrackList.this, UsersHome2.class);
+                startActivity(intent1);
             }
         });
         btn_refresh.setOnClickListener(new View.OnClickListener() {
@@ -96,12 +98,13 @@ public class TrackList extends AppCompatActivity implements OrderAdapter.OnNoteL
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-//                orderUserID = snapshot.child("userID").getValue(String.class);
-//
-//                if (userID == orderUserID) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Orders orders = dataSnapshot.getValue(Orders.class);
-                    list.add(orders);
+                    if (orders.getStatus().equals("Delivered")) {
+
+                    } else{
+                        list.add(orders);
+                    }
                 }
 
                 orderAdapter.notifyDataSetChanged();
