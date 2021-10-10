@@ -91,7 +91,7 @@ public class CustomerSettingsActivity extends AppCompatActivity {
     }
 
     public void openSupport() {
-        Intent intent = new Intent(this, com.example.quickdel.Support.class);
+        Intent intent = new Intent(this, com.example.quickdel.test.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

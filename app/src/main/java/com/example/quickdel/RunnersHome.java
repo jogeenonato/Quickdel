@@ -166,6 +166,9 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
                 startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
                 finish();
                 break;
+            case R.id.nav_runners_home:
+                startActivity(new Intent(getApplicationContext(), RunnersHome.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             case R.id.nav_home_r:
                 if (drawerLayout_r.isDrawerVisible(GravityCompat.START))
                     drawerLayout_r.closeDrawer(GravityCompat.START);

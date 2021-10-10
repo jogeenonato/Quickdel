@@ -44,6 +44,66 @@
             android:padding="5dp"
             android:src="@drawable/back_arrow_black" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Pick Up Address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_pin_drop_24"
+                android:drawablePadding="10dp"
+                android:text="Pick Up Location Address" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Recipient Name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_recipient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/fullname_icon"
+                android:drawablePadding="10dp"
+                android:text="Recipient Name" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Total">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/dollar_black"
+                android:drawablePadding="10dp"
+                android:text="Total" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
     <EditText
         android:id="@+id/et_source"
         android:layout_width="match_parent"
@@ -54,16 +114,6 @@
         android:visibility="gone"
         tools:visibility="gone" />
 
-    <EditText
-        android:id="@+id/et_destination"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="Enter Pickedup location"
-        android:padding="12dp"
-        android:visibility="gone"
-        tools:visibility="invisible" />
 
     <EditText
         android:id="@+id/recipient"
@@ -75,12 +125,6 @@
         android:visibility="gone"
         tools:visibility="gone" />
 
-    <TextView
-        android:id="@+id/resultTv"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 

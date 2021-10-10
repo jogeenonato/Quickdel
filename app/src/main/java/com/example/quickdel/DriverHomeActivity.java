@@ -142,13 +142,16 @@ public class DriverHomeActivity extends AppCompatActivity implements NavigationV
                 startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
                 finish();
                 break;
+            case R.id.nav_runners_home:
+                startActivity(new Intent(getApplicationContext(), RunnersHome.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             case R.id.nav_home_r:
                 if (drawerLayout_r.isDrawerVisible(GravityCompat.START))
                     drawerLayout_r.closeDrawer(GravityCompat.START);
                 else drawerLayout_r.openDrawer(GravityCompat.START);
                 break;
             case R.id.nav_contact:
-                startActivity(new Intent(getApplicationContext(), Support.class));
+                startActivity(new Intent(getApplicationContext(), test.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.nav_FAQ:

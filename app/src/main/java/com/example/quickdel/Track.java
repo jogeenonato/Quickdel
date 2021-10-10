@@ -33,7 +33,7 @@ import java.sql.DriverManager;
 public class Track extends AppCompatActivity {
     //Initialize variable
     EditText etSource,etDestination,Recipient;
-
+    TextView pickup, recipient, totalprice;
     ImageButton btTrack, button;
     DatabaseReference reference;
     FirebaseDatabase database;
@@ -60,6 +60,9 @@ public class Track extends AppCompatActivity {
         etDestination = findViewById(R.id.et_destination);
         Recipient = findViewById(R.id.recipient);
         button = findViewById(R.id.bt_startDestination);
+        pickup = findViewById(R.id.tv_pickup);
+        recipient = findViewById(R.id.tv_recipient);
+        totalprice = findViewById(R.id.tv_total);
 
 
 
@@ -71,9 +74,11 @@ public class Track extends AppCompatActivity {
         etDestination.setText(pickupPoint);
 //        Recipient.setText(edittext);
 
-        TextView mResultTv = findViewById(R.id.resultTv);
-        mResultTv.setText("Pick up Address: "+pickupPoint+"\n\nQuickdel to: "+edittext+"\n\nTotal: $ "+total1);
-
+//        TextView mResultTv = findViewById(R.id.resultTv);
+//        mResultTv.setText("Pick up Address: "+pickupPoint+"\n\nQuickdel to: "+edittext+"\n\nTotal: $ "+total1);
+        pickup.setText(pickupPoint);
+        recipient.setText(edittext);
+        totalprice.setText(total1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){

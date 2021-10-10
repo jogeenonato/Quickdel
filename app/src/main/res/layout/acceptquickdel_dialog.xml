@@ -252,7 +252,7 @@
      android:gravity="center">
     <Button
         android:id="@+id/btn_acceptar"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"
         android:layout_marginStart="4dp"
@@ -262,7 +262,7 @@
 
     <Button
         android:id="@+id/btn_decline"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"
         android:layout_marginStart="4dp"
@@ -270,15 +270,7 @@
         android:text="Decline"
         app:backgroundTint="@color/black"/>
 
-   <Button
-       android:id="@+id/btn_view"
-       android:layout_width="100dp"
-       android:layout_height="50dp"
-       android:layout_marginEnd="4dp"
-       android:layout_marginStart="4dp"
-       android:background="@drawable/button"
-       android:text="View"
-       app:backgroundTint="@color/black"/>
+
  </LinearLayout>
   </androidx.constraintlayout.widget.ConstraintLayout>
 
