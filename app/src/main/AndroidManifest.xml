@@ -23,11 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quickdel">
         <activity
+            android:name=".DeliveredScreenActivity"
+            android:exported="true" />
+        <activity
             android:name=".RunnersHome"
             android:exported="true" />
-
-
-
         <activity
             android:name=".DeliveryAddress"
             android:exported="true" />
@@ -62,9 +62,6 @@
         <activity
             android:name=".UsersHome2"
             android:exported="true" />
-
-
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -111,7 +108,7 @@
             android:label="@string/title_activity_customer_settings" />
         <activity
             android:name=".LoadingScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -120,13 +117,10 @@
         </activity>
         <activity
             android:name=".LoginActivity2"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".RegistrationActivity2"
-            android:exported="true">
-        </activity>
-
-
+            android:exported="true"></activity>
         <activity android:name=".OrderConfirmation" />
         <activity android:name=".PlaceQuickdelActivity" />
         <activity
@@ -180,7 +174,6 @@
         <activity
             android:name=".RunnerMain"
             android:exported="true" />
-
         <activity
             android:name=".UsersHome"
             android:exported="true" />

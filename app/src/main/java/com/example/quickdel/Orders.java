@@ -14,6 +14,16 @@ public class Orders {
     private String runnerID;
     private Double runnerEarnings;
 
+    public String getOrderdatetime() {
+        return orderdatetime;
+    }
+
+    public void setOrderdatetime(String orderdatetime) {
+        this.orderdatetime = orderdatetime;
+    }
+
+    public String orderdatetime;
+
     public Double getRunnerEarnings() {
         return runnerEarnings;
     }

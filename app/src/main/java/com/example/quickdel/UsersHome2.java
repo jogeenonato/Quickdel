@@ -110,7 +110,7 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
         if(drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+//            super.onBackPressed();
         }
 
     }

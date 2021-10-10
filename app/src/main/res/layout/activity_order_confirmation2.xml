@@ -165,7 +165,7 @@
                             android:id="@+id/tv_distancePrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:drawableLeft="@drawable/dollar_black"
                             android:text="Distance" />
 
 
@@ -208,7 +208,7 @@
                             android:id="@+id/tv_vehiclePrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:drawableLeft="@drawable/dollar_black"
                             android:text="Distance" />
 
 
@@ -251,7 +251,7 @@
                             android:id="@+id/tv_pSizePrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:drawableLeft="@drawable/dollar_black"
                             android:text="Distance" />
 
 
@@ -294,7 +294,7 @@
                             android:id="@+id/tv_pWeightPrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                            android:drawableLeft="@drawable/dollar_black"
                             android:text="Distance" />
 
 
@@ -332,7 +332,7 @@
                         android:id="@+id/tv_total"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                        android:drawableLeft="@drawable/dollar_black"
                         android:drawablePadding="10dp"
                         android:text="Total" />
 

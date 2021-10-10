@@ -214,6 +214,7 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+        btn_show.performClick();
     }
 
     public void sendOnChannel2() {
@@ -262,15 +263,16 @@ public class Online extends FragmentActivity implements OnMapReadyCallback {
                         notificationManager.notify(1, notification);
                     } else if (status.equals("Delivered") && stopnotif4.equals("go")) {
                         stopnotif4 = "stop";
-                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
-                                .setSmallIcon(R.drawable.notifstatus)
-                                .setContentTitle("Quickdel")
-                                .setContentText(status)
-                                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                                .build();
-
-                        notificationManager.notify(1, notification);
+//                        Notification notification = new NotificationCompat.Builder(Online.this, App.CHANNEL_2_ID)
+//                                .setSmallIcon(R.drawable.notifstatus)
+//                                .setContentTitle("Quickdel")
+//                                .setContentText(status)
+//                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                                .build();
+//
+//                        notificationManager.notify(1, notification);
+                        startActivity(new Intent(getApplicationContext(), DeliveredScreenActivity.class));
                     }
 
                 } else {

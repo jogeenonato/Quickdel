@@ -21,6 +21,7 @@ public class OrderData {
     public String UserID;
     public String PickupPoint;
     public String DestinationPoint;
+
 //    boolean visibility;
 
 //    public OrderData(String vehicle, String size, String weight, Double sizePrice, Double vehiclePrice, Double weightPrice, Double total, String orderNumber, String distance, Double distancePrice, String runnerID, String recipientPhone, String status, String userName, String recipient, String description, String userID, String pickupPoint, String destinationPoint) {

@@ -62,6 +62,7 @@
                         android:id="@+id/app_name"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
+                        android:transitionName="logo_image"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/quickdeltext2"
                         android:fontFamily="@font/cherry_cream_soda"
@@ -73,6 +74,7 @@
                         android:layout_height="40dp"
                         android:layout_below="@+id/app_name"
                         android:layout_marginLeft="40dp"
+                        android:transitionName="logo_text"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="40dp"
                         android:layout_marginBottom="20dp"
@@ -102,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:transitionName="logo_desc"
                     android:orientation="horizontal">
 
                     <LinearLayout

@@ -89,6 +89,13 @@ public class TrackList extends AppCompatActivity implements OrderAdapter.OnNoteL
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        startActivity(new Intent(getApplicationContext(), UsersHome2.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
     private void getDataList() {
         SharedPreferences settings = getSharedPreferences("Profile", Context.MODE_PRIVATE);
         String name1 = settings.getString("name", "");
@@ -108,6 +115,7 @@ public class TrackList extends AppCompatActivity implements OrderAdapter.OnNoteL
                 }
 
                 orderAdapter.notifyDataSetChanged();
+
             }
 //            }
 

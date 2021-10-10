@@ -36,7 +36,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -357,11 +360,21 @@ public class PlaceQuickdelActivity2 extends AppCompatActivity {
                 reference.child(orderNumber).setValue(orders);
 
 
+                Date currentTime = Calendar.getInstance().getTime();
+                SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String timestamp = dateformat.format(currentTime);
+
+                orders.setOrderdatetime(timestamp);
+                reference.child(orderNumber).setValue(orders);
+
+
+
                 orders.setStatus("Placed");
                 reference.child(orderNumber).setValue(orders);
 
                 orders.setRunnerID("");
                 reference.child(orderNumber).setValue(orders);
+
 
                 calculateEarnings();
 

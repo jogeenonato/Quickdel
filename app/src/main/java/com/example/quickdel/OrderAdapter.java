@@ -50,6 +50,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         holder.WeightPrice.setText(String.valueOf(orders.getWeightPrice()));
         holder.distancePrice.setText(String.valueOf(orders.getDistancePrice()));
         holder.Total.setText(String.valueOf(orders.getTotal()));
+        holder.orderdatetime.setText(orders.getOrderdatetime());
 
 //        boolean isVisible = orderData.visibility;
 //        holder.linearLayout.setVisibility(isVisible ? View.VISIBLE : View.GONE);
@@ -62,7 +63,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView orderNumber, DestinationPoint, status, PickupPoint, Recipient, recipientPhone, Vehicle, VehiclePrice, Size, SizePrice, Weight, WeightPrice, distance, distancePrice, Total, Description;
+        TextView orderNumber, DestinationPoint, status, PickupPoint, Recipient, recipientPhone, Vehicle, VehiclePrice, Size, SizePrice, Weight, WeightPrice, distance, distancePrice, Total, Description, orderdatetime;
         OnNoteListener onNoteListener;
 //        LinearLayout linearLayout;
 
@@ -85,6 +86,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             distance = itemView.findViewById(R.id.hist_distance);
             distancePrice = itemView.findViewById(R.id.hist_distanceprice);
             Total = itemView.findViewById(R.id.hist_totalprice);
+            orderdatetime = itemView.findViewById(R.id.hist_orderdatetime);
+
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
 //            linearLayout = itemView.findViewById(R.id.detailsexpandable);
