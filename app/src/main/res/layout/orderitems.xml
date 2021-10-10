@@ -32,7 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Order No:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -57,7 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Destination:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -81,7 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Status:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -120,7 +123,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Order Date:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -150,7 +154,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recipient:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -184,7 +189,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recipient Mobile:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -213,7 +219,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pick-Up:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -242,7 +249,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -278,7 +286,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Distance(km):"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -317,7 +326,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Size:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -356,7 +366,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Weight:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -395,7 +406,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vehicle:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -441,7 +453,8 @@
                     android:layout_width="251dp"
                     android:layout_height="wrap_content"
                     android:text="Total:"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/prompt_regular"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 

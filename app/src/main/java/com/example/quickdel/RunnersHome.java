@@ -172,7 +172,7 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
                 else drawerLayout_r.openDrawer(GravityCompat.START);
                 break;
             case R.id.nav_contact:
-                startActivity(new Intent(getApplicationContext(), Support.class));
+                startActivity(new Intent(getApplicationContext(), test.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.nav_FAQ:
@@ -222,10 +222,10 @@ public class RunnersHome extends AppCompatActivity implements NavigationView.OnN
 
 
         ArrayList<CategoriesHelperClass> categoriesHelperClasses = new ArrayList<>();
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.restaurant_image, "Quick", gradient1));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.medicines2, "Convenient", gradient3));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.goodscartoon, "Affordable", gradient2));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.shopping, "Reliable", gradient4));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.mask, "Covid Updates", gradient1));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.crowds, "Convenient", gradient3));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.wash, "Affordable", gradient2));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.desinfectant, "Reliable", gradient4));
 
 
         categoriesRecycler.setHasFixedSize(true);

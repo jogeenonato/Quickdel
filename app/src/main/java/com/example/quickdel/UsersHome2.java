@@ -191,10 +191,10 @@ public class UsersHome2 extends AppCompatActivity implements NavigationView.OnNa
 
 
         ArrayList<CategoriesHelperClass> categoriesHelperClasses = new ArrayList<>();
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.restaurant_image, "Quick", gradient1));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.medicines2, "Convenient", gradient3));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.goodscartoon, "Affordable", gradient2));
-        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.shopping, "Reliable", gradient4));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.price1, "Quick", gradient1));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.price2, "Convenient", gradient3));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.price3, "Affordable", gradient2));
+        categoriesHelperClasses.add(new CategoriesHelperClass(R.drawable.price4, "Reliable", gradient4));
 
 
         categoriesRecycler.setHasFixedSize(true);

@@ -35,7 +35,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ad
 
         CategoriesHelperClass helperClass = mostViewedLocations.get(position);
         holder.imageView.setImageResource(helperClass.getImageView());
-        holder.textView.setText(helperClass.getTextView());
+       // holder.textView.setText(helperClass.getTextView());
         holder.relativeLayout.setBackground(helperClass.getRelativeLayout());
     }
 
@@ -55,7 +55,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ad
 
             relativeLayout = itemView.findViewById(R.id.background_gradient);
             imageView = itemView.findViewById(R.id.categories_image);
-            textView = itemView.findViewById(R.id.categories_title);
+            //textView = itemView.findViewById(R.id.categories_title);
         }
     }
 }

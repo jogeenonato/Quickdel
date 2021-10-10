@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="150dp"
     android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="2dp"
@@ -9,27 +9,19 @@
 
     <RelativeLayout
         android:id="@+id/background_gradient"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:background="@color/home1"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/categories_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/prompt_semibold_italic"
-            android:text="Restaurant"
-            android:textAllCaps="true"
-            android:textColor="@color/quantum_grey700"
-            android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/categories_image"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/restaurant_image" />
     </RelativeLayout>
 
