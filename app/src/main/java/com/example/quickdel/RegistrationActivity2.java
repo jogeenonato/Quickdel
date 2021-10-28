@@ -146,7 +146,7 @@ public class RegistrationActivity2 extends AppCompatActivity {
             regPassword.setError("Field cannot be empty");
             return false;
         } else if (!val.matches(passwordVal)) {
-            regPassword.setError("Password is too weak");
+            regPassword.setError("Password is too weak\nHave atleast 4 characters\nHave atleast 1 letter (a, b, c...)\nHave at least 1 number (1, 2, 3...)\nHave at least 1 special character\nInclude both uppercase and lowercase characters");
             return false;
         } else {
             //String bcryptHashing = BCrypt.withDefaults().hashToString(12, val.toCharArray());

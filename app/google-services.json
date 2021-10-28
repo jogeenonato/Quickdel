@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "876692591044-jv982jfjub5n32ldkkoqtltvg8nflm9r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickdel",
+            "certificate_hash": "2467051a5a3089d5ebf16efeee4c9554edb1c9d7"
+          }
+        },
+        {
           "client_id": "876692591044-v7v21ikqcghbkfvra3n9horv7c5l7nht.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -127,7 +127,7 @@ public class DriverHomeActivity extends AppCompatActivity implements NavigationV
     }
 
     private void lookForQuickdel() {
-        ExampleThread thread = new ExampleThread(1000);
+        ExampleThread thread = new ExampleThread(10000);
         thread.start();
     }
 
